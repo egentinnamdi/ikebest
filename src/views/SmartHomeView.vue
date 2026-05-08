@@ -1,6 +1,6 @@
 <template>
   <!-- Hero -->
-  <section class="relative min-h-[580px] flex items-center overflow-hidden">
+  <section class="relative min-h-[460px] flex items-center overflow-hidden">
     <div class="absolute inset-0 z-0">
       <img
         src="https://lh3.googleusercontent.com/aida-public/AB6AXuDQ4JZJ9gwROaDrTAYUMJ1cS-hXZsyyfRvXS4B6rXi3-h-E385kBB2I4au7vQAzvk758eE_2TVqsVXIFH3LezachPTtzA4KgMS0cbwDPdJBft1WdoyTUuXu3lOiiSlox1AQ4YbkFKPVjlint6ejpcOyxInSOYbZaoBtOY7juH4cEBkHPgLhQicGxSw4TvaalNfjHt-dFS78SMW3BNDb8C_9eWeMugeCFUmIpxFqZgcTRrsx0h2jov2CAy1mEIGOyaP11X8gh5wQFLU"
@@ -14,7 +14,7 @@
         <span class="inline-block px-4 py-1.5 rounded-full bg-primary/20 text-white text-xs font-semibold uppercase tracking-widest mb-6 backdrop-blur-sm">
           Next-Gen Automation
         </span>
-        <h1 class="text-[56px] font-extrabold leading-[1.1] text-white mb-6" style="font-family: 'Plus Jakarta Sans', sans-serif;">
+        <h1 class="text-[36px] md:text-[56px] font-extrabold leading-[1.1] text-white mb-6" style="font-family: 'Montserrat', sans-serif;">
           Control Your Home<br />From Your Phone
         </h1>
         <p class="text-white/80 text-lg mb-8 leading-relaxed">
@@ -24,7 +24,7 @@
           <a href="#solutions" class="bg-primary text-white px-8 py-3.5 rounded-xl font-semibold hover:bg-[#1E2545] transition-all">
             See Solutions
           </a>
-          <a href="#consult" class="border-2 border-white/40 text-white px-8 py-3.5 rounded-xl font-semibold hover:bg-white/10 transition-all">
+          <a href="tel:+2348139522490" class="border-2 border-white/40 text-white px-8 py-3.5 rounded-xl font-semibold hover:bg-white/10 transition-all">
             Book a Consultation
           </a>
         </div>
@@ -37,7 +37,7 @@
     <div class="max-w-[1200px] mx-auto px-6">
       <div class="text-center mb-14">
         <p class="text-xs font-semibold uppercase tracking-widest text-primary mb-2">Features</p>
-        <h2 class="text-4xl font-bold text-gray-900" style="font-family: 'Plus Jakarta Sans', sans-serif;">What We Automate</h2>
+        <h2 class="text-4xl font-bold text-gray-900" style="font-family: 'Montserrat', sans-serif;">What We Automate</h2>
         <p class="text-gray-500 mt-3 max-w-xl mx-auto text-[15px]">Every corner of your living space seamlessly connected through one intelligent ecosystem.</p>
       </div>
       <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
@@ -45,7 +45,7 @@
           <div class="w-12 h-12 bg-[#FAC030]/10 rounded-xl flex items-center justify-center mb-5">
             <span class="material-symbols-outlined text-primary text-[26px]">{{ feature.icon }}</span>
           </div>
-          <h3 class="font-bold text-[17px] text-gray-900 mb-2" style="font-family: 'Plus Jakarta Sans', sans-serif;">{{ feature.title }}</h3>
+          <h3 class="font-bold text-[17px] text-gray-900 mb-2" style="font-family: 'Montserrat', sans-serif;">{{ feature.title }}</h3>
           <p class="text-gray-500 text-sm leading-relaxed mb-4">{{ feature.body }}</p>
           <RouterLink :to="feature.link || '/smart-home'" class="text-primary font-semibold text-sm inline-flex items-center gap-1 hover:gap-2 transition-all">
             Learn more <span class="material-symbols-outlined text-[15px]">arrow_forward</span>
@@ -59,7 +59,7 @@
   <section class="py-20 bg-[#f4f6f8]">
     <div class="max-w-[1200px] mx-auto px-6">
       <p class="text-xs font-semibold uppercase tracking-widest text-primary text-center mb-2">Simple Process</p>
-      <h2 class="text-4xl font-bold text-center text-gray-900 mb-3" style="font-family: 'Plus Jakarta Sans', sans-serif;">How It Works</h2>
+      <h2 class="text-4xl font-bold text-center text-gray-900 mb-3" style="font-family: 'Montserrat', sans-serif;">How It Works</h2>
       <p class="text-center text-gray-500 mb-16">Three simple steps to a smarter home.</p>
       <div class="relative grid grid-cols-1 md:grid-cols-3 gap-10">
         <div class="hidden md:block absolute top-10 left-0 w-full h-[2px] bg-gray-200 -z-10"></div>
@@ -67,7 +67,7 @@
           <div class="w-20 h-20 bg-primary text-white rounded-full flex items-center justify-center text-3xl font-extrabold mb-6 shadow-lg shadow-[#161B30]/20">
             {{ i + 1 }}
           </div>
-          <h4 class="font-bold text-gray-900 mb-2" style="font-family: 'Plus Jakarta Sans', sans-serif;">{{ step.title }}</h4>
+          <h4 class="font-bold text-gray-900 mb-2" style="font-family: 'Montserrat', sans-serif;">{{ step.title }}</h4>
           <p class="text-gray-500 text-sm leading-relaxed max-w-xs">{{ step.body }}</p>
         </div>
       </div>
@@ -79,7 +79,7 @@
     <div class="max-w-[1200px] mx-auto px-6">
       <div class="text-center mb-14">
         <p class="text-xs font-semibold uppercase tracking-widest text-primary mb-2">Pricing</p>
-        <h2 class="text-4xl font-bold text-gray-900" style="font-family: 'Plus Jakarta Sans', sans-serif;">Smart Home Packages</h2>
+        <h2 class="text-4xl font-bold text-gray-900" style="font-family: 'Montserrat', sans-serif;">Smart Home Packages</h2>
       </div>
       <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
         <div
@@ -91,7 +91,7 @@
           <div v-if="pkg.featured" class="absolute -top-3.5 left-1/2 -translate-x-1/2 bg-primary text-white text-xs font-bold px-4 py-1 rounded-full uppercase tracking-widest whitespace-nowrap">
             Most Popular
           </div>
-          <h3 class="font-bold text-xl text-gray-900 mb-1" style="font-family: 'Plus Jakarta Sans', sans-serif;">{{ pkg.title }}</h3>
+          <h3 class="font-bold text-xl text-gray-900 mb-1" style="font-family: 'Montserrat', sans-serif;">{{ pkg.title }}</h3>
           <p class="text-gray-400 text-sm mb-6">{{ pkg.subtitle }}</p>
           <ul class="space-y-3 flex-grow mb-8">
             <li v-for="f in pkg.features" :key="f" class="flex gap-2 items-start text-sm text-gray-700">
@@ -99,7 +99,7 @@
               {{ f }}
             </li>
           </ul>
-          <a href="#consult" class="block text-center py-3 rounded-xl font-semibold text-sm transition-all"
+          <a href="tel:+2348139522490" class="block text-center py-3 rounded-xl font-semibold text-sm transition-all"
             :class="pkg.featured ? 'bg-primary text-white hover:bg-[#1E2545]' : 'border-2 border-primary text-primary hover:bg-[#FAC030]/10'">
             Get a Quote →
           </a>
@@ -108,42 +108,6 @@
     </div>
   </section>
 
-  <!-- Consultation Form -->
-  <section id="consult" class="py-20 bg-[#f4f6f8]">
-    <div class="max-w-[700px] mx-auto px-6 text-center">
-      <p class="text-xs font-semibold uppercase tracking-widest text-primary mb-2">Get Started</p>
-      <h2 class="text-4xl font-bold text-gray-900 mb-4" style="font-family: 'Plus Jakarta Sans', sans-serif;">Request a Consultation</h2>
-      <p class="text-gray-500 mb-10">Our smart home engineers will assess your home and design the ideal automation system for your budget.</p>
-      <form class="bg-white p-8 rounded-2xl shadow-sm border border-gray-200 text-left space-y-5">
-        <div class="grid grid-cols-1 sm:grid-cols-2 gap-5">
-          <div>
-            <label class="block font-semibold text-sm text-gray-900 mb-1.5">Full Name</label>
-            <input class="w-full p-3 rounded-xl border border-gray-300 focus:ring-2 focus:ring-primary/30 focus:border-primary outline-none text-sm" placeholder="Your name" type="text" />
-          </div>
-          <div>
-            <label class="block font-semibold text-sm text-gray-900 mb-1.5">Phone Number</label>
-            <input class="w-full p-3 rounded-xl border border-gray-300 focus:ring-2 focus:ring-primary/30 focus:border-primary outline-none text-sm" placeholder="080 000 0000" type="tel" />
-          </div>
-        </div>
-        <div>
-          <label class="block font-semibold text-sm text-gray-900 mb-1.5">Address / Location</label>
-          <input class="w-full p-3 rounded-xl border border-gray-300 focus:ring-2 focus:ring-primary/30 focus:border-primary outline-none text-sm" placeholder="Your home address in Asaba" type="text" />
-        </div>
-        <div>
-          <label class="block font-semibold text-sm text-gray-900 mb-1.5">Interested In</label>
-          <div class="grid grid-cols-2 sm:grid-cols-3 gap-2">
-            <label v-for="opt in interestOptions" :key="opt" class="flex items-center gap-2 text-sm text-gray-700 cursor-pointer p-2 rounded-lg border border-gray-200 hover:border-primary hover:bg-[#FAC030]/10 transition-all">
-              <input type="checkbox" class="accent-primary w-4 h-4" />
-              {{ opt }}
-            </label>
-          </div>
-        </div>
-        <button class="w-full bg-primary text-white py-3.5 rounded-xl font-semibold hover:bg-[#1E2545] transition-all">
-          Book a Consultation
-        </button>
-      </form>
-    </div>
-  </section>
 </template>
 
 <script setup>
@@ -183,5 +147,5 @@ const packages = [
   },
 ]
 
-const interestOptions = ['Lighting', 'Smart Locks', 'Gate Control', 'CCTV', 'Climate', 'Audio']
+
 </script>

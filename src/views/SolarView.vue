@@ -1,6 +1,6 @@
 <template>
   <!-- Hero -->
-  <section class="relative min-h-[580px] flex items-center overflow-hidden">
+  <section class="relative min-h-[460px] flex items-center overflow-hidden">
     <div class="absolute inset-0 z-0">
       <img
         src="https://lh3.googleusercontent.com/aida-public/AB6AXuDKuaXg5bWiPM2y4pJ9RyGdgdujOustxP_T_TX-MoH-lqybr0hubXM3mZ8yDuZM46kShmc1jOqYGzaFaALLm6fG1eEptXEpoRjRXywGiAkRMR47pLhbjdebRZ99RZQXA5R_Zo2vLIv3TiXmICEGM2T8ADr-26Xk6ia4kaUAF92j2lZttQagxy6j6yM6WdKsl6gCWm2k-teO8rELHjRPpF99M-Z2YvMKsCKRpX0BjXPsYIpMTc4d6_m3TrC4w0u-wfN2g-k4UEkgpdk"
@@ -14,15 +14,15 @@
         <span class="inline-block bg-white/20 text-white px-4 py-1.5 rounded-full text-xs font-semibold uppercase tracking-widest mb-6 backdrop-blur-sm">
           Solar Energy Solutions
         </span>
-        <h1 class="text-[56px] font-extrabold leading-[1.1] tracking-tight text-white mb-6" style="font-family: 'Plus Jakarta Sans', sans-serif;">
+        <h1 class="text-[36px] md:text-[56px] font-extrabold leading-[1.1] tracking-tight text-white mb-6" style="font-family: 'Montserrat', sans-serif;">
           Cut Your Electricity Bills<br />With Solar Power
         </h1>
         <p class="text-white/85 text-lg mb-8 leading-relaxed">
           Reliable energy for Nigerian homes and businesses. Say goodbye to blackouts and rising fuel costs with our high-efficiency solar installations.
         </p>
         <div class="flex gap-4 flex-wrap">
-          <a href="#quote" class="bg-primary text-white px-8 py-3.5 rounded-xl font-semibold hover:bg-[#1E2545] transition-all">
-            Request a Free Quote
+          <a href="tel:+2348139522490" class="bg-primary text-white px-8 py-3.5 rounded-xl font-semibold hover:bg-[#1E2545] transition-all">
+            Call for a Free Quote
           </a>
           <a href="#how-it-works" class="border-2 border-white/40 text-white px-8 py-3.5 rounded-xl font-semibold hover:bg-white/10 transition-all">
             How It Works
@@ -42,7 +42,7 @@
       />
       <div>
         <p class="text-xs font-semibold uppercase tracking-widest text-primary mb-3">Why Solar in Nigeria</p>
-        <h2 class="text-4xl font-bold text-gray-900 mb-5" style="font-family: 'Plus Jakarta Sans', sans-serif;">Why Switch to Solar Today?</h2>
+        <h2 class="text-4xl font-bold text-gray-900 mb-5" style="font-family: 'Montserrat', sans-serif;">Why Switch to Solar Today?</h2>
         <p class="text-gray-500 leading-relaxed mb-8">
           Nigeria's power grid remains unpredictable, but the sun is constant. We help you harness this natural resource to gain true energy independence.
         </p>
@@ -66,12 +66,12 @@
     <div class="max-w-[1200px] mx-auto px-6">
       <div class="text-center mb-14">
         <p class="text-xs font-semibold uppercase tracking-widest text-primary mb-2">What We Offer</p>
-        <h2 class="text-4xl font-bold text-gray-900" style="font-family: 'Plus Jakarta Sans', sans-serif;">Solar Solutions for Every Need</h2>
+        <h2 class="text-4xl font-bold text-gray-900" style="font-family: 'Montserrat', sans-serif;">Solar Solutions for Every Need</h2>
       </div>
       <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
         <div v-for="sol in solutions" :key="sol.title" class="bg-white p-8 rounded-xl shadow-sm border-t-[3px] border-primary hover:shadow-md transition-all">
           <span class="material-symbols-outlined text-primary text-[40px] mb-5 block">{{ sol.icon }}</span>
-          <h3 class="font-bold text-xl mb-2 text-gray-900" style="font-family: 'Plus Jakarta Sans', sans-serif;">{{ sol.title }}</h3>
+          <h3 class="font-bold text-xl mb-2 text-gray-900" style="font-family: 'Montserrat', sans-serif;">{{ sol.title }}</h3>
           <p class="text-gray-500 text-sm leading-relaxed mb-5">{{ sol.body }}</p>
           <a href="#" class="text-primary font-semibold text-sm inline-flex items-center gap-1">
             Learn More <span class="material-symbols-outlined text-[16px]">arrow_forward</span>
@@ -84,7 +84,7 @@
   <!-- How It Works -->
   <section id="how-it-works" class="py-20 max-w-[1200px] mx-auto px-6">
     <p class="text-xs font-semibold uppercase tracking-widest text-primary text-center mb-2">The Process</p>
-    <h2 class="text-4xl font-bold text-center text-gray-900 mb-16" style="font-family: 'Plus Jakarta Sans', sans-serif;">Your Path to Clean Energy</h2>
+    <h2 class="text-4xl font-bold text-center text-gray-900 mb-16" style="font-family: 'Montserrat', sans-serif;">Your Path to Clean Energy</h2>
     <div class="relative grid grid-cols-1 md:grid-cols-4 gap-10">
       <div class="hidden md:block absolute top-12 left-0 w-full h-[2px] bg-gray-200 -z-10"></div>
       <div v-for="(step, i) in steps" :key="step.title" class="text-center group">
@@ -102,7 +102,7 @@
     <div class="max-w-[1200px] mx-auto px-6">
       <div class="flex justify-between items-end mb-12">
         <div>
-          <h2 class="text-4xl font-bold text-white" style="font-family: 'Plus Jakarta Sans', sans-serif;">Recent Installations</h2>
+          <h2 class="text-4xl font-bold text-white" style="font-family: 'Montserrat', sans-serif;">Recent Installations</h2>
           <p class="text-gray-400 mt-1 text-sm">Quality craftsmanship across commercial and residential projects.</p>
         </div>
         <button class="text-[#FAC030] font-semibold border-b border-[#FAC030] pb-0.5 text-sm">View All Projects</button>
@@ -113,55 +113,6 @@
     </div>
   </section>
 
-  <!-- CTA Quote Form -->
-  <section id="quote" class="py-20">
-    <div class="max-w-[1200px] mx-auto px-6">
-      <div class="bg-[#FAC030]/10 rounded-3xl p-10 md:p-16 flex flex-col md:flex-row gap-16 items-center">
-        <div class="md:w-1/2">
-          <h2 class="text-4xl font-bold text-gray-900 mb-5" style="font-family: 'Plus Jakarta Sans', sans-serif;">Ready for 24/7 Power?</h2>
-          <p class="text-gray-500 leading-relaxed mb-8">Fill out the form to schedule a free site assessment and get a customised quote for your property.</p>
-          <div class="flex items-center gap-4 p-5 bg-white rounded-xl shadow-sm">
-            <span class="material-symbols-outlined text-primary text-[40px]">phone_in_talk</span>
-            <div>
-              <p class="text-xs font-semibold uppercase tracking-widest text-gray-500">Speak to an Expert</p>
-              <p class="font-bold text-xl text-gray-900 mt-0.5" style="font-family: 'Plus Jakarta Sans', sans-serif;">+234 800 IKEBEST</p>
-            </div>
-          </div>
-        </div>
-        <div class="md:w-1/2 w-full">
-          <form class="bg-white p-8 rounded-2xl shadow-lg border border-gray-200 space-y-5">
-            <div class="grid grid-cols-1 sm:grid-cols-2 gap-5">
-              <div>
-                <label class="block font-semibold text-sm text-gray-900 mb-1.5">Full Name</label>
-                <input class="w-full p-3 rounded-xl border border-gray-300 focus:ring-2 focus:ring-primary/30 focus:border-primary outline-none text-sm" placeholder="John Doe" type="text" />
-              </div>
-              <div>
-                <label class="block font-semibold text-sm text-gray-900 mb-1.5">Phone Number</label>
-                <input class="w-full p-3 rounded-xl border border-gray-300 focus:ring-2 focus:ring-primary/30 focus:border-primary outline-none text-sm" placeholder="080 000 0000" type="tel" />
-              </div>
-            </div>
-            <div>
-              <label class="block font-semibold text-sm text-gray-900 mb-1.5">Service Type</label>
-              <select class="w-full p-3 rounded-xl border border-gray-300 focus:ring-2 focus:ring-primary/30 focus:border-primary outline-none text-sm bg-white">
-                <option>Residential Solar</option>
-                <option>Commercial Solar</option>
-                <option>Battery / Inverter Only</option>
-                <option>Maintenance</option>
-              </select>
-            </div>
-            <div>
-              <label class="block font-semibold text-sm text-gray-900 mb-1.5">Project Address</label>
-              <input class="w-full p-3 rounded-xl border border-gray-300 focus:ring-2 focus:ring-primary/30 focus:border-primary outline-none text-sm" placeholder="Asaba, Delta State" type="text" />
-            </div>
-            <button class="w-full bg-primary text-white py-3.5 rounded-xl font-semibold hover:bg-[#1E2545] transition-all flex items-center justify-center gap-2">
-              Request Free Quote
-              <span class="material-symbols-outlined text-[18px]">send</span>
-            </button>
-          </form>
-        </div>
-      </div>
-    </div>
-  </section>
 </template>
 
 <script setup>

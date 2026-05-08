@@ -7,7 +7,7 @@
         <img
           src="https://res.cloudinary.com/dtetfimeq/image/upload/v1778246625/ikebest-logo_cgx4cg.png"
           alt="IKEBEST Group"
-          class="h-16 w-auto"
+          class="h-10 md:h-16 w-auto"
         />
       </RouterLink>
 

@@ -1,6 +1,6 @@
 <template>
   <!-- Hero -->
-  <section class="relative h-[580px] flex items-center overflow-hidden">
+  <section class="relative h-[460px] flex items-center overflow-hidden">
     <div class="absolute inset-0 z-0">
       <img
         src="https://lh3.googleusercontent.com/aida-public/AB6AXuDw-C775UX2Hc1-x0GSyuPOIprYgdPNpu15AKM28v-Wl6UIXDYFMaaOvj9iP0aO4-dwsi2df6SP2l6YZvhrOZnyHeFXvW7SCXwLCiUDNZMKC_CoqI6ZExsW7e6zvyH4PkJavv6pvVNHCqXpcR5gyB_2LpuXUlqNBnwEeuZnkFCHIi35Nfz7Ja76gLcyWn5RIqxhtgwzKRy6y5SIegGbf-jHHW9RGLfToFCNxBrdGIVE-2pJRw4ZeYlRzzurdrp-828MEMJJamJMlN8"
@@ -14,7 +14,7 @@
         <span class="inline-block px-4 py-1.5 rounded-full bg-white/20 text-white text-xs font-semibold uppercase tracking-widest mb-6 backdrop-blur-sm">
           Premium Real Estate
         </span>
-        <h1 class="text-[56px] font-extrabold leading-[1.1] text-white mb-6" style="font-family: 'Plus Jakarta Sans', sans-serif;">
+        <h1 class="text-[36px] md:text-[56px] font-extrabold leading-[1.1] text-white mb-6" style="font-family: 'Montserrat', sans-serif;">
           Quality Properties<br />in Asaba
         </h1>
         <p class="text-white/80 text-lg mb-8 leading-relaxed">
@@ -24,7 +24,7 @@
           <a href="#listings" class="bg-primary text-white px-8 py-3.5 rounded-xl font-semibold hover:bg-[#1E2545] transition-all">
             Browse Properties
           </a>
-          <a href="#enquiry" class="border-2 border-white/40 text-white px-8 py-3.5 rounded-xl font-semibold hover:bg-white/10 transition-all">
+          <a href="tel:+2348139522490" class="border-2 border-white/40 text-white px-8 py-3.5 rounded-xl font-semibold hover:bg-white/10 transition-all">
             Speak to an Agent
           </a>
         </div>
@@ -37,12 +37,12 @@
     <div class="max-w-[1200px] mx-auto px-6">
       <div class="text-center mb-14">
         <p class="text-xs font-semibold uppercase tracking-widest text-primary mb-2">What We Offer</p>
-        <h2 class="text-4xl font-bold text-gray-900" style="font-family: 'Plus Jakarta Sans', sans-serif;">Our Real Estate Services</h2>
+        <h2 class="text-4xl font-bold text-gray-900" style="font-family: 'Montserrat', sans-serif;">Our Real Estate Services</h2>
       </div>
       <div class="grid grid-cols-1 md:grid-cols-4 gap-6">
         <div v-for="svc in services" :key="svc.title" class="service-card bg-white p-6 rounded-xl hover:shadow-md transition-all text-center">
           <span class="material-symbols-outlined text-primary text-[44px] mb-4 block" style="font-variation-settings:'FILL' 1;">{{ svc.icon }}</span>
-          <h3 class="font-bold text-[17px] text-gray-900 mb-2" style="font-family: 'Plus Jakarta Sans', sans-serif;">{{ svc.title }}</h3>
+          <h3 class="font-bold text-[17px] text-gray-900 mb-2" style="font-family: 'Montserrat', sans-serif;">{{ svc.title }}</h3>
           <p class="text-gray-500 text-sm leading-relaxed">{{ svc.body }}</p>
         </div>
       </div>
@@ -55,7 +55,7 @@
       <div class="flex flex-col md:flex-row md:justify-between md:items-end mb-10 gap-4">
         <div>
           <p class="text-xs font-semibold uppercase tracking-widest text-primary mb-2">Properties</p>
-          <h2 class="text-4xl font-bold text-gray-900" style="font-family: 'Plus Jakarta Sans', sans-serif;">Current Listings</h2>
+          <h2 class="text-4xl font-bold text-gray-900" style="font-family: 'Montserrat', sans-serif;">Current Listings</h2>
         </div>
         <!-- Filter tabs -->
         <div class="flex flex-wrap gap-2">
@@ -84,7 +84,7 @@
             </span>
           </div>
           <div class="p-5">
-            <h4 class="font-bold text-[17px] text-gray-900" style="font-family: 'Plus Jakarta Sans', sans-serif;">{{ prop.title }}</h4>
+            <h4 class="font-bold text-[17px] text-gray-900" style="font-family: 'Montserrat', sans-serif;">{{ prop.title }}</h4>
             <div class="flex items-center gap-1 text-sm text-gray-500 mt-1 mb-3">
               <span class="material-symbols-outlined text-[15px]">location_on</span>
               {{ prop.location }}
@@ -95,7 +95,7 @@
               <span class="flex items-center gap-1"><span class="material-symbols-outlined text-[15px] text-primary">square_foot</span> {{ prop.sqm }} sqm</span>
             </div>
             <div class="flex justify-between items-center">
-              <span class="font-bold text-primary text-lg" style="font-family: 'Plus Jakarta Sans', sans-serif;">{{ prop.price }}</span>
+              <span class="font-bold text-primary text-lg" style="font-family: 'Montserrat', sans-serif;">{{ prop.price }}</span>
               <a href="#enquiry" class="text-primary font-semibold text-sm inline-flex items-center gap-1 hover:gap-2 transition-all">
                 View Details <span class="material-symbols-outlined text-[16px]">arrow_forward</span>
               </a>
@@ -111,7 +111,7 @@
     <div class="max-w-[1200px] mx-auto px-6 grid grid-cols-1 md:grid-cols-2 gap-16 items-center">
       <div>
         <p class="text-xs font-semibold uppercase tracking-widest text-primary mb-3">Why Choose Us</p>
-        <h2 class="text-4xl font-bold text-gray-900 mb-5" style="font-family: 'Plus Jakarta Sans', sans-serif;">Why Buy From IKEBEST</h2>
+        <h2 class="text-4xl font-bold text-gray-900 mb-5" style="font-family: 'Montserrat', sans-serif;">Why Buy From IKEBEST</h2>
         <ul class="space-y-5">
           <li v-for="point in trustPoints" :key="point.title" class="flex gap-4 items-start">
             <span class="material-symbols-outlined text-primary bg-[#FAC030]/10 p-2.5 rounded-lg text-[22px] flex-shrink-0" style="font-variation-settings:'FILL' 1;">{{ point.icon }}</span>
@@ -130,51 +130,6 @@
     </div>
   </section>
 
-  <!-- Enquiry Form -->
-  <section id="enquiry" class="py-20 bg-[#f4f6f8]">
-    <div class="max-w-[700px] mx-auto px-6 text-center">
-      <p class="text-xs font-semibold uppercase tracking-widest text-primary mb-2">Contact Us</p>
-      <h2 class="text-4xl font-bold text-gray-900 mb-4" style="font-family: 'Plus Jakarta Sans', sans-serif;">Interested in a Property?</h2>
-      <p class="text-gray-500 mb-10">Talk to our real estate team today and let us help you find the right property.</p>
-      <form class="bg-white p-8 rounded-2xl shadow-sm border border-gray-200 text-left space-y-5">
-        <div class="grid grid-cols-1 sm:grid-cols-2 gap-5">
-          <div>
-            <label class="block font-semibold text-sm text-gray-900 mb-1.5">Full Name</label>
-            <input class="w-full p-3 rounded-xl border border-gray-300 focus:ring-2 focus:ring-primary/30 focus:border-primary outline-none text-sm" placeholder="Your name" type="text" />
-          </div>
-          <div>
-            <label class="block font-semibold text-sm text-gray-900 mb-1.5">Phone Number</label>
-            <input class="w-full p-3 rounded-xl border border-gray-300 focus:ring-2 focus:ring-primary/30 focus:border-primary outline-none text-sm" placeholder="080 000 0000" type="tel" />
-          </div>
-        </div>
-        <div>
-          <label class="block font-semibold text-sm text-gray-900 mb-1.5">I'm Looking To</label>
-          <select class="w-full p-3 rounded-xl border border-gray-300 focus:ring-2 focus:ring-primary/30 focus:border-primary outline-none text-sm bg-white">
-            <option>Buy a Property</option>
-            <option>Rent a Property</option>
-            <option>Buy Land</option>
-            <option>Invest in Off-Plan</option>
-          </select>
-        </div>
-        <div>
-          <label class="block font-semibold text-sm text-gray-900 mb-1.5">Budget Range</label>
-          <select class="w-full p-3 rounded-xl border border-gray-300 focus:ring-2 focus:ring-primary/30 focus:border-primary outline-none text-sm bg-white">
-            <option>Below ₦10 million</option>
-            <option>₦10M – ₦30M</option>
-            <option>₦30M – ₦80M</option>
-            <option>Above ₦80M</option>
-          </select>
-        </div>
-        <div>
-          <label class="block font-semibold text-sm text-gray-900 mb-1.5">Additional Notes</label>
-          <textarea class="w-full p-3 rounded-xl border border-gray-300 focus:ring-2 focus:ring-primary/30 focus:border-primary outline-none text-sm resize-none" rows="3" placeholder="Location preference, specific requirements..."></textarea>
-        </div>
-        <button class="w-full bg-primary text-white py-3.5 rounded-xl font-semibold hover:bg-[#1E2545] transition-all">
-          Send Enquiry
-        </button>
-      </form>
-    </div>
-  </section>
 </template>
 
 <script setup>

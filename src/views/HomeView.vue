@@ -26,14 +26,14 @@
       </div>
 
       <!-- Headline -->
-      <h1 class="text-[52px] md:text-[68px] font-extrabold leading-[1.08] tracking-tight text-white mb-6" style="font-family: 'Plus Jakarta Sans', sans-serif;">
-        Powering Homes &amp; Businesses<br />
+      <h1 class="text-[32px] sm:text-[44px] md:text-[64px] font-extrabold leading-[1.1] tracking-tight text-white mb-6" style="font-family: 'Montserrat', sans-serif;">
+        <span class="whitespace-nowrap">Powering Homes &amp; Businesses</span><br />
         <span class="text-[#FAC030]">Across Nigeria.</span>
       </h1>
 
       <!-- Subtitle -->
       <p class="text-white/75 text-lg md:text-xl leading-relaxed mb-10 max-w-2xl mx-auto">
-        Solar energy, CCTV security, real estate, and smart home solutions — all from one trusted company in Asaba.
+        Solar energy, CCTV security, real estate and smart home solutions, all from one trusted company in Nigeria.
       </p>
 
       <!-- CTAs -->
@@ -60,121 +60,234 @@
     </div>
   </section>
 
-  <!-- Trust Bar -->
-
-  <!-- Trust Bar -->
-  <section id="about" class="bg-[#161B30] py-12">
-    <div class="max-w-[1200px] mx-auto px-6 grid grid-cols-2 md:grid-cols-4 gap-6 text-center">
-      <div v-for="stat in stats" :key="stat.label">
-        <div class="text-4xl font-extrabold text-[#FAC030]" style="font-family: 'Plus Jakarta Sans', sans-serif;">{{ stat.value }}</div>
-        <div class="text-xs font-semibold uppercase tracking-widest text-white/60 mt-1">{{ stat.label }}</div>
+  <!-- Stats Bar -->
+  <section id="about" class="bg-white py-16">
+    <div class="max-w-[1400px] mx-auto px-6 md:px-12">
+      <div class="grid grid-cols-1 sm:grid-cols-3">
+        <div v-for="(stat, i) in stats" :key="stat.label" :data-raw="stat.raw"
+          class="flex items-center gap-4 md:gap-8 px-6 md:px-16 py-8 sm:py-4"
+        >
+          <div class="text-[48px] sm:text-[60px] md:text-[72px] font-extrabold text-[#161B30] leading-none shrink-0" style="font-family: 'Montserrat', sans-serif;">
+            <span class="counter-num" :data-suffix="stat.suffix">{{ stat.display }}</span>
+          </div>
+          <div class="border-l-4 border-[#FAC030] pl-4 md:pl-5">
+            <div class="font-bold text-[15px] md:text-[17px] text-[#161B30] leading-snug">{{ stat.label }}</div>
+            <div class="text-gray-500 text-sm mt-1 leading-snug line-clamp-2">{{ stat.sub }}</div>
+          </div>
+        </div>
       </div>
     </div>
   </section>
 
   <!-- About Preview -->
-  <section class="py-20 px-6 max-w-[1200px] mx-auto grid grid-cols-1 lg:grid-cols-2 gap-20 items-center">
-    <div class="grid grid-cols-2 gap-3">
-      <div class="space-y-3">
-        <img
-          src="https://lh3.googleusercontent.com/aida-public/AB6AXuC_QWIi73l7IDotwrCsDpOeFro5ZgJLv1h2fBTiw-OiZfCCn6dl23KlqPJTVU-EFmfcKW6AJwrLc429HDGaUsXw80AOCA7T04i95HPezjlKJHOgZmJ374v-Xeb7p-dmuHnfBqcyfJtvV_OEwSdwO1z2UadVcBkbLa-4qO-zoB9yG0S7gOkWWWEVi01ZFXwIYoBjGC9eqgps18W5vRvrJfUJ8eR_pqxtoptQvonYxqbxOjUkDMR5spt5F6gwOQHER3QmKP6VD4iFJBs"
-          alt="IKEBEST technician installing CCTV"
-          class="rounded-xl aspect-[3/4] object-cover shadow-sm w-full"
-        />
-        <div class="bg-primary p-5 rounded-xl text-white">
-          <span class="font-bold text-lg" style="font-family: 'Plus Jakarta Sans', sans-serif;">Local</span>
-          <p class="text-sm opacity-90 mt-1">Expertise on the ground in Delta State.</p>
-        </div>
-      </div>
-      <div class="pt-10">
-        <img
-          src="https://lh3.googleusercontent.com/aida-public/AB6AXuBuvbvRA1H_UkJZ4I3kHEE4g8sX5Br9perf3HSr69A4_d7MeIKEpzxfs5DX5UbDbKn4fzKYsD20WMqal88XvJayw90qRM-cBZEPOHel7BDQFrWMHOaIWnOjZ484kDZroNzRL3T4p1s8mBh2HM4OV2Zf-phCUrIxDStlyiwE91bHNFAFpV2zFxXGWPsKS20S6t0yJd83knQ6DbzAgyz5aJJNkNYc-VpCx-IPl7eXeM2eQ_W3e4HdU2WPJIURq0l8Y3h9MpJecyQby7o"
-          alt="Modern Nigerian residential building"
-          class="rounded-xl aspect-[3/5] object-cover shadow-sm w-full"
-        />
-      </div>
-    </div>
-    <div class="space-y-6">
-      <h2 class="text-4xl font-bold text-gray-900" style="font-family: 'Plus Jakarta Sans', sans-serif;">Building the Future of<br />Modern Living.</h2>
-      <p class="text-gray-600 leading-relaxed">
-        IKEBEST GROUP is more than a service provider — we are your partners in progress. We integrate technology with reliable infrastructure to elevate your lifestyle and business operations in Delta State and beyond.
-      </p>
-      <div class="grid grid-cols-2 gap-5 pt-2">
-        <div v-for="service in aboutServices" :key="service.title" class="flex items-start gap-3">
-          <span class="material-symbols-outlined text-[#FAC030] bg-[#FAC030]/10 p-2.5 rounded-lg text-[22px]" style="font-variation-settings:'FILL' 1;">{{ service.icon }}</span>
-          <div>
-            <div class="font-semibold text-sm text-gray-900">{{ service.title }}</div>
-            <div class="text-xs text-gray-500 mt-0.5">{{ service.sub }}</div>
+  <section class="py-28 bg-[#f8f9fb]">
+    <div class="max-w-[1400px] mx-auto px-8 grid grid-cols-1 lg:grid-cols-2 gap-20 items-center">
+      <!-- Images -->
+      <div class="grid grid-cols-2 gap-5">
+        <div class="space-y-5">
+          <img
+            src="https://lh3.googleusercontent.com/aida-public/AB6AXuC_QWIi73l7IDotwrCsDpOeFro5ZgJLv1h2fBTiw-OiZfCCn6dl23KlqPJTVU-EFmfcKW6AJwrLc429HDGaUsXw80AOCA7T04i95HPezjlKJHOgZmJ374v-Xeb7p-dmuHnfBqcyfJtvV_OEwSdwO1z2UadVcBkbLa-4qO-zoB9yG0S7gOkWWWEVi01ZFXwIYoBjGC9eqgps18W5vRvrJfUJ8eR_pqxtoptQvonYxqbxOjUkDMR5spt5F6gwOQHER3QmKP6VD4iFJBs"
+            alt="IKEBEST technician installing CCTV"
+            class="rounded-2xl object-cover shadow-lg w-full h-[520px]"
+          />
+          <div class="bg-[#161B30] p-7 rounded-2xl text-white">
+            <div class="text-[#FAC030] font-extrabold text-4xl mb-1">Local</div>
+            <p class="text-white/75 text-base mt-2 leading-relaxed">Deep expertise on the ground in Delta State and beyond.</p>
           </div>
         </div>
+        <div class="pt-16">
+          <img
+            src="https://lh3.googleusercontent.com/aida-public/AB6AXuBuvbvRA1H_UkJZ4I3kHEE4g8sX5Br9perf3HSr69A4_d7MeIKEpzxfs5DX5UbDbKn4fzKYsD20WMqal88XvJayw90qRM-cBZEPOHel7BDQFrWMHOaIWnOjZ484kDZroNzRL3T4p1s8mBh2HM4OV2Zf-phCUrIxDStlyiwE91bHNFAFpV2zFxXGWPsKS20S6t0yJd83knQ6DbzAgyz5aJJNkNYc-VpCx-IPl7eXeM2eQ_W3e4HdU2WPJIURq0l8Y3h9MpJecyQby7o"
+            alt="Modern Nigerian residential building"
+            class="rounded-2xl object-cover shadow-lg w-full h-[640px]"
+          />
+        </div>
       </div>
-      <RouterLink to="/about" class="inline-flex items-center gap-2 text-primary font-semibold hover:gap-3 transition-all">
-        Learn More About Us
-        <span class="material-symbols-outlined text-[18px]">arrow_forward</span>
-      </RouterLink>
+      <!-- Text -->
+      <div class="space-y-8">
+        <p class="text-sm font-bold uppercase tracking-[0.18em] text-[#FAC030]">About IKEBEST Group</p>
+        <h2 class="text-5xl font-extrabold text-[#161B30] leading-[1.1]" style="font-family: 'Montserrat', sans-serif;">Building the Future of<br />Modern Living.</h2>
+        <p class="text-gray-600 text-lg leading-relaxed">
+          IKEBEST GROUP is more than a service provider. We are your partners in progress. We integrate technology with reliable infrastructure to elevate your lifestyle and business operations in Delta State and beyond.
+        </p>
+        <div class="grid grid-cols-2 gap-6 pt-2">
+          <div v-for="service in aboutServices" :key="service.title" class="flex items-start gap-4">
+            <span class="material-symbols-outlined text-[#FAC030] bg-[#FAC030]/10 p-3 rounded-xl text-[28px]" style="font-variation-settings:'FILL' 1;">{{ service.icon }}</span>
+            <div>
+              <div class="font-bold text-[16px] text-[#161B30]">{{ service.title }}</div>
+              <div class="text-sm text-gray-500 mt-0.5">{{ service.sub }}</div>
+            </div>
+          </div>
+        </div>
+        <RouterLink to="/about" class="inline-flex items-center gap-2 text-[#161B30] font-bold text-[16px] hover:text-[#FAC030] hover:gap-3 transition-all">
+          Learn More About Us
+          <span class="material-symbols-outlined text-[20px]">arrow_forward</span>
+        </RouterLink>
+      </div>
     </div>
   </section>
 
   <!-- Services Section -->
-  <section class="bg-[#f4f6f8] py-20">
-    <div class="max-w-[1200px] mx-auto px-6">
-      <div class="text-center mb-14 space-y-3">
-        <p class="text-xs font-semibold uppercase tracking-widest text-primary">What We Do</p>
-        <h2 class="text-4xl font-bold text-gray-900" style="font-family: 'Plus Jakarta Sans', sans-serif;">Our Core Services</h2>
-        <p class="text-gray-500 max-w-2xl mx-auto text-[15px]">Expertly delivered solutions tailored for the unique needs of Nigerian homes and businesses.</p>
+  <section class="py-24 bg-[#eef5ee]" style="background: linear-gradient(180deg,#eef5ee 0%,#f5faf5 100%);">
+    <div class="max-w-[1280px] mx-auto px-8">
+      <div class="flex flex-col md:flex-row md:items-end md:justify-between mb-14 gap-4">
+        <div>
+          <div class="flex items-center gap-3 mb-3">
+            <span class="block w-8 h-0.5 bg-[#161B30]"></span>
+            <p class="text-xs font-bold uppercase tracking-[0.18em] text-[#161B30]">Our Services</p>
+          </div>
+          <h2 class="text-[42px] font-extrabold text-[#161B30] leading-tight" style="font-family: 'Montserrat', sans-serif;">Complete technology solutions<br />for homes &amp; businesses</h2>
+        </div>
+        <div class="flex gap-3">
+          <button @click="prevService" class="w-12 h-12 border border-gray-300 rounded-lg flex items-center justify-center hover:bg-white transition-all">
+            <span class="material-symbols-outlined text-[20px]">chevron_left</span>
+          </button>
+          <button @click="nextService" class="w-12 h-12 border border-gray-300 rounded-lg flex items-center justify-center hover:bg-white transition-all">
+            <span class="material-symbols-outlined text-[20px]">chevron_right</span>
+          </button>
+        </div>
       </div>
-      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
         <div
-          v-for="svc in services"
+          v-for="svc in visibleServices"
           :key="svc.title"
-          class="service-card bg-white p-6 rounded-xl flex flex-col h-full hover:shadow-lg transition-all group"
+          class="bg-white rounded-2xl p-8 flex flex-col shadow-sm hover:shadow-xl transition-all group border border-transparent hover:border-[#FAC030]/30"
         >
-          <span class="material-symbols-outlined text-primary text-[48px] mb-5" style="font-variation-settings:'FILL' 1;">{{ svc.icon }}</span>
-          <h3 class="font-bold text-xl mb-2 text-gray-900" style="font-family: 'Plus Jakarta Sans', sans-serif;">{{ svc.title }}</h3>
-          <p class="text-gray-500 text-sm leading-relaxed flex-grow mb-5">{{ svc.body }}</p>
-          <RouterLink :to="svc.to" class="text-primary font-semibold inline-flex items-center gap-1 group-hover:gap-2 transition-all text-sm">
-            Learn More <span class="material-symbols-outlined text-[16px]">arrow_forward</span>
+          <div class="w-16 h-16 bg-[#161B30] rounded-xl flex items-center justify-center mb-7">
+            <span class="material-symbols-outlined text-white text-[30px]" style="font-variation-settings:'FILL' 1;">{{ svc.icon }}</span>
+          </div>
+          <h3 class="font-extrabold text-[22px] mb-3 text-[#161B30]" style="font-family: 'Montserrat', sans-serif;">{{ svc.title }}</h3>
+          <p class="text-gray-500 text-[15px] leading-relaxed grow mb-6">{{ svc.body }}</p>
+          <ul class="space-y-1.5 mb-7">
+            <li v-for="pt in svc.points" :key="pt" class="flex items-center gap-2 text-sm text-gray-700">
+              <span class="material-symbols-outlined text-[#161B30] text-[15px]">chevron_right</span>
+              <span class="font-semibold">{{ pt }}</span>
+            </li>
+          </ul>
+          <RouterLink :to="svc.to" class="mt-auto flex items-center justify-between border border-gray-200 rounded-xl px-5 py-3 text-sm font-bold text-[#161B30] hover:bg-[#161B30] hover:text-white transition-all group-hover:border-[#161B30]">
+            VIEW MORE
+            <span class="w-8 h-8 rounded-full bg-[#161B30] text-white flex items-center justify-center group-hover:bg-[#FAC030] group-hover:text-[#161B30] transition-all">
+              <span class="material-symbols-outlined text-[16px]">arrow_forward</span>
+            </span>
           </RouterLink>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- Why Choose Us -->
-  <section class="py-20 px-6 max-w-[1200px] mx-auto">
-    <div class="text-center mb-14">
-      <p class="text-xs font-semibold uppercase tracking-widest text-primary mb-2">Our Advantage</p>
-      <h2 class="text-4xl font-bold text-gray-900" style="font-family: 'Plus Jakarta Sans', sans-serif;">Why Choose IKEBEST</h2>
-      <p class="text-gray-500 mt-3 text-[15px]">The difference is in our commitment to excellence and local presence.</p>
+  <!-- Partner Logos -->
+  <section class="bg-white py-14 overflow-hidden">
+    <div class="max-w-[1100px] mx-auto px-8 mb-10">
+      <div class="flex items-center gap-4">
+        <span class="flex-1 h-px bg-gray-200"></span>
+        <p class="text-[14px] md:text-[17px] font-semibold text-[#161B30] whitespace-nowrap px-2">
+          We have collaborated with <span class="text-[#FAC030] font-extrabold">20</span> amazing companies
+        </p>
+        <span class="flex-1 h-px bg-gray-200"></span>
+      </div>
     </div>
-    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
-      <div v-for="reason in reasons" :key="reason.title" class="space-y-2">
-        <span class="material-symbols-outlined text-primary text-[32px]">{{ reason.icon }}</span>
-        <h4 class="font-bold text-[18px] text-gray-900" style="font-family: 'Plus Jakarta Sans', sans-serif;">{{ reason.title }}</h4>
-        <p class="text-gray-500 text-sm leading-relaxed">{{ reason.body }}</p>
+    <div class="overflow-hidden">
+      <div class="marquee-track flex items-center gap-20">
+        <template v-for="n in 3" :key="n">
+          <span class="text-gray-400 font-black text-[20px] tracking-tight uppercase opacity-50 shrink-0">Zinox</span>
+          <span class="text-gray-400 font-light text-[20px] tracking-widest uppercase opacity-50 shrink-0">Vezlor</span>
+          <span class="text-gray-400 font-bold text-[18px] italic opacity-50 shrink-0">PowerGen</span>
+          <span class="text-gray-400 font-black text-[20px] opacity-50 shrink-0">FlashCo</span>
+          <span class="text-gray-400 font-light text-[20px] tracking-widest uppercase opacity-50 shrink-0">Avasan</span>
+          <span class="text-gray-400 font-bold text-[18px] opacity-50 shrink-0">SolarVac</span>
+          <span class="text-gray-400 font-black text-[20px] tracking-tight uppercase opacity-50 shrink-0">GridIQ</span>
+          <span class="text-gray-400 font-bold text-[18px] uppercase opacity-50 shrink-0">TechGrid</span>
+          <span class="text-gray-400 font-black text-[20px] opacity-50 shrink-0">ElecNest</span>
+        </template>
       </div>
     </div>
   </section>
 
-  <!-- Recent Projects -->
-  <section class="bg-[#f4f6f8] py-20">
-    <div class="max-w-[1200px] mx-auto px-6">
-      <div class="flex flex-col md:flex-row md:justify-between md:items-end mb-12 gap-4">
-        <div>
-          <p class="text-xs font-semibold uppercase tracking-widest text-primary mb-2">Our Work</p>
-          <h2 class="text-4xl font-bold text-gray-900" style="font-family: 'Plus Jakarta Sans', sans-serif;">Recent Projects</h2>
-        </div>
-        <a href="#" class="text-primary font-semibold border-b-2 border-primary pb-0.5 text-sm">View All Projects</a>
+  <!-- Why Choose Us -->
+  <section class="bg-[#edf5ec] py-0 overflow-visible">
+    <!-- Top band: image + text -->
+    <div class="max-w-[1280px] mx-auto px-8 grid grid-cols-1 lg:grid-cols-2 gap-0">
+      <!-- Image col: overlaps top/bottom with gold bars -->
+      <div class="relative">
+        <div class="absolute top-0 left-0 right-0 h-[5px] bg-[#FAC030] z-10"></div>
+        <img
+          src="https://lh3.googleusercontent.com/aida-public/AB6AXuBuvbvRA1H_UkJZ4I3kHEE4g8sX5Br9perf3HSr69A4_d7MeIKEpzxfs5DX5UbDbKn4fzKYsD20WMqal88XvJayw90qRM-cBZEPOHel7BDQFrWMHOaIWnOjZ484kDZroNzRL3T4p1s8mBh2HM4OV2Zf-phCUrIxDStlyiwE91bHNFAFpV2zFxXGWPsKS20S6t0yJd83knQ6DbzAgyz5aJJNkNYc-VpCx-IPl7eXeM2eQ_W3e4HdU2WPJIURq0l8Y3h9MpJecyQby7o"
+          alt="IKEBEST team at work"
+          class="w-full h-[420px] object-cover"
+        />
+        <div class="absolute bottom-0 left-0 right-0 h-[5px] bg-[#FAC030]"></div>
       </div>
-      <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-        <div v-for="proj in projects" :key="proj.title" class="rounded-xl overflow-hidden shadow-sm hover:shadow-md transition-all bg-white">
-          <img :src="proj.img" :alt="proj.alt" class="w-full aspect-video object-cover" />
-          <div class="p-5 space-y-1.5">
-            <span class="bg-[#FAC030]/15 text-[#161B30] text-[11px] font-bold uppercase px-2 py-0.5 rounded">{{ proj.tag }}</span>
-            <h4 class="font-bold text-[17px] text-gray-900 mt-1" style="font-family: 'Plus Jakarta Sans', sans-serif;">{{ proj.title }}</h4>
-            <div class="flex items-center gap-1 text-sm text-gray-500">
-              <span class="material-symbols-outlined text-[15px]">location_on</span>
-              <span>{{ proj.location }}</span>
+      <!-- Text col -->
+      <div class="flex flex-col justify-center px-6 lg:px-14 py-12 lg:py-16">
+        <div class="flex items-center gap-3 mb-4">
+          <span class="block w-8 h-[3px] bg-[#FAC030]"></span>
+          <p class="text-xs font-bold uppercase tracking-[0.18em] text-[#161B30]">Why Choose Us</p>
+        </div>
+        <h2 class="text-[38px] font-extrabold text-[#161B30] leading-tight mb-4" style="font-family: 'Montserrat', sans-serif;">Reasons to Choose IKEBEST</h2>
+        <p class="text-gray-600 text-[15px] leading-relaxed">We bring energy, security and smart living solutions to your doorstep across Nigeria. Local presence means faster response and better service.</p>
+      </div>
+    </div>
+    <!-- Bottom band: 4 icon items -->
+    <div class="max-w-[1280px] mx-auto px-8 py-16 grid grid-cols-2 lg:grid-cols-4 gap-10">
+      <div v-for="reason in reasons" :key="reason.title" class="space-y-3">
+        <span class="material-symbols-outlined text-[#161B30] text-[44px]" style="font-variation-settings:'FILL' 0;">{{ reason.icon }}</span>
+        <h4 class="font-extrabold text-[17px] text-[#161B30]" style="font-family: 'Montserrat', sans-serif;">{{ reason.title }}</h4>
+        <p class="text-gray-600 text-[14px] leading-relaxed">{{ reason.body }}</p>
+      </div>
+    </div>
+  </section>
+
+
+
+  <!-- Testimonials -->
+  <section class="bg-[#f0f7f0] py-24 overflow-hidden">
+    <div class="max-w-[900px] mx-auto px-8 mb-14 text-center">
+      <div class="inline-flex items-center gap-2 border border-[#161B30]/15 text-[#161B30] text-xs font-bold uppercase tracking-[0.18em] px-5 py-2 rounded-full mb-6">
+        What Our Clients Say
+      </div>
+      <h2 class="text-[32px] md:text-[46px] font-extrabold text-[#161B30] leading-tight" style="font-family: 'Montserrat', sans-serif;">
+        Real Power. Real Results.
+      </h2>
+    </div>
+    <!-- Row 1 — scrolls left -->
+    <div class="overflow-hidden mb-4">
+      <div class="marquee-track flex gap-5">
+        <div
+          v-for="(t, i) in [...testimonials, ...testimonials]"
+          :key="`r1-${i}`"
+          class="bg-white rounded-2xl p-7 shadow-sm w-[300px] md:w-[340px] shrink-0 flex flex-col border border-gray-100"
+        >
+          <p class="text-gray-600 text-[14px] leading-relaxed grow mb-6">&ldquo;{{ t.review }}&rdquo;</p>
+          <div class="flex items-center gap-3">
+            <div class="w-10 h-10 rounded-full bg-[#161B30] flex items-center justify-center text-[#FAC030] font-bold text-sm shrink-0">{{ t.name.charAt(0) }}</div>
+            <div class="min-w-0">
+              <div class="font-bold text-[#161B30] text-sm truncate">{{ t.name }}</div>
+              <div class="text-gray-400 text-xs truncate">{{ t.role }}</div>
+            </div>
+            <div class="ml-auto flex shrink-0">
+              <span v-for="n in 5" :key="n" class="material-symbols-outlined text-[#FAC030] text-[13px]" style="font-variation-settings:'FILL' 1;">star</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Row 2 — scrolls right -->
+    <div class="overflow-hidden">
+      <div class="marquee-track-reverse flex gap-5">
+        <div
+          v-for="(t, i) in [...testimonials].reverse().concat([...testimonials].reverse())"
+          :key="`r2-${i}`"
+          class="bg-white rounded-2xl p-7 shadow-sm w-[300px] md:w-[340px] shrink-0 flex flex-col border border-gray-100"
+        >
+          <p class="text-gray-600 text-[14px] leading-relaxed grow mb-6">&ldquo;{{ t.review }}&rdquo;</p>
+          <div class="flex items-center gap-3">
+            <div class="w-10 h-10 rounded-full bg-[#FAC030] flex items-center justify-center text-[#161B30] font-bold text-sm shrink-0">{{ t.name.charAt(0) }}</div>
+            <div class="min-w-0">
+              <div class="font-bold text-[#161B30] text-sm truncate">{{ t.name }}</div>
+              <div class="text-gray-400 text-xs truncate">{{ t.role }}</div>
+            </div>
+            <div class="ml-auto flex shrink-0">
+              <span v-for="n in 5" :key="n" class="material-symbols-outlined text-[#FAC030] text-[13px]" style="font-variation-settings:'FILL' 1;">star</span>
             </div>
           </div>
         </div>
@@ -182,26 +295,10 @@
     </div>
   </section>
 
-  <!-- Testimonials -->
-  <section class="py-20 px-6 max-w-[1200px] mx-auto">
-    <p class="text-xs font-semibold uppercase tracking-widest text-primary text-center mb-2">Client Reviews</p>
-    <h2 class="text-4xl font-bold text-center text-gray-900 mb-12" style="font-family: 'Plus Jakarta Sans', sans-serif;">What Our Clients Say</h2>
-    <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-      <div v-for="t in testimonials" :key="t.name" class="bg-[#f4f6f8] p-8 rounded-xl border border-gray-200">
-        <div class="flex text-primary mb-4">
-          <span v-for="n in 5" :key="n" class="material-symbols-outlined text-[18px]" style="font-variation-settings:'FILL' 1;">star</span>
-        </div>
-        <p class="text-gray-600 italic text-sm leading-relaxed mb-5">"{{ t.review }}"</p>
-        <div class="font-semibold text-gray-900 text-sm">{{ t.name }}</div>
-        <div class="text-xs text-gray-500">{{ t.role }}</div>
-      </div>
-    </div>
-  </section>
-
   <!-- CTA Banner -->
-  <section class="max-w-[1200px] mx-auto px-6 mb-20">
+  <section class="max-w-[1200px] mx-auto px-6 mt-20 mb-20">
     <div class="bg-primary rounded-3xl p-16 text-center text-white">
-      <h2 class="text-4xl font-extrabold mb-4" style="font-family: 'Plus Jakarta Sans', sans-serif;">Ready to Get Started?</h2>
+      <h2 class="text-4xl font-extrabold mb-4" style="font-family: 'Montserrat', sans-serif;">Ready to Get Started?</h2>
       <p class="text-white/85 max-w-xl mx-auto mb-8 text-[15px] leading-relaxed">
         Contact us today for a free consultation and let us bring your vision to life with power, security, and smart technology.
       </p>
@@ -218,11 +315,39 @@
 </template>
 
 <script setup>
+import { ref, computed, onMounted } from 'vue'
+
+// Counter animation
+onMounted(() => {
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        const el = entry.target
+        const container = el.closest('[data-raw]')
+        if (!container) return
+        const target = parseInt(container.dataset.raw)
+        const suffix = el.dataset.suffix || ''
+        let start = 0
+        const duration = 1800
+        const steps = 60
+        const increment = target / steps
+        const tick = () => {
+          start = Math.min(start + increment, target)
+          const val = target >= 1000 ? Math.round(start / 1000) + 'k' : Math.round(start)
+          el.textContent = val + suffix
+          if (start < target) requestAnimationFrame(tick)
+        }
+        requestAnimationFrame(tick)
+        observer.unobserve(el)
+      }
+    })
+  }, { threshold: 0.4 })
+  document.querySelectorAll('.counter-num').forEach(el => observer.observe(el))
+})
 const stats = [
-  { value: '500+', label: 'Solar Installations' },
-  { value: '300+', label: 'CCTV Systems' },
-  { value: '50+', label: 'Properties Managed' },
-  { value: '10+', label: 'Years Experience' },
+  { display: '20+', raw: 20, suffix: '+', label: 'Employees', sub: 'Expert technicians for repair & installation' },
+  { display: '100%', raw: 100, suffix: '%', label: 'Client Satisfaction', sub: 'We achieved 100% client satisfaction' },
+  { display: '5k+', raw: 5000, suffix: '+', label: 'Installation', sub: '5k+ systems installed for our clients' },
 ]
 
 const aboutServices = [
@@ -233,19 +358,25 @@ const aboutServices = [
 ]
 
 const services = [
-  { icon: 'solar_power', title: 'Solar Energy', body: 'Clean, uninterrupted power for your home or office. Hybrid and off-grid systems designed for Nigerian conditions.', to: '/solar-energy' },
-  { icon: 'security', title: 'CCTV & Security', body: 'High-definition monitoring and integrated security systems to keep your loved ones and assets safe 24/7.', to: '/cctv-security' },
-  { icon: 'home_work', title: 'Real Estate', body: 'Buy, sell, or manage properties with trust. Expert guidance in the booming Delta State property market.', to: '/real-estate' },
-  { icon: 'nest_remote_comfort_sensor', title: 'Smart Home', body: 'Control lighting, cooling, and security from your smartphone. Modern comfort at your fingertips.', to: '/smart-home' },
+  { icon: 'solar_power', title: 'Solar Energy Systems', body: 'Clean, uninterrupted power for your home or office. Hybrid and off-grid systems designed for Nigerian conditions.', points: ['Solar Backup Systems', 'Hybrid & Off-grid', 'Energy Saving Solutions'], to: '/solar-energy' },
+  { icon: 'security', title: 'CCTV & Security', body: 'High-definition monitoring and integrated security systems to keep your loved ones and assets safe 24/7.', points: ['HD Camera Installation', 'Remote Monitoring', 'Access Control'], to: '/cctv-security' },
+  { icon: 'home_iot_device', title: 'Smart Home & Real Estate', body: 'Automate your home and invest in premium Delta State properties through one trusted team.', points: ['Smart Lighting & Cooling', 'Property Sales', 'Home Automation'], to: '/smart-home' },
 ]
 
+const serviceIndex = ref(0)
+const visibleServices = computed(() => {
+  const all = services
+  const start = serviceIndex.value % all.length
+  return all.slice(start).concat(all.slice(0, start)).slice(0, 3)
+})
+function prevService() { serviceIndex.value = (serviceIndex.value - 1 + services.length) % services.length }
+function nextService() { serviceIndex.value = (serviceIndex.value + 1) % services.length }
+
 const reasons = [
-  { icon: 'groups', title: 'Local Team in Asaba', body: 'We are based in Asaba, ensuring rapid response times for maintenance and support.' },
-  { icon: 'high_quality', title: 'Quality Equipment Only', body: 'We only use tier-1 solar panels and top-rated security hardware with full warranties.' },
-  { icon: 'engineering', title: 'Expert Engineering', body: 'Our technicians are certified professionals with years of hands-on experience.' },
-  { icon: 'visibility', title: 'Transparent Pricing', body: 'No hidden costs. Detailed quotes that respect your budget and project scope.' },
-  { icon: 'support_agent', title: 'After-Sales Support', body: 'Our relationship does not end at installation. We offer periodic check-ups and ongoing help.' },
-  { icon: 'verified', title: 'Proven Track Record', body: 'Over 800 successful projects delivered across Delta and neighbouring states.' },
+  { icon: 'engineering', title: 'Expert Installation', body: 'Professional installation by certified technicians who ensure it is done correctly.' },
+  { icon: 'payments', title: 'Low Cost Operation', body: 'Affordable solutions that reduce your monthly energy and operating costs.' },
+  { icon: 'support_agent', title: 'Expert Support Team', body: 'Dedicated support workers available to assist you at any time.' },
+  { icon: 'devices', title: 'Modern Technology', body: 'We use only the latest, top-rated equipment with full warranties.' },
 ]
 
 const projects = [
@@ -275,6 +406,9 @@ const projects = [
 const testimonials = [
   { name: 'Chief Benson O.', role: 'Business Owner, Asaba', review: 'IKEBEST installed my solar system two years ago. I haven\'t had a single day of blackout since then. Their service is truly exceptional.' },
   { name: 'Mrs. Amaka E.', role: 'Retail Manager', review: 'Their security systems gave me peace of mind. I can monitor my warehouse from anywhere in the world. Highly recommended!' },
-  { name: 'Dr. Jude Williams', role: 'Property Investor', review: 'Finding a trustworthy real estate partner in Delta is hard, but IKEBEST made the process of buying my land so smooth and transparent.' },
+  { name: 'Dr. Jude Williams', role: 'Property Investor', review: 'Finding a trustworthy real estate partner in Delta is hard, but IKEBEST made buying my land so smooth and transparent.' },
+  { name: 'Engr. Chidi N.', role: 'Factory Owner, Onitsha', review: 'We installed a 30kW solar system through IKEBEST. Our electricity cost dropped by 80% within the first month of use.' },
+  { name: 'Mrs. Blessing O.', role: 'Homeowner, GRA Asaba', review: 'The smart home setup they did for us is amazing. Everything works seamlessly — lights, AC, security cameras, all automated.' },
+  { name: 'Mr. Victor E.', role: 'Hotel Manager, Asaba', review: 'IKEBEST\'s CCTV solution across all 3 floors of our hotel has been flawless for over a year. Great team, great support.' },
 ]
 </script>

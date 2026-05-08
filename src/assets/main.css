@@ -1,0 +1,122 @@
+@import "tailwindcss";
+
+@theme {
+  /* Colors */
+  --color-primary: #006a38;
+  --color-primary-container: #15864a;
+  --color-on-primary: #ffffff;
+  --color-on-primary-fixed: #00210d;
+  --color-primary-fixed: #92f8b0;
+  --color-primary-fixed-dim: #76db96;
+  --color-inverse-primary: #76db96;
+
+  --color-secondary: #855300;
+  --color-secondary-container: #fea619;
+  --color-on-secondary-container: #684000;
+  --color-secondary-fixed: #ffddb8;
+  --color-secondary-fixed-dim: #ffb95f;
+  --color-on-secondary-fixed: #2a1700;
+  --color-on-secondary-fixed-variant: #653e00;
+
+  --color-tertiary: #535c6d;
+  --color-tertiary-container: #6c7587;
+  --color-on-tertiary: #ffffff;
+  --color-on-tertiary-container: #fefcff;
+  --color-tertiary-fixed: #dae3f7;
+  --color-tertiary-fixed-dim: #bec7db;
+  --color-on-tertiary-fixed: #131c2a;
+  --color-on-tertiary-fixed-variant: #3e4758;
+
+  --color-surface: #f8f9ff;
+  --color-surface-tint: #006d3a;
+  --color-surface-bright: #f8f9ff;
+  --color-surface-dim: #d1dbec;
+  --color-surface-variant: #d9e3f4;
+  --color-surface-container-lowest: #ffffff;
+  --color-surface-container-low: #eef4ff;
+  --color-surface-container: #e5eeff;
+  --color-surface-container-high: #dfe9fa;
+  --color-surface-container-highest: #d9e3f4;
+  --color-on-surface: #121c28;
+  --color-on-surface-variant: #3e4940;
+  --color-inverse-surface: #27313e;
+  --color-inverse-on-surface: #eaf1ff;
+
+  --color-background: #f8f9ff;
+  --color-on-background: #121c28;
+
+  --color-outline: #6e7a6f;
+  --color-outline-variant: #becabd;
+
+  --color-error: #ba1a1a;
+  --color-error-container: #ffdad6;
+  --color-on-error: #ffffff;
+  --color-on-error-container: #93000a;
+
+  /* Border radius */
+  --radius: 0.25rem;
+  --radius-lg: 0.5rem;
+  --radius-xl: 0.75rem;
+  --radius-full: 9999px;
+
+  /* Spacing */
+  --spacing-xs: 4px;
+  --spacing-sm: 12px;
+  --spacing-md: 24px;
+  --spacing-lg: 48px;
+  --spacing-xl: 80px;
+  --spacing-gutter: 24px;
+  --spacing-base: 8px;
+
+  /* Fonts */
+  --font-hero: "Plus Jakarta Sans", sans-serif;
+  --font-h2: "Plus Jakarta Sans", sans-serif;
+  --font-h3: "Plus Jakarta Sans", sans-serif;
+  --font-body: "Inter", sans-serif;
+  --font-body-bold: "Inter", sans-serif;
+  --font-small-label: "Inter", sans-serif;
+
+  /* Font sizes */
+  --text-hero: 60px;
+  --text-hero--line-height: 1.1;
+  --text-hero--letter-spacing: -0.02em;
+  --text-hero--font-weight: 800;
+
+  --text-h2: 40px;
+  --text-h2--line-height: 1.2;
+  --text-h2--letter-spacing: -0.01em;
+  --text-h2--font-weight: 700;
+
+  --text-h3: 24px;
+  --text-h3--line-height: 1.3;
+  --text-h3--font-weight: 700;
+
+  --text-body: 16px;
+  --text-body--line-height: 1.6;
+  --text-body--font-weight: 400;
+
+  --text-body-bold: 16px;
+  --text-body-bold--line-height: 1.6;
+  --text-body-bold--font-weight: 600;
+
+  --text-small-label: 13px;
+  --text-small-label--line-height: 1;
+  --text-small-label--letter-spacing: 0.08em;
+  --text-small-label--font-weight: 600;
+}
+
+/* Legacy classes used in stitch templates */
+.service-card {
+  border-top: 3px solid #006a38;
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.06);
+}
+
+.glass-nav {
+  backdrop-filter: blur(8px);
+}
+
+.glass-card {
+  background: rgba(255, 255, 255, 0.8);
+  backdrop-filter: blur(8px);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+}

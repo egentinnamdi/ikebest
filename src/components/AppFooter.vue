@@ -74,7 +74,7 @@
 
     <!-- Bottom bar -->
     <div class="border-t border-white/10 py-5 px-8 text-center">
-      <p class="text-gray-500 text-sm">© 2025 IKEBEST GROUP. All Rights Reserved.</p>
+      <p class="text-gray-500 text-sm">© 2026 IKEBEST GROUP. All Rights Reserved.</p>
     </div>
   </footer>
 </template>
@@ -82,9 +82,7 @@
 <script setup>
 const socials = [
   { fa: 'fa-brands fa-facebook-f', href: '#' },
-  { fa: 'fa-brands fa-linkedin-in', href: '#' },
-  { fa: 'fa-brands fa-instagram', href: '#' },
-  { fa: 'fa-brands fa-x-twitter', href: '#' },
+  { fa: 'fa-brands fa-instagram', href: 'https://www.instagram.com/ikebest_technologies/' },
   { fa: 'fa-brands fa-whatsapp', href: '#' },
 ]
 </script>

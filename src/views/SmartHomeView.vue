@@ -112,7 +112,7 @@
   <section id="consult" class="py-20 bg-[#f4f6f8]">
     <div class="max-w-[700px] mx-auto px-6 text-center">
       <p class="text-xs font-semibold uppercase tracking-widest text-primary mb-2">Get Started</p>
-      <h2 class="text-4xl font-bold text-gray-900 mb-4" style="font-family: 'Plus Jakarta Sans', sans-serif;">Request a Free Consultation</h2>
+      <h2 class="text-4xl font-bold text-gray-900 mb-4" style="font-family: 'Plus Jakarta Sans', sans-serif;">Request a Consultation</h2>
       <p class="text-gray-500 mb-10">Our smart home engineers will assess your home and design the ideal automation system for your budget.</p>
       <form class="bg-white p-8 rounded-2xl shadow-sm border border-gray-200 text-left space-y-5">
         <div class="grid grid-cols-1 sm:grid-cols-2 gap-5">
@@ -139,7 +139,7 @@
           </div>
         </div>
         <button class="w-full bg-primary text-white py-3.5 rounded-xl font-semibold hover:bg-green-800 transition-all">
-          Book Free Consultation
+          Book a Consultation
         </button>
       </form>
     </div>
@@ -157,7 +157,7 @@ const features = [
 ]
 
 const steps = [
-  { title: 'Free Consultation', body: 'Our engineers visit your home and discuss your specific automation needs and budget.' },
+  { title: 'Site Assessment', body: 'Our engineers visit your home, assess the space, and plan the ideal automation layout for your needs and budget.' },
   { title: 'Custom Installation', body: 'We install everything neatly with minimal disruption to your walls and existing decor.' },
   { title: 'Training & Support', body: 'We show you how to use the app and provide ongoing support from our Asaba-based team.' },
 ]

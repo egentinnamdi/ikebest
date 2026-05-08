@@ -59,15 +59,6 @@
   --radius-xl: 0.75rem;
   --radius-full: 9999px;
 
-  /* Spacing */
-  --spacing-xs: 4px;
-  --spacing-sm: 12px;
-  --spacing-md: 24px;
-  --spacing-lg: 48px;
-  --spacing-xl: 80px;
-  --spacing-gutter: 24px;
-  --spacing-base: 8px;
-
   /* Fonts */
   --font-hero: "Plus Jakarta Sans", sans-serif;
   --font-h2: "Plus Jakarta Sans", sans-serif;

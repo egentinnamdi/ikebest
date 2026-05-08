@@ -1,33 +1,44 @@
 <template>
   <!-- Hero -->
-  <section class="py-20 px-6 max-w-[1200px] mx-auto grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-    <div class="space-y-6">
-      <div class="inline-flex items-center gap-2 bg-green-50 text-primary px-4 py-2 rounded-full border border-green-200 text-xs font-semibold uppercase tracking-widest">
-        <span class="material-symbols-outlined text-[16px]" style="font-variation-settings:'FILL' 1;">verified</span>
-        Asaba's Trusted Technology Company
-      </div>
-      <h1 class="text-[56px] font-extrabold leading-[1.1] tracking-tight text-gray-900" style="font-family: 'Plus Jakarta Sans', sans-serif;">
-        Powering Homes &amp; Businesses<br />
-        <span class="text-primary">Across Delta State.</span>
-      </h1>
-      <p class="text-gray-600 text-lg leading-relaxed max-w-lg">
-        Solar energy, CCTV security, real estate, and smart home solutions — all from one trusted company in Asaba.
-      </p>
-      <div class="flex flex-wrap gap-3 pt-2">
-        <RouterLink to="/about" class="bg-primary text-white px-8 py-3.5 rounded-xl font-semibold hover:bg-green-800 transition-all active:scale-95">
-          Get a Free Quote
-        </RouterLink>
-        <RouterLink to="/solar-energy" class="border-2 border-primary text-primary px-8 py-3.5 rounded-xl font-semibold hover:bg-green-50 transition-all">
-          Our Services
-        </RouterLink>
-      </div>
-    </div>
-    <div class="relative rounded-3xl overflow-hidden aspect-[4/3] shadow-lg">
-      <img
-        src="https://lh3.googleusercontent.com/aida-public/AB6AXuCJb_r8EHWFdzuYdcbtpt8ab_GmDVlmqagoYnXocYBK9xfdaM7Tgll03EdtD1wiOsA19TgzHcZNJ3jNaAUbzTfsqDvplF0V02RUnIE51TtBGm1S4Ne95M2jUF_e_gfRBmOgJTCpBBs9zx8-7zFqc6PBPAZQnLsxu2M3XniCfUJBfTHlg__zbL-s_B7kGo6gmTFFNl2uLLTecdoikrN9-ySDgrWdPRlJck0Ena5toTvUXS18Lvi5ErkMOzDzb9O1kGUnZko3LugfGRw"
-        alt="Nigerian home with solar panels installed"
-        class="w-full h-full object-cover"
+  <section class="relative min-h-[640px] flex items-center overflow-hidden">
+    <!-- Video background -->
+    <video
+      autoplay
+      muted
+      loop
+      playsinline
+      class="absolute inset-0 w-full h-full object-cover z-0"
+    >
+      <source
+        src="https://videos.pexels.com/video-files/3150048/3150048-hd_1920_1080_25fps.mp4"
+        type="video/mp4"
       />
+    </video>
+    <!-- Dark overlay -->
+    <div class="absolute inset-0 z-10 bg-gradient-to-r from-gray-900/80 via-gray-900/50 to-transparent"></div>
+    <!-- Content -->
+    <div class="relative z-20 max-w-[1200px] mx-auto w-full px-6 py-24">
+      <div class="max-w-2xl">
+        <div class="inline-flex items-center gap-2 bg-white/10 text-white px-4 py-2 rounded-full border border-white/20 text-xs font-semibold uppercase tracking-widest mb-8 backdrop-blur-sm">
+          <span class="material-symbols-outlined text-[16px]" style="font-variation-settings:'FILL' 1;">verified</span>
+          Asaba's Trusted Technology Company
+        </div>
+        <h1 class="text-[56px] font-extrabold leading-[1.1] tracking-tight text-white mb-6" style="font-family: 'Plus Jakarta Sans', sans-serif;">
+          Powering Homes &amp; Businesses<br />
+          <span class="text-green-400">Across Delta State.</span>
+        </h1>
+        <p class="text-white/80 text-lg leading-relaxed mb-8 max-w-xl">
+          Solar energy, CCTV security, real estate, and smart home solutions — all from one trusted company in Asaba.
+        </p>
+        <div class="flex flex-wrap gap-4">
+          <RouterLink to="/about" class="bg-primary text-white px-8 py-3.5 rounded-xl font-semibold hover:bg-green-800 transition-all active:scale-95">
+            Get a Free Quote
+          </RouterLink>
+          <RouterLink to="/solar-energy" class="border-2 border-white/50 text-white px-8 py-3.5 rounded-xl font-semibold hover:bg-white/10 transition-all">
+            Our Services
+          </RouterLink>
+        </div>
+      </div>
     </div>
   </section>
 

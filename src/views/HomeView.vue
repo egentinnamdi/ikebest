@@ -80,10 +80,10 @@
   </section>
 
   <!-- About Preview -->
-  <section class="py-28 bg-[#f8f9fb]">
-    <div class="max-w-[1400px] mx-auto px-8 grid grid-cols-1 lg:grid-cols-2 gap-20 items-center">
-      <!-- Images -->
-      <div class="grid grid-cols-2 gap-5">
+  <section class="py-14 md:py-28 bg-[#f8f9fb]">
+    <div class="max-w-[1400px] mx-auto px-6 md:px-8 grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-20 items-center">
+      <!-- Images: hidden on mobile, shown on lg+ -->
+      <div class="hidden lg:grid grid-cols-2 gap-5" v-animate="'left'">
         <div class="space-y-5">
           <img
             src="https://lh3.googleusercontent.com/aida-public/AB6AXuC_QWIi73l7IDotwrCsDpOeFro5ZgJLv1h2fBTiw-OiZfCCn6dl23KlqPJTVU-EFmfcKW6AJwrLc429HDGaUsXw80AOCA7T04i95HPezjlKJHOgZmJ374v-Xeb7p-dmuHnfBqcyfJtvV_OEwSdwO1z2UadVcBkbLa-4qO-zoB9yG0S7gOkWWWEVi01ZFXwIYoBjGC9eqgps18W5vRvrJfUJ8eR_pqxtoptQvonYxqbxOjUkDMR5spt5F6gwOQHER3QmKP6VD4iFJBs"
@@ -103,19 +103,27 @@
           />
         </div>
       </div>
+      <!-- Mobile: single image -->
+      <div class="block lg:hidden rounded-2xl overflow-hidden shadow-lg">
+        <img
+          src="https://lh3.googleusercontent.com/aida-public/AB6AXuBuvbvRA1H_UkJZ4I3kHEE4g8sX5Br9perf3HSr69A4_d7MeIKEpzxfs5DX5UbDbKn4fzKYsD20WMqal88XvJayw90qRM-cBZEPOHel7BDQFrWMHOaIWnOjZ484kDZroNzRL3T4p1s8mBh2HM4OV2Zf-phCUrIxDStlyiwE91bHNFAFpV2zFxXGWPsKS20S6t0yJd83knQ6DbzAgyz5aJJNkNYc-VpCx-IPl7eXeM2eQ_W3e4HdU2WPJIURq0l8Y3h9MpJecyQby7o"
+          alt="Modern Nigerian residential building"
+          class="object-cover w-full h-[260px]"
+        />
+      </div>
       <!-- Text -->
-      <div class="space-y-8">
+      <div class="space-y-6 md:space-y-8" v-animate="'right'">
         <p class="text-sm font-bold uppercase tracking-[0.18em] text-[#FAC030]">About IKEBEST Group</p>
-        <h2 class="text-5xl font-extrabold text-[#161B30] leading-[1.1]" style="font-family: 'Montserrat', sans-serif;">Building the Future of<br />Modern Living.</h2>
-        <p class="text-gray-600 text-lg leading-relaxed">
+        <h2 class="text-[32px] sm:text-[40px] md:text-5xl font-extrabold text-[#161B30] leading-[1.1]" style="font-family: 'Montserrat', sans-serif;">Building the Future of<br />Modern Living.</h2>
+        <p class="text-gray-600 text-base md:text-lg leading-relaxed">
           IKEBEST GROUP is more than a service provider. We are your partners in progress. We integrate technology with reliable infrastructure to elevate your lifestyle and business operations in Delta State and beyond.
         </p>
-        <div class="grid grid-cols-2 gap-6 pt-2">
-          <div v-for="service in aboutServices" :key="service.title" class="flex items-start gap-4">
-            <span class="material-symbols-outlined text-[#FAC030] bg-[#FAC030]/10 p-3 rounded-xl text-[28px]" style="font-variation-settings:'FILL' 1;">{{ service.icon }}</span>
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 md:gap-6 pt-2">
+          <div v-for="service in aboutServices" :key="service.title" class="flex items-start gap-3 md:gap-4">
+            <span class="material-symbols-outlined text-[#161B30] bg-[#FAC030] p-2.5 md:p-3 rounded-xl text-[24px] md:text-[28px] shrink-0" style="font-variation-settings:'FILL' 1;">{{ service.icon }}</span>
             <div>
-              <div class="font-bold text-[16px] text-[#161B30]">{{ service.title }}</div>
-              <div class="text-sm text-gray-500 mt-0.5">{{ service.sub }}</div>
+              <div class="font-bold text-[14px] md:text-[16px] text-[#161B30]">{{ service.title }}</div>
+              <div class="text-xs md:text-sm text-gray-500 mt-0.5">{{ service.sub }}</div>
             </div>
           </div>
         </div>
@@ -128,7 +136,7 @@
   </section>
 
   <!-- Services Section -->
-  <section class="py-24 bg-[#eef5ee]" style="background: linear-gradient(180deg,#eef5ee 0%,#f5faf5 100%);">
+  <section class="py-24 bg-[#eef5ee]" v-animate style="background: linear-gradient(180deg,#eef5ee 0%,#f5faf5 100%);">
     <div class="max-w-[1280px] mx-auto px-8">
       <div class="flex flex-col md:flex-row md:items-end md:justify-between mb-14 gap-4">
         <div>
@@ -211,8 +219,8 @@
       <div class="relative">
         <div class="absolute top-0 left-0 right-0 h-[5px] bg-[#FAC030] z-10"></div>
         <img
-          src="https://lh3.googleusercontent.com/aida-public/AB6AXuBuvbvRA1H_UkJZ4I3kHEE4g8sX5Br9perf3HSr69A4_d7MeIKEpzxfs5DX5UbDbKn4fzKYsD20WMqal88XvJayw90qRM-cBZEPOHel7BDQFrWMHOaIWnOjZ484kDZroNzRL3T4p1s8mBh2HM4OV2Zf-phCUrIxDStlyiwE91bHNFAFpV2zFxXGWPsKS20S6t0yJd83knQ6DbzAgyz5aJJNkNYc-VpCx-IPl7eXeM2eQ_W3e4HdU2WPJIURq0l8Y3h9MpJecyQby7o"
-          alt="IKEBEST team at work"
+          src="https://lh3.googleusercontent.com/aida-public/AB6AXuCq9LCpDwfPlcT6MX0ogahmxaHtcvjkwurNjVUILumsDp-tiEYDIkwPkW2_CncahMk2O3uYoIiC3I5ZMLRbnBLmN2zRJ87AxxM-s1QiKNNPavrKu7KKmlrlnjqQaukop6TNqZKTRyA86dSvw6MyTtuNrrdwxEV1tu084abTQSRak_1_lSMXXD-j6zkKUzX1REY0OFjomSVT0g9Gsbhsbs3jnH0GHxphxrhR_a6RgGJQgQDURpwZB1UDtpt_Jw5zfICaiA8PNEmwQuM"
+          alt="Commercial solar array installation"
           class="w-full h-[420px] object-cover"
         />
         <div class="absolute bottom-0 left-0 right-0 h-[5px] bg-[#FAC030]"></div>
@@ -228,7 +236,7 @@
       </div>
     </div>
     <!-- Bottom band: 4 icon items -->
-    <div class="max-w-[1280px] mx-auto px-8 py-16 grid grid-cols-2 lg:grid-cols-4 gap-10">
+    <div class="max-w-[1280px] mx-auto px-8 py-16 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10">
       <div v-for="reason in reasons" :key="reason.title" class="space-y-3">
         <span class="material-symbols-outlined text-[#161B30] text-[44px]" style="font-variation-settings:'FILL' 0;">{{ reason.icon }}</span>
         <h4 class="font-extrabold text-[17px] text-[#161B30]" style="font-family: 'Montserrat', sans-serif;">{{ reason.title }}</h4>
@@ -239,13 +247,38 @@
 
 
 
+  <!-- Recent Projects -->
+  <section class="py-0 overflow-hidden">
+    <div class="grid grid-cols-1 sm:grid-cols-3">
+      <div
+        v-for="(project, i) in projects"
+        :key="project.title"
+        v-animate="'up'"
+        :data-delay="i * 120"
+        class="relative group overflow-hidden h-[340px] sm:h-[440px]"
+      >
+        <img
+          :src="project.img"
+          :alt="project.alt"
+          class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+        />
+        <div class="absolute inset-0 bg-gradient-to-t from-black/75 via-black/20 to-transparent"></div>
+        <div class="absolute bottom-0 left-0 p-6 sm:p-8">
+          <p class="text-[#FAC030] text-[11px] uppercase tracking-widest font-bold mb-1.5">{{ project.tag }}</p>
+          <h3 class="text-white font-extrabold text-[18px] sm:text-[20px] leading-snug">{{ project.title }}</h3>
+          <p class="text-white/65 text-xs mt-1">{{ project.location }}</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <!-- Testimonials -->
   <section class="bg-[#f0f7f0] py-24 overflow-hidden">
     <div class="max-w-[900px] mx-auto px-8 mb-14 text-center">
       <div class="inline-flex items-center gap-2 border border-[#161B30]/15 text-[#161B30] text-xs font-bold uppercase tracking-[0.18em] px-5 py-2 rounded-full mb-6">
         What Our Clients Say
       </div>
-      <h2 class="text-[32px] md:text-[46px] font-extrabold text-[#161B30] leading-tight" style="font-family: 'Montserrat', sans-serif;">
+      <h2 class="text-[32px] md:text-[46px] font-extrabold text-[#161B30] leading-tight" style="font-family: 'Montserrat', sans-serif;" v-animate>
         Real Power. Real Results.
       </h2>
     </div>

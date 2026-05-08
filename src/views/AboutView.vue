@@ -10,7 +10,7 @@
       <div class="absolute inset-0 bg-[#161B30]/65"></div>
     </div>
     <div class="relative z-10 max-w-[1200px] mx-auto px-6 w-full py-24">
-      <h1 class="text-[36px] md:text-[56px] font-extrabold leading-[1.1] text-white mb-4" style="font-family: 'Montserrat', sans-serif;">
+      <h1 class="text-[22px] sm:text-[36px] md:text-[56px] font-extrabold leading-[1.15] text-white mb-4" style="font-family: 'Montserrat', sans-serif;">
         About IKEBEST Group
       </h1>
       <p class="text-white/80 text-xl max-w-2xl">
@@ -43,46 +43,75 @@
   </section>
 
   <!-- Stats -->
-  <section class="bg-primary py-16">
-    <div class="max-w-[1200px] mx-auto px-6">
-      <div class="grid grid-cols-2 md:grid-cols-4 gap-8 text-center text-white">
-        <div v-for="stat in stats" :key="stat.value">
-          <div class="text-4xl font-extrabold mb-2" style="font-family: 'Montserrat', sans-serif;">{{ stat.value }}</div>
-          <div class="text-white/80 text-sm font-medium uppercase tracking-wide">{{ stat.label }}</div>
+  <section class="bg-white py-16">
+    <div class="max-w-[1400px] mx-auto px-6 md:px-12">
+      <div class="grid grid-cols-1 sm:grid-cols-3">
+        <div v-for="(stat, i) in stats" :key="stat.label" :data-raw="stat.raw"
+          class="flex items-center gap-4 md:gap-8 px-6 md:px-16 py-8 sm:py-4"
+        >
+          <div class="text-[48px] sm:text-[60px] md:text-[72px] font-extrabold text-[#161B30] leading-none shrink-0" style="font-family: 'Montserrat', sans-serif;">
+            <span class="about-counter" :data-suffix="stat.suffix">{{ stat.display }}</span>
+          </div>
+          <div class="border-l-4 border-[#FAC030] pl-4 md:pl-5">
+            <div class="font-bold text-[15px] md:text-[17px] text-[#161B30] leading-snug">{{ stat.label }}</div>
+            <div class="text-gray-500 text-sm mt-1 leading-snug line-clamp-2">{{ stat.sub }}</div>
+          </div>
         </div>
       </div>
     </div>
   </section>
 
   <!-- Mission & Values -->
-  <section class="py-20 bg-[#f4f6f8]">
-    <div class="max-w-[1200px] mx-auto px-6">
-      <div class="text-center mb-14">
-        <p class="text-xs font-semibold uppercase tracking-widest text-primary mb-2">What Drives Us</p>
-        <h2 class="text-4xl font-bold text-gray-900" style="font-family: 'Montserrat', sans-serif;">Our Mission & Values</h2>
-      </div>
-      <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-        <div v-for="item in values" :key="item.title" class="bg-white service-card p-8 rounded-xl hover:shadow-md transition-all text-center">
-          <div class="w-14 h-14 bg-[#FAC030]/10 rounded-full flex items-center justify-center mx-auto mb-5">
-            <span class="material-symbols-outlined text-primary text-[28px]" style="font-variation-settings:'FILL' 1;">{{ item.icon }}</span>
-          </div>
-          <h3 class="font-bold text-[22px] text-gray-900 mb-3" style="font-family: 'Montserrat', sans-serif;">{{ item.title }}</h3>
-          <p class="text-gray-500 text-[15px] leading-relaxed">{{ item.body }}</p>
+  <section class="py-0 overflow-hidden">
+    <div class="grid grid-cols-1 md:grid-cols-3">
+      <div v-for="(item, i) in values" :key="item.title"
+        class="relative flex flex-col justify-end min-h-[340px] p-10 group overflow-hidden"
+        :class="i === 1 ? 'bg-[#FAC030]' : i === 0 ? 'bg-[#161B30]' : 'bg-[#1E2545]'"
+      >
+        <!-- big faint icon in background -->
+        <span
+          class="material-symbols-outlined absolute top-8 right-8 text-[120px] opacity-10 select-none pointer-events-none"
+          :class="i === 1 ? 'text-[#161B30]' : 'text-white'"
+          style="font-variation-settings:'FILL' 1;"
+        >{{ item.icon }}</span>
+        <div class="relative z-10">
+          <span
+            class="material-symbols-outlined text-[32px] mb-5 block"
+            :class="i === 1 ? 'text-[#161B30]' : 'text-[#FAC030]'"
+            style="font-variation-settings:'FILL' 1;"
+          >{{ item.icon }}</span>
+          <h3
+            class="font-extrabold text-[26px] mb-3 leading-tight"
+            :class="i === 1 ? 'text-[#161B30]' : 'text-white'"
+            style="font-family: 'Montserrat', sans-serif;"
+          >{{ item.title }}</h3>
+          <p class="text-[15px] leading-relaxed" :class="i === 1 ? 'text-[#161B30]/75' : 'text-white/70'">{{ item.body }}</p>
         </div>
       </div>
     </div>
   </section>
 
   <!-- Our Divisions -->
-  <section class="py-20 max-w-[1200px] mx-auto px-6">
-    <p class="text-xs font-semibold uppercase tracking-widest text-primary text-center mb-2">What We Do</p>
-    <h2 class="text-4xl font-bold text-center text-gray-900 mb-14" style="font-family: 'Montserrat', sans-serif;">Our Business Divisions</h2>
-    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-      <div v-for="div in divisions" :key="div.title" class="flex gap-5 bg-[#f4f6f8] p-6 rounded-xl items-start hover:bg-[#FAC030]/10 transition-all">
-        <span class="material-symbols-outlined text-primary text-[36px] flex-shrink-0 mt-1" style="font-variation-settings:'FILL' 1;">{{ div.icon }}</span>
-        <div>
-          <h4 class="font-bold text-[17px] text-gray-900 mb-1" style="font-family: 'Montserrat', sans-serif;">{{ div.title }}</h4>
-          <p class="text-gray-500 text-sm leading-relaxed">{{ div.body }}</p>
+  <section class="py-20 bg-[#f4f6f8]">
+    <div class="max-w-[1280px] mx-auto px-6">
+      <p class="text-xs font-semibold uppercase tracking-widest text-primary text-center mb-2">What We Do</p>
+      <h2 class="text-4xl font-bold text-center text-gray-900 mb-14" style="font-family: 'Montserrat', sans-serif;">Our Business Divisions</h2>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-7">
+        <div v-for="div in divisions" :key="div.title" class="rounded-2xl overflow-hidden bg-white hover:shadow-xl transition-all group">
+          <div class="relative h-[280px] overflow-hidden">
+            <img :src="div.img" :alt="div.title" class="w-full h-full object-cover transition-transform duration-600 group-hover:scale-105" />
+            <div class="absolute inset-0 bg-gradient-to-t from-[#161B30]/80 via-[#161B30]/20 to-transparent"></div>
+            <div class="absolute bottom-5 left-5 flex items-center gap-2.5">
+              <span class="material-symbols-outlined text-[#161B30] text-[20px] bg-[#FAC030] p-2 rounded-lg" style="font-variation-settings:'FILL' 1;">{{ div.icon }}</span>
+              <h4 class="font-extrabold text-white text-[20px]" style="font-family: 'Montserrat', sans-serif;">{{ div.title }}</h4>
+            </div>
+          </div>
+          <div class="p-7">
+            <p class="text-gray-500 text-[15px] leading-relaxed">{{ div.body }}</p>
+            <RouterLink :to="div.to" class="inline-flex items-center gap-1.5 mt-5 text-[#161B30] font-bold text-sm hover:text-[#FAC030] transition-colors">
+              Learn more <span class="material-symbols-outlined text-[16px]">arrow_forward</span>
+            </RouterLink>
+          </div>
         </div>
       </div>
     </div>
@@ -106,11 +135,42 @@
 </template>
 
 <script setup>
+import { onMounted } from 'vue'
+
+onMounted(() => {
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        const el = entry.target
+        const container = el.closest('[data-raw]')
+        if (!container) return
+        const target = parseInt(container.dataset.raw)
+        const suffix = el.dataset.suffix || ''
+        let start = 0
+        const duration = 1800
+        const steps = 60
+        const increment = target / steps
+        const tick = () => {
+          start += increment
+          if (start >= target) {
+            el.textContent = target + suffix
+            return
+          }
+          el.textContent = Math.floor(start) + suffix
+          requestAnimationFrame(tick)
+        }
+        requestAnimationFrame(tick)
+        observer.unobserve(el)
+      }
+    })
+  }, { threshold: 0.4 })
+  document.querySelectorAll('.about-counter').forEach(el => observer.observe(el))
+})
+
 const stats = [
-  { value: '10+', label: 'Years in Business' },
-  { value: '500+', label: 'Solar Installations' },
-  { value: '300+', label: 'Security Projects' },
-  { value: '50+', label: 'Properties Sold' },
+  { display: '10+', raw: 10, suffix: '+', label: 'Years in Business', sub: 'Serving Delta State and beyond' },
+  { display: '500+', raw: 500, suffix: '+', label: 'Solar Installations', sub: 'Homes and businesses powered' },
+  { display: '300+', raw: 300, suffix: '+', label: 'Security Projects', sub: 'Properties protected 24/7' },
 ]
 
 const values = [
@@ -120,9 +180,26 @@ const values = [
 ]
 
 const divisions = [
-  { icon: 'solar_power', title: 'Solar Energy', body: 'Grid-tied and off-grid solar power systems for homes, businesses, and industrial clients across Delta State and beyond.' },
-  { icon: 'videocam', title: 'CCTV & Security', body: 'End-to-end security solutions — from HD cameras and biometrics to electric fencing and video intercoms.' },
-  { icon: 'home_work', title: 'Real Estate', body: 'Property development, sales, and estate management for residential and commercial clients in Asaba.' },
-  { icon: 'home_iot_device', title: 'Smart Home', body: 'Intelligent home automation — lighting, locks, gates, climate, and CCTV integrated into a single app.' },
+  {
+    icon: 'solar_power',
+    title: 'Solar Energy',
+    body: 'Grid-tied and off-grid solar power systems for homes, businesses, and industrial clients across Delta State and beyond.',
+    img: 'https://lh3.googleusercontent.com/aida-public/AB6AXuCq9LCpDwfPlcT6MX0ogahmxaHtcvjkwurNjVUILumsDp-tiEYDIkwPkW2_CncahMk2O3uYoIiC3I5ZMLRbnBLmN2zRJ87AxxM-s1QiKNNPavrKu7KKmlrlnjqQaukop6TNqZKTRyA86dSvw6MyTtuNrrdwxEV1tu084abTQSRak_1_lSMXXD-j6zkKUzX1REY0OFjomSVT0g9Gsbhsbs3jnH0GHxphxrhR_a6RgGJQgQDURpwZB1UDtpt_Jw5zfICaiA8PNEmwQuM',
+    to: '/solar-energy',
+  },
+  {
+    icon: 'videocam',
+    title: 'CCTV & Security',
+    body: 'End-to-end security solutions — from HD cameras and biometrics to electric fencing and video intercoms.',
+    img: 'https://lh3.googleusercontent.com/aida-public/AB6AXuC_QWIi73l7IDotwrCsDpOeFro5ZgJLv1h2fBTiw-OiZfCCn6dl23KlqPJTVU-EFmfcKW6AJwrLc429HDGaUsXw80AOCA7T04i95HPezjlKJHOgZmJ374v-Xeb7p-dmuHnfBqcyfJtvV_OEwSdwO1z2UadVcBkbLa-4qO-zoB9yG0S7gOkWWWEVi01ZFXwIYoBjGC9eqgps18W5vRvrJfUJ8eR_pqxtoptQvonYxqbxOjUkDMR5spt5F6gwOQHER3QmKP6VD4iFJBs',
+    to: '/cctv-security',
+  },
+  {
+    icon: 'home_work',
+    title: 'Real Estate',
+    body: 'Property development, sales, and estate management for residential and commercial clients in Asaba.',
+    img: 'https://lh3.googleusercontent.com/aida-public/AB6AXuDKxy35nklOqIW314MHs1N8XIT_SaE7D1jAwVqPxElkURqNzZ3oRvU7tbQh6H4LmMc2rQG2RZpNtl8Cebx9mTLobCyAh7OxiG5eQHz30q-VICnYAjfhEeun_A0EVgu6zla1tb7syRC31ICo9TClZgGg_8qhonkzKYJTqMcjXx_a2_zAC4kKg5CFQJ0Vgf2NZCxKD4viufM03KVTAABgRvWRTQObzNFLgTQJ6usujXWF8dj4Bz9hNWc1B7GkTdtszVODir_bGtphEGQ',
+    to: '/real-estate',
+  },
 ]
 </script>

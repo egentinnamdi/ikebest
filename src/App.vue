@@ -5,8 +5,8 @@
       <AppTopBar />
       <AppNav />
     </div>
-    <!-- Main: always padded to clear the fixed header (topbar ~40px + nav ~88px = 128px) -->
-    <main class="pt-[128px]">
+    <!-- Main: padded to clear fixed header (mobile: nav only ~72px | md+: topbar ~40px + nav ~88px = 128px) -->
+    <main class="pt-[72px] md:pt-[128px]">
       <RouterView />
     </main>
     <AppFooter />

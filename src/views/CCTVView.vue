@@ -14,8 +14,8 @@
         <span class="inline-block px-4 py-1.5 rounded-full bg-white/20 text-white text-xs font-semibold uppercase tracking-widest mb-6 backdrop-blur-sm">
           Advanced Surveillance
         </span>
-        <h1 class="text-[36px] md:text-[56px] font-extrabold leading-[1.1] text-white mb-6" style="font-family: 'Montserrat', sans-serif;">
-          Protect Your Home and<br />Business With CCTV
+        <h1 class="text-[22px] sm:text-[36px] md:text-[56px] font-extrabold leading-[1.15] text-white mb-6" style="font-family: 'Montserrat', sans-serif;">
+          Protect Your Home<br />and Business With CCTV
         </h1>
         <p class="text-white/80 text-lg mb-8 leading-relaxed">
           High-definition security solutions tailored for the Nigerian landscape. Peace of mind powered by innovation and reliability.
@@ -40,13 +40,20 @@
         <h2 class="text-4xl font-bold text-gray-900" style="font-family: 'Montserrat', sans-serif;">Cutting-Edge Security Systems</h2>
         <p class="text-gray-500 max-w-xl mx-auto mt-3 text-[15px]">We provide the latest in surveillance technology to ensure your property remains secure 24/7.</p>
       </div>
-      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-        <div v-for="product in products" :key="product.title" class="bg-white p-6 rounded-xl service-card hover:scale-[1.02] transition-all">
-          <div class="w-12 h-12 bg-[#FAC030]/10 rounded-lg flex items-center justify-center mb-5">
-            <span class="material-symbols-outlined text-primary text-[28px]">{{ product.icon }}</span>
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div
+          v-for="product in products"
+          :key="product.title"
+          class="bg-white rounded-2xl p-8 flex flex-col gap-4 shadow-sm hover:shadow-lg transition-all duration-300 group border border-gray-100"
+        >
+          <div class="w-14 h-14 rounded-xl bg-[#161B30] flex items-center justify-center flex-shrink-0 group-hover:bg-[#FAC030] transition-colors duration-300">
+            <span class="material-symbols-outlined text-[#FAC030] text-[28px] group-hover:text-[#161B30] transition-colors duration-300"
+              style="font-variation-settings:'FILL' 1;">{{ product.icon }}</span>
           </div>
-          <h3 class="font-bold text-[20px] text-gray-900 mb-2" style="font-family: 'Montserrat', sans-serif;">{{ product.title }}</h3>
-          <p class="text-gray-500 text-[15px] leading-relaxed">{{ product.body }}</p>
+          <div>
+            <h3 class="font-extrabold text-[18px] text-[#161B30] mb-2" style="font-family: 'Montserrat', sans-serif;">{{ product.title }}</h3>
+            <p class="text-gray-500 text-[14px] leading-relaxed">{{ product.body }}</p>
+          </div>
         </div>
       </div>
     </div>
@@ -63,7 +70,7 @@
         </p>
         <ul class="space-y-5">
           <li v-for="point in whyPoints" :key="point.title" class="flex gap-4 items-start">
-            <div class="bg-[#FAC030]/10 p-2.5 rounded-lg text-primary flex-shrink-0">
+            <div class="bg-[#FAC030] p-2.5 rounded-lg text-[#161B30] flex-shrink-0">
               <span class="material-symbols-outlined text-[20px]">{{ point.icon }}</span>
             </div>
             <div>
@@ -143,6 +150,7 @@ const products = [
   { icon: 'lock', title: 'Smart Locks', body: 'Keypad, card, and remote-access door locking systems.' },
   { icon: 'doorbell', title: 'Video Intercoms', body: 'See and speak to visitors at your gate from anywhere in the world.' },
   { icon: 'electric_bolt', title: 'Electric Fencing', body: 'High-voltage perimeter security for estates and commercial compounds.' },
+  { icon: 'cell_tower', title: 'Remote Monitoring', body: 'Professional 24/7 off-site monitoring with instant incident reporting and rapid response.' },
 ]
 
 const whyPoints = [

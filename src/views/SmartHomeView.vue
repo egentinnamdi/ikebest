@@ -14,7 +14,7 @@
         <span class="inline-block px-4 py-1.5 rounded-full bg-primary/20 text-white text-xs font-semibold uppercase tracking-widest mb-6 backdrop-blur-sm">
           Next-Gen Automation
         </span>
-        <h1 class="text-[36px] md:text-[56px] font-extrabold leading-[1.1] text-white mb-6" style="font-family: 'Montserrat', sans-serif;">
+        <h1 class="text-[22px] sm:text-[36px] md:text-[56px] font-extrabold leading-[1.15] text-white mb-6" style="font-family: 'Montserrat', sans-serif;">
           Control Your Home<br />From Your Phone
         </h1>
         <p class="text-white/80 text-lg mb-8 leading-relaxed">
@@ -41,13 +41,16 @@
         <p class="text-gray-500 mt-3 max-w-xl mx-auto text-[15px]">Every corner of your living space seamlessly connected through one intelligent ecosystem.</p>
       </div>
       <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-        <div v-for="feature in features" :key="feature.title" class="service-card bg-white p-7 rounded-xl hover:shadow-md transition-all">
-          <div class="w-12 h-12 bg-[#FAC030]/10 rounded-xl flex items-center justify-center mb-5">
-            <span class="material-symbols-outlined text-primary text-[26px]">{{ feature.icon }}</span>
+        <div v-for="feature in features" :key="feature.title"
+          class="bg-[#161B30] rounded-2xl p-8 flex flex-col gap-4 group hover:-translate-y-1 hover:shadow-xl hover:shadow-[#161B30]/20 transition-all duration-300">
+          <div class="w-14 h-14 rounded-xl bg-[#FAC030] flex items-center justify-center flex-shrink-0">
+            <span class="material-symbols-outlined text-[#161B30] text-[28px]" style="font-variation-settings:'FILL' 1;">{{ feature.icon }}</span>
           </div>
-          <h3 class="font-bold text-[20px] text-gray-900 mb-2" style="font-family: 'Montserrat', sans-serif;">{{ feature.title }}</h3>
-          <p class="text-gray-500 text-[15px] leading-relaxed mb-4">{{ feature.body }}</p>
-          <RouterLink :to="feature.link || '/smart-home'" class="text-primary font-semibold text-sm inline-flex items-center gap-1 hover:gap-2 transition-all">
+          <div>
+            <h3 class="font-extrabold text-[18px] text-white mb-2" style="font-family: 'Montserrat', sans-serif;">{{ feature.title }}</h3>
+            <p class="text-white/60 text-[14px] leading-relaxed">{{ feature.body }}</p>
+          </div>
+          <RouterLink :to="feature.link || '/smart-home'" class="text-[#FAC030] font-bold text-sm inline-flex items-center gap-1 hover:gap-2 transition-all mt-auto">
             Learn more <span class="material-symbols-outlined text-[15px]">arrow_forward</span>
           </RouterLink>
         </div>

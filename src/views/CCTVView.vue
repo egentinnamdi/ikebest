@@ -21,7 +21,7 @@
           High-definition security solutions tailored for the Nigerian landscape. Peace of mind powered by innovation and reliability.
         </p>
         <div class="flex gap-4 flex-wrap">
-          <a href="#assessment" class="bg-primary text-white px-8 py-3.5 rounded-xl font-semibold hover:bg-green-800 transition-all">
+          <a href="#assessment" class="bg-primary text-white px-8 py-3.5 rounded-xl font-semibold hover:bg-[#1E2545] transition-all">
             Book Free Assessment
           </a>
           <a href="#products" class="border-2 border-white/40 text-white px-8 py-3.5 rounded-xl font-semibold hover:bg-white/10 transition-all">
@@ -42,7 +42,7 @@
       </div>
       <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
         <div v-for="product in products" :key="product.title" class="bg-white p-6 rounded-xl service-card hover:scale-[1.02] transition-all">
-          <div class="w-12 h-12 bg-green-50 rounded-lg flex items-center justify-center mb-5">
+          <div class="w-12 h-12 bg-[#FAC030]/10 rounded-lg flex items-center justify-center mb-5">
             <span class="material-symbols-outlined text-primary text-[28px]">{{ product.icon }}</span>
           </div>
           <h3 class="font-bold text-[17px] text-gray-900 mb-2" style="font-family: 'Plus Jakarta Sans', sans-serif;">{{ product.title }}</h3>
@@ -63,7 +63,7 @@
         </p>
         <ul class="space-y-5">
           <li v-for="point in whyPoints" :key="point.title" class="flex gap-4 items-start">
-            <div class="bg-green-50 p-2.5 rounded-lg text-primary flex-shrink-0">
+            <div class="bg-[#FAC030]/10 p-2.5 rounded-lg text-primary flex-shrink-0">
               <span class="material-symbols-outlined text-[20px]">{{ point.icon }}</span>
             </div>
             <div>
@@ -93,7 +93,7 @@
           v-for="pkg in packages"
           :key="pkg.title"
           class="bg-white p-8 rounded-2xl border-2 flex flex-col"
-          :class="pkg.featured ? 'border-primary shadow-lg shadow-green-100 relative' : 'border-gray-200'"
+          :class="pkg.featured ? 'border-primary shadow-lg shadow-[#FAC030]/15 relative' : 'border-gray-200'"
         >
           <div v-if="pkg.featured" class="absolute -top-3.5 left-1/2 -translate-x-1/2 bg-primary text-white text-xs font-bold px-4 py-1 rounded-full uppercase tracking-widest">
             Most Popular
@@ -107,7 +107,7 @@
             </li>
           </ul>
           <a href="#assessment" class="block text-center py-3 rounded-xl font-semibold transition-all text-sm"
-            :class="pkg.featured ? 'bg-primary text-white hover:bg-green-800' : 'border-2 border-primary text-primary hover:bg-green-50'">
+            :class="pkg.featured ? 'bg-primary text-white hover:bg-[#1E2545]' : 'border-2 border-primary text-primary hover:bg-[#FAC030]/10'">
             Get a Quote →
           </a>
         </div>
@@ -161,7 +161,7 @@
             <option>Shop / Warehouse</option>
           </select>
         </div>
-        <button class="w-full bg-primary text-white py-3.5 rounded-xl font-semibold hover:bg-green-800 transition-all">
+        <button class="w-full bg-primary text-white py-3.5 rounded-xl font-semibold hover:bg-[#1E2545] transition-all">
           Request Free Assessment
         </button>
       </form>

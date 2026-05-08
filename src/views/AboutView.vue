@@ -22,7 +22,7 @@
   <section class="py-20 max-w-[1200px] mx-auto px-6">
     <div class="grid grid-cols-1 md:grid-cols-2 gap-16 items-center">
       <div class="space-y-6">
-        <div class="inline-block px-4 py-1.5 rounded-full bg-green-50 text-primary text-xs font-semibold uppercase tracking-widest">
+        <div class="inline-block px-4 py-1.5 rounded-full bg-[#FAC030]/15 text-[#161B30] text-xs font-semibold uppercase tracking-widest">
           Our Heritage
         </div>
         <h2 class="text-4xl font-bold text-gray-900" style="font-family: 'Plus Jakarta Sans', sans-serif;">The IKEBEST Journey</h2>
@@ -62,7 +62,7 @@
       </div>
       <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
         <div v-for="item in values" :key="item.title" class="bg-white service-card p-8 rounded-xl hover:shadow-md transition-all text-center">
-          <div class="w-14 h-14 bg-green-50 rounded-full flex items-center justify-center mx-auto mb-5">
+          <div class="w-14 h-14 bg-[#FAC030]/10 rounded-full flex items-center justify-center mx-auto mb-5">
             <span class="material-symbols-outlined text-primary text-[28px]" style="font-variation-settings:'FILL' 1;">{{ item.icon }}</span>
           </div>
           <h3 class="font-bold text-[18px] text-gray-900 mb-3" style="font-family: 'Plus Jakarta Sans', sans-serif;">{{ item.title }}</h3>
@@ -77,7 +77,7 @@
     <p class="text-xs font-semibold uppercase tracking-widest text-primary text-center mb-2">What We Do</p>
     <h2 class="text-4xl font-bold text-center text-gray-900 mb-14" style="font-family: 'Plus Jakarta Sans', sans-serif;">Our Business Divisions</h2>
     <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-      <div v-for="div in divisions" :key="div.title" class="flex gap-5 bg-[#f4f6f8] p-6 rounded-xl items-start hover:bg-green-50 transition-all">
+      <div v-for="div in divisions" :key="div.title" class="flex gap-5 bg-[#f4f6f8] p-6 rounded-xl items-start hover:bg-[#FAC030]/10 transition-all">
         <span class="material-symbols-outlined text-primary text-[36px] flex-shrink-0 mt-1" style="font-variation-settings:'FILL' 1;">{{ div.icon }}</span>
         <div>
           <h4 class="font-bold text-[17px] text-gray-900 mb-1" style="font-family: 'Plus Jakarta Sans', sans-serif;">{{ div.title }}</h4>

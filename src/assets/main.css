@@ -2,17 +2,17 @@
 
 @theme {
   /* Colors */
-  --color-primary: #006a38;
-  --color-primary-container: #15864a;
+  --color-primary: #161B30;
+  --color-primary-container: #1E2545;
   --color-on-primary: #ffffff;
-  --color-on-primary-fixed: #00210d;
-  --color-primary-fixed: #92f8b0;
-  --color-primary-fixed-dim: #76db96;
-  --color-inverse-primary: #76db96;
+  --color-on-primary-fixed: #0a0d18;
+  --color-primary-fixed: #FAC030;
+  --color-primary-fixed-dim: #e6aa20;
+  --color-inverse-primary: #FAC030;
 
-  --color-secondary: #855300;
-  --color-secondary-container: #fea619;
-  --color-on-secondary-container: #684000;
+  --color-secondary: #FAC030;
+  --color-secondary-container: #e6aa20;
+  --color-on-secondary-container: #3a2800;
   --color-secondary-fixed: #ffddb8;
   --color-secondary-fixed-dim: #ffb95f;
   --color-on-secondary-fixed: #2a1700;
@@ -98,7 +98,7 @@
 
 /* Legacy classes used in stitch templates */
 .service-card {
-  border-top: 3px solid #006a38;
+  border-top: 3px solid #FAC030;
   box-shadow: 0 2px 12px rgba(0, 0, 0, 0.06);
 }
 

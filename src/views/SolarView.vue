@@ -21,7 +21,7 @@
           Reliable energy for Nigerian homes and businesses. Say goodbye to blackouts and rising fuel costs with our high-efficiency solar installations.
         </p>
         <div class="flex gap-4 flex-wrap">
-          <a href="#quote" class="bg-primary text-white px-8 py-3.5 rounded-xl font-semibold hover:bg-green-800 transition-all">
+          <a href="#quote" class="bg-primary text-white px-8 py-3.5 rounded-xl font-semibold hover:bg-[#1E2545] transition-all">
             Request a Free Quote
           </a>
           <a href="#how-it-works" class="border-2 border-white/40 text-white px-8 py-3.5 rounded-xl font-semibold hover:bg-white/10 transition-all">
@@ -48,7 +48,7 @@
         </p>
         <ul class="space-y-6">
           <li v-for="reason in whyReasons" :key="reason.title" class="flex gap-4 items-start">
-            <div class="bg-green-50 p-2.5 rounded-lg text-primary flex-shrink-0">
+            <div class="bg-[#FAC030]/10 p-2.5 rounded-lg text-primary flex-shrink-0">
               <span class="material-symbols-outlined text-[22px]">{{ reason.icon }}</span>
             </div>
             <div>
@@ -105,7 +105,7 @@
           <h2 class="text-4xl font-bold text-white" style="font-family: 'Plus Jakarta Sans', sans-serif;">Recent Installations</h2>
           <p class="text-gray-400 mt-1 text-sm">Quality craftsmanship across commercial and residential projects.</p>
         </div>
-        <button class="text-green-400 font-semibold border-b border-green-400 pb-0.5 text-sm">View All Projects</button>
+        <button class="text-[#FAC030] font-semibold border-b border-[#FAC030] pb-0.5 text-sm">View All Projects</button>
       </div>
       <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
         <img v-for="img in gallery" :key="img.src" :src="img.src" :alt="img.alt" class="w-full aspect-square object-cover rounded-xl hover:opacity-85 transition-opacity" />
@@ -116,7 +116,7 @@
   <!-- CTA Quote Form -->
   <section id="quote" class="py-20">
     <div class="max-w-[1200px] mx-auto px-6">
-      <div class="bg-green-50 rounded-3xl p-10 md:p-16 flex flex-col md:flex-row gap-16 items-center">
+      <div class="bg-[#FAC030]/10 rounded-3xl p-10 md:p-16 flex flex-col md:flex-row gap-16 items-center">
         <div class="md:w-1/2">
           <h2 class="text-4xl font-bold text-gray-900 mb-5" style="font-family: 'Plus Jakarta Sans', sans-serif;">Ready for 24/7 Power?</h2>
           <p class="text-gray-500 leading-relaxed mb-8">Fill out the form to schedule a free site assessment and get a customised quote for your property.</p>
@@ -153,7 +153,7 @@
               <label class="block font-semibold text-sm text-gray-900 mb-1.5">Project Address</label>
               <input class="w-full p-3 rounded-xl border border-gray-300 focus:ring-2 focus:ring-primary/30 focus:border-primary outline-none text-sm" placeholder="Asaba, Delta State" type="text" />
             </div>
-            <button class="w-full bg-primary text-white py-3.5 rounded-xl font-semibold hover:bg-green-800 transition-all flex items-center justify-center gap-2">
+            <button class="w-full bg-primary text-white py-3.5 rounded-xl font-semibold hover:bg-[#1E2545] transition-all flex items-center justify-center gap-2">
               Request Free Quote
               <span class="material-symbols-outlined text-[18px]">send</span>
             </button>

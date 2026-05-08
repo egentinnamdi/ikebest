@@ -1,6 +1,6 @@
 <template>
-  <!-- Hero -->
-  <section class="relative min-h-[640px] flex items-center overflow-hidden">
+  <!-- Hero — full-screen video, centered content, Solarva style -->
+  <section class="relative min-h-screen flex flex-col items-center justify-center overflow-hidden">
     <!-- Video background -->
     <video
       autoplay
@@ -10,44 +10,64 @@
       class="absolute inset-0 w-full h-full object-cover z-0"
     >
       <source
-        src="https://videos.pexels.com/video-files/3150048/3150048-hd_1920_1080_25fps.mp4"
+        src="https://res.cloudinary.com/dtetfimeq/video/upload/v1778246332/SnapInsta.to_AQOzt4R1X8nqrHsg2S4ggiY-6IJUeqSqJqE_jaZrxHaN7MMPS13rt9F95Lm5KLcq8voHdAfaflYYBj18vytVeD6h46ve7f79IdvzHd8_gfbqyr.mp4"
         type="video/mp4"
       />
     </video>
     <!-- Dark overlay -->
-    <div class="absolute inset-0 z-10 bg-gradient-to-r from-gray-900/80 via-gray-900/50 to-transparent"></div>
-    <!-- Content -->
-    <div class="relative z-20 max-w-[1200px] mx-auto w-full px-6 py-24">
-      <div class="max-w-2xl">
-        <div class="inline-flex items-center gap-2 bg-white/10 text-white px-4 py-2 rounded-full border border-white/20 text-xs font-semibold uppercase tracking-widest mb-8 backdrop-blur-sm">
-          <span class="material-symbols-outlined text-[16px]" style="font-variation-settings:'FILL' 1;">verified</span>
-          Asaba's Trusted Technology Company
-        </div>
-        <h1 class="text-[56px] font-extrabold leading-[1.1] tracking-tight text-white mb-6" style="font-family: 'Plus Jakarta Sans', sans-serif;">
-          Powering Homes &amp; Businesses<br />
-          <span class="text-green-400">Across Delta State.</span>
-        </h1>
-        <p class="text-white/80 text-lg leading-relaxed mb-8 max-w-xl">
-          Solar energy, CCTV security, real estate, and smart home solutions — all from one trusted company in Asaba.
-        </p>
-        <div class="flex flex-wrap gap-4">
-          <RouterLink to="/about" class="bg-primary text-white px-8 py-3.5 rounded-xl font-semibold hover:bg-green-800 transition-all active:scale-95">
-            Get a Free Quote
-          </RouterLink>
-          <RouterLink to="/solar-energy" class="border-2 border-white/50 text-white px-8 py-3.5 rounded-xl font-semibold hover:bg-white/10 transition-all">
-            Our Services
-          </RouterLink>
-        </div>
+    <div class="absolute inset-0 z-10 bg-[#161B30]/65"></div>
+
+    <!-- Centered content -->
+    <div class="relative z-20 text-center px-6 max-w-4xl mx-auto">
+      <!-- Badge label -->
+      <div class="inline-flex items-center gap-2 border border-white/30 text-white/90 text-xs font-semibold uppercase tracking-[0.15em] px-5 py-2 rounded-full mb-8 backdrop-blur-sm">
+        <span class="w-2 h-2 rounded-full bg-[#FAC030] inline-block"></span>
+        IKEBEST TECHNOLOGIES · ASABA, NIGERIA
       </div>
+
+      <!-- Headline -->
+      <h1 class="text-[52px] md:text-[68px] font-extrabold leading-[1.08] tracking-tight text-white mb-6" style="font-family: 'Plus Jakarta Sans', sans-serif;">
+        Powering Homes &amp; Businesses<br />
+        <span class="text-[#FAC030]">Across Nigeria.</span>
+      </h1>
+
+      <!-- Subtitle -->
+      <p class="text-white/75 text-lg md:text-xl leading-relaxed mb-10 max-w-2xl mx-auto">
+        Solar energy, CCTV security, real estate, and smart home solutions — all from one trusted company in Asaba.
+      </p>
+
+      <!-- CTAs -->
+      <div class="flex flex-wrap justify-center gap-4">
+        <RouterLink
+          to="/solar-energy"
+          class="bg-[#FAC030] text-[#161B30] px-9 py-4 rounded-full font-bold text-[15px] hover:bg-yellow-300 transition-all active:scale-95 shadow-lg"
+        >
+          Explore Our Services
+        </RouterLink>
+        <RouterLink
+          to="/about"
+          class="border-2 border-white/50 text-white px-9 py-4 rounded-full font-bold text-[15px] hover:border-[#FAC030] hover:text-[#FAC030] transition-all active:scale-95"
+        >
+          About Us
+        </RouterLink>
+      </div>
+    </div>
+
+    <!-- Scroll indicator -->
+    <div class="absolute bottom-8 left-1/2 -translate-x-1/2 z-20 flex flex-col items-center gap-1 text-white/40 text-xs uppercase tracking-widest">
+      <span>Scroll</span>
+      <span class="material-symbols-outlined text-[18px] animate-bounce">keyboard_arrow_down</span>
     </div>
   </section>
 
   <!-- Trust Bar -->
-  <section class="bg-[#eef4ff] py-12 border-y border-gray-200">
+
+  <!-- Trust Bar -->
+  <section id="about" class="bg-[#161B30] py-12">
     <div class="max-w-[1200px] mx-auto px-6 grid grid-cols-2 md:grid-cols-4 gap-6 text-center">
       <div v-for="stat in stats" :key="stat.label">
-        <div class="text-4xl font-extrabold text-primary" style="font-family: 'Plus Jakarta Sans', sans-serif;">{{ stat.value }}</div>
-        <div class="text-xs font-semibold uppercase tracking-widest text-gray-500 mt-1">{{ stat.label }}</div>
+        <div class="text-4xl font-extrabold text-[#FAC030]" style="font-family: 'Plus Jakarta Sans', sans-serif;">{{ stat.value }}</div>
+        <div class="text-xs font-semibold uppercase tracking-widest text-white/60 mt-1">{{ stat.label }}</div>
       </div>
     </div>
   </section>
@@ -81,7 +101,7 @@
       </p>
       <div class="grid grid-cols-2 gap-5 pt-2">
         <div v-for="service in aboutServices" :key="service.title" class="flex items-start gap-3">
-          <span class="material-symbols-outlined text-primary bg-green-50 p-2.5 rounded-lg text-[22px]" style="font-variation-settings:'FILL' 1;">{{ service.icon }}</span>
+          <span class="material-symbols-outlined text-[#FAC030] bg-[#FAC030]/10 p-2.5 rounded-lg text-[22px]" style="font-variation-settings:'FILL' 1;">{{ service.icon }}</span>
           <div>
             <div class="font-semibold text-sm text-gray-900">{{ service.title }}</div>
             <div class="text-xs text-gray-500 mt-0.5">{{ service.sub }}</div>
@@ -150,7 +170,7 @@
         <div v-for="proj in projects" :key="proj.title" class="rounded-xl overflow-hidden shadow-sm hover:shadow-md transition-all bg-white">
           <img :src="proj.img" :alt="proj.alt" class="w-full aspect-video object-cover" />
           <div class="p-5 space-y-1.5">
-            <span class="bg-green-50 text-primary text-[11px] font-bold uppercase px-2 py-0.5 rounded">{{ proj.tag }}</span>
+            <span class="bg-[#FAC030]/15 text-[#161B30] text-[11px] font-bold uppercase px-2 py-0.5 rounded">{{ proj.tag }}</span>
             <h4 class="font-bold text-[17px] text-gray-900 mt-1" style="font-family: 'Plus Jakarta Sans', sans-serif;">{{ proj.title }}</h4>
             <div class="flex items-center gap-1 text-sm text-gray-500">
               <span class="material-symbols-outlined text-[15px]">location_on</span>

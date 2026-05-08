@@ -21,7 +21,7 @@
           World-class smart home technology brought right to your home in Asaba, Delta State. Convenience, security, and comfort — all in one system.
         </p>
         <div class="flex gap-4 flex-wrap">
-          <a href="#solutions" class="bg-primary text-white px-8 py-3.5 rounded-xl font-semibold hover:bg-green-800 transition-all">
+          <a href="#solutions" class="bg-primary text-white px-8 py-3.5 rounded-xl font-semibold hover:bg-[#1E2545] transition-all">
             See Solutions
           </a>
           <a href="#consult" class="border-2 border-white/40 text-white px-8 py-3.5 rounded-xl font-semibold hover:bg-white/10 transition-all">
@@ -42,7 +42,7 @@
       </div>
       <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
         <div v-for="feature in features" :key="feature.title" class="service-card bg-white p-7 rounded-xl hover:shadow-md transition-all">
-          <div class="w-12 h-12 bg-green-50 rounded-xl flex items-center justify-center mb-5">
+          <div class="w-12 h-12 bg-[#FAC030]/10 rounded-xl flex items-center justify-center mb-5">
             <span class="material-symbols-outlined text-primary text-[26px]">{{ feature.icon }}</span>
           </div>
           <h3 class="font-bold text-[17px] text-gray-900 mb-2" style="font-family: 'Plus Jakarta Sans', sans-serif;">{{ feature.title }}</h3>
@@ -64,7 +64,7 @@
       <div class="relative grid grid-cols-1 md:grid-cols-3 gap-10">
         <div class="hidden md:block absolute top-10 left-0 w-full h-[2px] bg-gray-200 -z-10"></div>
         <div v-for="(step, i) in steps" :key="step.title" class="flex flex-col items-center text-center">
-          <div class="w-20 h-20 bg-primary text-white rounded-full flex items-center justify-center text-3xl font-extrabold mb-6 shadow-lg shadow-green-100">
+          <div class="w-20 h-20 bg-primary text-white rounded-full flex items-center justify-center text-3xl font-extrabold mb-6 shadow-lg shadow-[#161B30]/20">
             {{ i + 1 }}
           </div>
           <h4 class="font-bold text-gray-900 mb-2" style="font-family: 'Plus Jakarta Sans', sans-serif;">{{ step.title }}</h4>
@@ -86,7 +86,7 @@
           v-for="pkg in packages"
           :key="pkg.title"
           class="p-8 rounded-2xl border-2 flex flex-col relative"
-          :class="pkg.featured ? 'border-primary shadow-xl shadow-green-100 bg-white' : 'border-gray-200 bg-white'"
+          :class="pkg.featured ? 'border-primary shadow-xl shadow-[#FAC030]/15 bg-white' : 'border-gray-200 bg-white'"
         >
           <div v-if="pkg.featured" class="absolute -top-3.5 left-1/2 -translate-x-1/2 bg-primary text-white text-xs font-bold px-4 py-1 rounded-full uppercase tracking-widest whitespace-nowrap">
             Most Popular
@@ -100,7 +100,7 @@
             </li>
           </ul>
           <a href="#consult" class="block text-center py-3 rounded-xl font-semibold text-sm transition-all"
-            :class="pkg.featured ? 'bg-primary text-white hover:bg-green-800' : 'border-2 border-primary text-primary hover:bg-green-50'">
+            :class="pkg.featured ? 'bg-primary text-white hover:bg-[#1E2545]' : 'border-2 border-primary text-primary hover:bg-[#FAC030]/10'">
             Get a Quote →
           </a>
         </div>
@@ -132,13 +132,13 @@
         <div>
           <label class="block font-semibold text-sm text-gray-900 mb-1.5">Interested In</label>
           <div class="grid grid-cols-2 sm:grid-cols-3 gap-2">
-            <label v-for="opt in interestOptions" :key="opt" class="flex items-center gap-2 text-sm text-gray-700 cursor-pointer p-2 rounded-lg border border-gray-200 hover:border-primary hover:bg-green-50 transition-all">
+            <label v-for="opt in interestOptions" :key="opt" class="flex items-center gap-2 text-sm text-gray-700 cursor-pointer p-2 rounded-lg border border-gray-200 hover:border-primary hover:bg-[#FAC030]/10 transition-all">
               <input type="checkbox" class="accent-primary w-4 h-4" />
               {{ opt }}
             </label>
           </div>
         </div>
-        <button class="w-full bg-primary text-white py-3.5 rounded-xl font-semibold hover:bg-green-800 transition-all">
+        <button class="w-full bg-primary text-white py-3.5 rounded-xl font-semibold hover:bg-[#1E2545] transition-all">
           Book a Consultation
         </button>
       </form>

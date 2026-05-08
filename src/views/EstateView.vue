@@ -21,7 +21,7 @@
           Modern housing solutions designed for comfort and built for the future in the heart of Delta State.
         </p>
         <div class="flex gap-4 flex-wrap">
-          <a href="#listings" class="bg-primary text-white px-8 py-3.5 rounded-xl font-semibold hover:bg-green-800 transition-all">
+          <a href="#listings" class="bg-primary text-white px-8 py-3.5 rounded-xl font-semibold hover:bg-[#1E2545] transition-all">
             Browse Properties
           </a>
           <a href="#enquiry" class="border-2 border-white/40 text-white px-8 py-3.5 rounded-xl font-semibold hover:bg-white/10 transition-all">
@@ -76,7 +76,7 @@
             <img :src="prop.img" :alt="prop.title" class="w-full aspect-video object-cover" />
             <span class="absolute top-3 left-3 text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wide"
               :class="{
-                'bg-green-100 text-green-800': prop.status === 'For Sale',
+                'bg-[#FAC030]/20 text-[#161B30]': prop.status === 'For Sale',
                 'bg-blue-100 text-blue-800': prop.status === 'For Rent',
                 'bg-amber-100 text-amber-800': prop.status === 'Off-Plan',
               }">
@@ -114,7 +114,7 @@
         <h2 class="text-4xl font-bold text-gray-900 mb-5" style="font-family: 'Plus Jakarta Sans', sans-serif;">Why Buy From IKEBEST</h2>
         <ul class="space-y-5">
           <li v-for="point in trustPoints" :key="point.title" class="flex gap-4 items-start">
-            <span class="material-symbols-outlined text-primary bg-green-50 p-2.5 rounded-lg text-[22px] flex-shrink-0" style="font-variation-settings:'FILL' 1;">{{ point.icon }}</span>
+            <span class="material-symbols-outlined text-primary bg-[#FAC030]/10 p-2.5 rounded-lg text-[22px] flex-shrink-0" style="font-variation-settings:'FILL' 1;">{{ point.icon }}</span>
             <div>
               <h4 class="font-semibold text-gray-900 mb-0.5">{{ point.title }}</h4>
               <p class="text-gray-500 text-sm leading-relaxed">{{ point.body }}</p>
@@ -169,7 +169,7 @@
           <label class="block font-semibold text-sm text-gray-900 mb-1.5">Additional Notes</label>
           <textarea class="w-full p-3 rounded-xl border border-gray-300 focus:ring-2 focus:ring-primary/30 focus:border-primary outline-none text-sm resize-none" rows="3" placeholder="Location preference, specific requirements..."></textarea>
         </div>
-        <button class="w-full bg-primary text-white py-3.5 rounded-xl font-semibold hover:bg-green-800 transition-all">
+        <button class="w-full bg-primary text-white py-3.5 rounded-xl font-semibold hover:bg-[#1E2545] transition-all">
           Send Enquiry
         </button>
       </form>

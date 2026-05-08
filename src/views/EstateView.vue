@@ -1,6 +1,6 @@
 <template>
   <!-- Hero -->
-  <section class="relative h-[460px] flex items-center overflow-hidden">
+  <section class="relative min-h-[580px] flex items-center overflow-hidden">
     <div class="absolute inset-0 z-0">
       <img
         src="https://lh3.googleusercontent.com/aida-public/AB6AXuDw-C775UX2Hc1-x0GSyuPOIprYgdPNpu15AKM28v-Wl6UIXDYFMaaOvj9iP0aO4-dwsi2df6SP2l6YZvhrOZnyHeFXvW7SCXwLCiUDNZMKC_CoqI6ZExsW7e6zvyH4PkJavv6pvVNHCqXpcR5gyB_2LpuXUlqNBnwEeuZnkFCHIi35Nfz7Ja76gLcyWn5RIqxhtgwzKRy6y5SIegGbf-jHHW9RGLfToFCNxBrdGIVE-2pJRw4ZeYlRzzurdrp-828MEMJJamJMlN8"
@@ -9,7 +9,7 @@
       />
       <div class="absolute inset-0 bg-gradient-to-r from-gray-900/75 to-transparent"></div>
     </div>
-    <div class="relative z-10 max-w-[1200px] mx-auto px-6 w-full">
+    <div class="relative z-10 max-w-[1200px] mx-auto px-6 w-full py-20">
       <div class="max-w-2xl">
         <span class="inline-block px-4 py-1.5 rounded-full bg-white/20 text-white text-xs font-semibold uppercase tracking-widest mb-6 backdrop-blur-sm">
           Premium Real Estate
@@ -42,8 +42,8 @@
       <div class="grid grid-cols-1 md:grid-cols-4 gap-6">
         <div v-for="svc in services" :key="svc.title" class="service-card bg-white p-6 rounded-xl hover:shadow-md transition-all text-center">
           <span class="material-symbols-outlined text-primary text-[44px] mb-4 block" style="font-variation-settings:'FILL' 1;">{{ svc.icon }}</span>
-          <h3 class="font-bold text-[17px] text-gray-900 mb-2" style="font-family: 'Montserrat', sans-serif;">{{ svc.title }}</h3>
-          <p class="text-gray-500 text-sm leading-relaxed">{{ svc.body }}</p>
+          <h3 class="font-bold text-[20px] text-gray-900 mb-2" style="font-family: 'Montserrat', sans-serif;">{{ svc.title }}</h3>
+          <p class="text-gray-500 text-[15px] leading-relaxed">{{ svc.body }}</p>
         </div>
       </div>
     </div>

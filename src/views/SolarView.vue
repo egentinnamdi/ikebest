@@ -1,6 +1,6 @@
 <template>
   <!-- Hero -->
-  <section class="relative min-h-[460px] flex items-center overflow-hidden">
+  <section class="relative min-h-[580px] flex items-center overflow-hidden">
     <div class="absolute inset-0 z-0">
       <img
         src="https://lh3.googleusercontent.com/aida-public/AB6AXuDKuaXg5bWiPM2y4pJ9RyGdgdujOustxP_T_TX-MoH-lqybr0hubXM3mZ8yDuZM46kShmc1jOqYGzaFaALLm6fG1eEptXEpoRjRXywGiAkRMR47pLhbjdebRZ99RZQXA5R_Zo2vLIv3TiXmICEGM2T8ADr-26Xk6ia4kaUAF92j2lZttQagxy6j6yM6WdKsl6gCWm2k-teO8rELHjRPpF99M-Z2YvMKsCKRpX0BjXPsYIpMTc4d6_m3TrC4w0u-wfN2g-k4UEkgpdk"
@@ -9,7 +9,7 @@
       />
       <div class="absolute inset-0 bg-gradient-to-r from-gray-900/80 to-transparent"></div>
     </div>
-    <div class="relative z-10 max-w-[1200px] mx-auto px-6 w-full">
+    <div class="relative z-10 max-w-[1200px] mx-auto px-6 w-full py-20">
       <div class="max-w-2xl">
         <span class="inline-block bg-white/20 text-white px-4 py-1.5 rounded-full text-xs font-semibold uppercase tracking-widest mb-6 backdrop-blur-sm">
           Solar Energy Solutions

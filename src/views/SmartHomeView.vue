@@ -1,6 +1,6 @@
 <template>
   <!-- Hero -->
-  <section class="relative min-h-[460px] flex items-center overflow-hidden">
+  <section class="relative min-h-[580px] flex items-center overflow-hidden">
     <div class="absolute inset-0 z-0">
       <img
         src="https://lh3.googleusercontent.com/aida-public/AB6AXuDQ4JZJ9gwROaDrTAYUMJ1cS-hXZsyyfRvXS4B6rXi3-h-E385kBB2I4au7vQAzvk758eE_2TVqsVXIFH3LezachPTtzA4KgMS0cbwDPdJBft1WdoyTUuXu3lOiiSlox1AQ4YbkFKPVjlint6ejpcOyxInSOYbZaoBtOY7juH4cEBkHPgLhQicGxSw4TvaalNfjHt-dFS78SMW3BNDb8C_9eWeMugeCFUmIpxFqZgcTRrsx0h2jov2CAy1mEIGOyaP11X8gh5wQFLU"
@@ -9,7 +9,7 @@
       />
       <div class="absolute inset-0 bg-gradient-to-r from-gray-900/75 to-transparent"></div>
     </div>
-    <div class="relative z-10 max-w-[1200px] mx-auto px-6 w-full">
+    <div class="relative z-10 max-w-[1200px] mx-auto px-6 w-full py-20">
       <div class="max-w-2xl">
         <span class="inline-block px-4 py-1.5 rounded-full bg-primary/20 text-white text-xs font-semibold uppercase tracking-widest mb-6 backdrop-blur-sm">
           Next-Gen Automation
@@ -45,8 +45,8 @@
           <div class="w-12 h-12 bg-[#FAC030]/10 rounded-xl flex items-center justify-center mb-5">
             <span class="material-symbols-outlined text-primary text-[26px]">{{ feature.icon }}</span>
           </div>
-          <h3 class="font-bold text-[17px] text-gray-900 mb-2" style="font-family: 'Montserrat', sans-serif;">{{ feature.title }}</h3>
-          <p class="text-gray-500 text-sm leading-relaxed mb-4">{{ feature.body }}</p>
+          <h3 class="font-bold text-[20px] text-gray-900 mb-2" style="font-family: 'Montserrat', sans-serif;">{{ feature.title }}</h3>
+          <p class="text-gray-500 text-[15px] leading-relaxed mb-4">{{ feature.body }}</p>
           <RouterLink :to="feature.link || '/smart-home'" class="text-primary font-semibold text-sm inline-flex items-center gap-1 hover:gap-2 transition-all">
             Learn more <span class="material-symbols-outlined text-[15px]">arrow_forward</span>
           </RouterLink>

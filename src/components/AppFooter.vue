@@ -4,7 +4,7 @@
 
       <!-- Col 1: Brand -->
       <div>
-        <img src="https://res.cloudinary.com/dtetfimeq/image/upload/v1778246625/ikebest-logo_cgx4cg.png" alt="IKEBEST Group" class="h-10 w-auto mb-5" />
+        <img src="https://res.cloudinary.com/dtetfimeq/image/upload/v1778254790/footer-logo_zasbdc.png" alt="IKEBEST Group" class="h-16 w-auto mb-6" />
         <p class="text-gray-400 text-sm leading-relaxed mb-7">Leading the way in power, security, and smart space solutions for the modern Nigerian home and business.</p>
         <div class="flex items-center gap-4 mb-7">
           <div class="w-12 h-12 rounded-full bg-[#FAC030] flex items-center justify-center shrink-0">

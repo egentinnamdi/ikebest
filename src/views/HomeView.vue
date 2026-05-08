@@ -18,35 +18,35 @@
     <div class="absolute inset-0 z-10 bg-[#161B30]/65"></div>
 
     <!-- Centered content -->
-    <div class="relative z-20 text-center px-6 max-w-4xl mx-auto">
+    <div class="relative z-20 text-center px-4 sm:px-6 max-w-4xl mx-auto w-full">
       <!-- Badge label -->
-      <div class="inline-flex items-center gap-2 border border-white/30 text-white/90 text-xs font-semibold uppercase tracking-[0.15em] px-5 py-2 rounded-full mb-8 backdrop-blur-sm">
-        <span class="w-2 h-2 rounded-full bg-[#FAC030] inline-block"></span>
-        IKEBEST TECHNOLOGIES · ASABA, NIGERIA
+      <div class="inline-flex items-center gap-2 border border-white/30 text-white/90 text-[10px] sm:text-xs font-semibold uppercase tracking-[0.1em] sm:tracking-[0.15em] px-4 py-2 rounded-full mb-6 sm:mb-8 backdrop-blur-sm">
+        <span class="w-2 h-2 rounded-full bg-[#FAC030] inline-block shrink-0"></span>
+        <span>IKEBEST TECHNOLOGIES · ASABA, NIGERIA</span>
       </div>
 
       <!-- Headline -->
-      <h1 class="text-[32px] sm:text-[44px] md:text-[64px] font-extrabold leading-[1.1] tracking-tight text-white mb-6" style="font-family: 'Montserrat', sans-serif;">
-        <span class="whitespace-nowrap">Powering Homes &amp; Businesses</span><br />
+      <h1 class="text-[30px] sm:text-[44px] md:text-[64px] font-extrabold leading-[1.15] sm:leading-[1.1] tracking-tight text-white mb-5 sm:mb-6" style="font-family: 'Montserrat', sans-serif;">
+        Powering Homes &amp; Businesses<br />
         <span class="text-[#FAC030]">Across Nigeria.</span>
       </h1>
 
       <!-- Subtitle -->
-      <p class="text-white/75 text-lg md:text-xl leading-relaxed mb-10 max-w-2xl mx-auto">
+      <p class="text-white/75 text-base sm:text-lg md:text-xl leading-relaxed mb-8 sm:mb-10 max-w-2xl mx-auto">
         Solar energy, CCTV security, real estate and smart home solutions, all from one trusted company in Nigeria.
       </p>
 
       <!-- CTAs -->
-      <div class="flex flex-wrap justify-center gap-4">
+      <div class="flex flex-col sm:flex-row justify-center gap-3 sm:gap-4">
         <RouterLink
           to="/solar-energy"
-          class="bg-[#FAC030] text-[#161B30] px-9 py-4 rounded-full font-bold text-[15px] hover:bg-yellow-300 transition-all active:scale-95 shadow-lg"
+          class="bg-[#FAC030] text-[#161B30] px-8 py-3.5 sm:px-9 sm:py-4 rounded-full font-bold text-[14px] sm:text-[15px] hover:bg-yellow-300 transition-all active:scale-95 shadow-lg"
         >
           Explore Our Services
         </RouterLink>
         <RouterLink
           to="/about"
-          class="border-2 border-white/50 text-white px-9 py-4 rounded-full font-bold text-[15px] hover:border-[#FAC030] hover:text-[#FAC030] transition-all active:scale-95"
+          class="border-2 border-white/50 text-white px-8 py-3.5 sm:px-9 sm:py-4 rounded-full font-bold text-[14px] sm:text-[15px] hover:border-[#FAC030] hover:text-[#FAC030] transition-all active:scale-95"
         >
           About Us
         </RouterLink>

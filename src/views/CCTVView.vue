@@ -1,6 +1,6 @@
 <template>
   <!-- Hero -->
-  <section class="relative h-[460px] flex items-center overflow-hidden">
+  <section class="relative min-h-[580px] flex items-center overflow-hidden">
     <div class="absolute inset-0 z-0">
       <img
         src="https://lh3.googleusercontent.com/aida-public/AB6AXuAuTNxFOg36KsxQ8EFLufIphqn0Rn6bhbVlYlxRhNkB8BxyPtPlLZwX6z5Nshpt1cm7P0-fdyeTvKB4UWYrqpv50Ur266IiGn3rrMDTzJxC1CoQtnOTBVHk_Vk229hAAC2MQbKIL_5NtHl7pz1aLcA5z7rFkBf6sGFnA-4uGvAXCWYyrGZVpI8ZB7tej2t7vWorM5mPvY3jEBlnqzVFzKj-HporzApPRgWi7vHxJfe0-bD6f2QrWvv2OnlzlpM_qx3ak6LfXsMGFec"
@@ -9,7 +9,7 @@
       />
       <div class="absolute inset-0 bg-gradient-to-r from-gray-900/80 to-transparent"></div>
     </div>
-    <div class="relative z-10 max-w-[1200px] mx-auto w-full px-6">
+    <div class="relative z-10 max-w-[1200px] mx-auto w-full px-6 py-20">
       <div class="max-w-2xl">
         <span class="inline-block px-4 py-1.5 rounded-full bg-white/20 text-white text-xs font-semibold uppercase tracking-widest mb-6 backdrop-blur-sm">
           Advanced Surveillance
@@ -45,8 +45,8 @@
           <div class="w-12 h-12 bg-[#FAC030]/10 rounded-lg flex items-center justify-center mb-5">
             <span class="material-symbols-outlined text-primary text-[28px]">{{ product.icon }}</span>
           </div>
-          <h3 class="font-bold text-[17px] text-gray-900 mb-2" style="font-family: 'Montserrat', sans-serif;">{{ product.title }}</h3>
-          <p class="text-gray-500 text-sm leading-relaxed">{{ product.body }}</p>
+          <h3 class="font-bold text-[20px] text-gray-900 mb-2" style="font-family: 'Montserrat', sans-serif;">{{ product.title }}</h3>
+          <p class="text-gray-500 text-[15px] leading-relaxed">{{ product.body }}</p>
         </div>
       </div>
     </div>

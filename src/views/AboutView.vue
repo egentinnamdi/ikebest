@@ -1,15 +1,15 @@
 <template>
   <!-- Hero -->
-  <section class="relative h-[320px] flex items-center overflow-hidden">
+  <section class="relative min-h-[520px] flex items-center overflow-hidden">
     <div class="absolute inset-0 z-0">
       <img
         src="https://lh3.googleusercontent.com/aida-public/AB6AXuBGVAgB0rxfW1jbdn3wN6MgCSIsdk0Rg7pVlCjQwiOjrG4nSwXiB6lNUm1uEkfedRfOpb_06UDz-z-b2QLy7TfesxX4FHJ-Vhbq6DqfDW4y-pMmL7bfwU_CDBxA1rDgtZj0rkUdIaIbx7hX1PHzikpJmkakXQjNH-X8_z4Z2ZwrKN5gKPZ6kTpIcPnfhzsZvPQbt-uLMv8C-M3RGBy75SkGsI0J6irOV3KDZmhlp3wMSsb0gF_3h7NKaeDBr7IH_u9G9LWo1_q1KvE"
         alt="IKEBEST Group corporate office in Asaba"
-        class="w-full h-full object-cover object-top"
+        class="w-full h-full object-cover object-center"
       />
-      <div class="absolute inset-0 bg-[#161B30]/60"></div>
+      <div class="absolute inset-0 bg-[#161B30]/65"></div>
     </div>
-    <div class="relative z-10 max-w-[1200px] mx-auto px-6 w-full">
+    <div class="relative z-10 max-w-[1200px] mx-auto px-6 w-full py-24">
       <h1 class="text-[36px] md:text-[56px] font-extrabold leading-[1.1] text-white mb-4" style="font-family: 'Montserrat', sans-serif;">
         About IKEBEST Group
       </h1>
@@ -66,8 +66,8 @@
           <div class="w-14 h-14 bg-[#FAC030]/10 rounded-full flex items-center justify-center mx-auto mb-5">
             <span class="material-symbols-outlined text-primary text-[28px]" style="font-variation-settings:'FILL' 1;">{{ item.icon }}</span>
           </div>
-          <h3 class="font-bold text-[18px] text-gray-900 mb-3" style="font-family: 'Montserrat', sans-serif;">{{ item.title }}</h3>
-          <p class="text-gray-500 text-sm leading-relaxed">{{ item.body }}</p>
+          <h3 class="font-bold text-[22px] text-gray-900 mb-3" style="font-family: 'Montserrat', sans-serif;">{{ item.title }}</h3>
+          <p class="text-gray-500 text-[15px] leading-relaxed">{{ item.body }}</p>
         </div>
       </div>
     </div>

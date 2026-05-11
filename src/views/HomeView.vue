@@ -328,6 +328,45 @@
     </div>
   </section>
 
+  <!-- Smart Home Pricing -->
+  <section class="py-20 bg-white">
+    <div class="max-w-[1200px] mx-auto px-6">
+      <div class="text-center mb-14">
+        <p class="text-xs font-semibold uppercase tracking-widest text-primary mb-2">Pricing</p>
+        <h2 class="text-4xl font-bold text-gray-900" style="font-family: 'Montserrat', sans-serif;">Smart Home Packages</h2>
+      </div>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+        <div
+          v-for="pkg in homePricing"
+          :key="pkg.title"
+          class="p-8 rounded-2xl border-2 flex flex-col relative"
+          :class="pkg.featured ? 'border-primary shadow-xl shadow-[#FAC030]/15 bg-white' : 'border-gray-200 bg-white'"
+        >
+          <div v-if="pkg.featured" class="absolute -top-3.5 left-1/2 -translate-x-1/2 bg-primary text-white text-xs font-bold px-4 py-1 rounded-full uppercase tracking-widest whitespace-nowrap">
+            Most Popular
+          </div>
+          <h3 class="font-bold text-xl text-gray-900 mb-1" style="font-family: 'Montserrat', sans-serif;">{{ pkg.title }}</h3>
+          <p class="text-gray-400 text-sm mb-1">{{ pkg.subtitle }}</p>
+          <div v-if="pkg.price" class="mb-5">
+            <span class="text-2xl font-extrabold text-primary" style="font-family: 'Montserrat', sans-serif;">{{ pkg.price }}</span>
+            <span class="text-gray-400 text-sm ml-1">{{ pkg.priceNote }}</span>
+          </div>
+          <div v-else class="mb-5"></div>
+          <ul class="space-y-3 flex-grow mb-8">
+            <li v-for="f in pkg.features" :key="f" class="flex gap-2 items-start text-sm text-gray-700">
+              <span class="material-symbols-outlined text-primary text-[18px] flex-shrink-0 mt-0.5" style="font-variation-settings:'FILL' 1;">check_circle</span>
+              {{ f }}
+            </li>
+          </ul>
+          <a href="tel:+2348139522490" class="block text-center py-3 rounded-xl font-semibold text-sm transition-all"
+            :class="pkg.featured ? 'bg-primary text-white hover:bg-[#1E2545]' : 'border-2 border-primary text-primary hover:bg-[#FAC030]/10'">
+            Get a Quote →
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <!-- CTA Banner -->
   <section class="max-w-[1200px] mx-auto px-6 mt-20 mb-20">
     <div class="bg-primary rounded-3xl p-16 text-center text-white">
@@ -433,6 +472,33 @@ const projects = [
     tag: 'Real Estate',
     title: 'Prime Residential Plots',
     location: 'Ibusa, Delta State',
+  },
+]
+
+const homePricing = [
+  {
+    title: 'Starter',
+    subtitle: 'For 2–3 bedroom homes',
+    featured: false,
+    price: '₦240,000',
+    priceNote: 'with installation',
+    features: ['Smart lighting (5 rooms)', 'Smart locks (main door)', 'Mobile app control', 'Basic CCTV integration', 'Local tech support'],
+  },
+  {
+    title: 'Premium',
+    subtitle: 'For full smart home experience',
+    featured: true,
+    price: null,
+    priceNote: null,
+    features: ['Smart lighting (full home)', 'Smart locks & automated gate', 'Climate control integration', 'Multi-room audio', '8-camera CCTV integration', 'Intercom & video doorbell', '1-year maintenance plan'],
+  },
+  {
+    title: 'Custom Build',
+    subtitle: 'Fully bespoke for any property',
+    featured: false,
+    price: null,
+    priceNote: null,
+    features: ['Unlimited automation points', 'Solar power integration', 'Full AI scene management', 'Dedicated site engineer', 'Priority remote support', 'Warranty & SLA plan'],
   },
 ]
 

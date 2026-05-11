@@ -53,7 +53,7 @@
           </li>
           <li class="flex items-center gap-3">
             <i class="fa-solid fa-envelope text-[#FAC030] text-[14px] shrink-0"></i>
-            <span class="text-gray-300 text-[15px]">info@ikebest.com</span>
+            <span class="text-gray-300 text-[15px]">Ikebest316@gmail.com</span>
           </li>
         </ul>
       </div>

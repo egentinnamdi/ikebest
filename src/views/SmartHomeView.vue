@@ -95,7 +95,12 @@
             Most Popular
           </div>
           <h3 class="font-bold text-xl text-gray-900 mb-1" style="font-family: 'Montserrat', sans-serif;">{{ pkg.title }}</h3>
-          <p class="text-gray-400 text-sm mb-6">{{ pkg.subtitle }}</p>
+          <p class="text-gray-400 text-sm mb-1">{{ pkg.subtitle }}</p>
+          <div v-if="pkg.price" class="mb-5">
+            <span class="text-2xl font-extrabold text-primary" style="font-family: 'Montserrat', sans-serif;">{{ pkg.price }}</span>
+            <span class="text-gray-400 text-sm ml-1">{{ pkg.priceNote }}</span>
+          </div>
+          <div v-else class="mb-5"></div>
           <ul class="space-y-3 flex-grow mb-8">
             <li v-for="f in pkg.features" :key="f" class="flex gap-2 items-start text-sm text-gray-700">
               <span class="material-symbols-outlined text-primary text-[18px] flex-shrink-0 mt-0.5" style="font-variation-settings:'FILL' 1;">check_circle</span>
@@ -134,6 +139,8 @@ const packages = [
     title: 'Starter',
     subtitle: 'For 2–3 bedroom homes',
     featured: false,
+    price: '₦240,000',
+    priceNote: 'with installation',
     features: ['Smart lighting (5 rooms)', 'Smart locks (main door)', 'Mobile app control', 'Basic CCTV integration', 'Local tech support'],
   },
   {

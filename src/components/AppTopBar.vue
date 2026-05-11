@@ -3,7 +3,7 @@
     <div class="flex items-center gap-8 max-w-[1280px] mx-auto px-8 py-2.5 text-[13px]">
       <div class="flex items-center gap-2 text-white/65">
         <span class="material-symbols-outlined text-[15px] text-[#FAC030]">mail</span>
-        <span>info@ikebest.com</span>
+        <span>Ikebest316@gmail.com</span>
       </div>
       <div class="flex items-center gap-2 text-white/65">
         <span class="material-symbols-outlined text-[15px] text-[#FAC030]">call</span>

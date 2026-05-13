@@ -22,7 +22,7 @@
       <!-- Badge label -->
       <div class="inline-flex items-center gap-2 border border-white/30 text-white/90 text-[10px] sm:text-xs font-semibold uppercase tracking-[0.1em] sm:tracking-[0.15em] px-4 py-2 rounded-full mb-6 sm:mb-8 backdrop-blur-sm">
         <span class="w-2 h-2 rounded-full bg-[#FAC030] inline-block shrink-0"></span>
-        <span>IKEBEST TECHNOLOGIES · ASABA, NIGERIA</span>
+        <span>IKEBEST TECHNOLOGIES, NIGERIA</span>
       </div>
 
       <!-- Headline -->
@@ -503,11 +503,11 @@ const homePricing = [
 ]
 
 const testimonials = [
-  { name: 'Chief Benson O.', role: 'Business Owner, Asaba', review: 'IKEBEST installed my solar system two years ago. I haven\'t had a single day of blackout since then. Their service is truly exceptional.' },
+  { name: 'Chief Benson O.', role: 'Business Owner, Abuja', review: 'IKEBEST installed my solar system two years ago. I haven\'t had a single day of blackout since then. Their service is truly exceptional.' },
   { name: 'Mrs. Amaka E.', role: 'Retail Manager', review: 'Their security systems gave me peace of mind. I can monitor my warehouse from anywhere in the world. Highly recommended!' },
   { name: 'Dr. Jude Williams', role: 'Property Investor', review: 'Finding a trustworthy real estate partner in Delta is hard, but IKEBEST made buying my land so smooth and transparent.' },
   { name: 'Engr. Chidi N.', role: 'Factory Owner, Onitsha', review: 'We installed a 30kW solar system through IKEBEST. Our electricity cost dropped by 80% within the first month of use.' },
-  { name: 'Mrs. Blessing O.', role: 'Homeowner, GRA Asaba', review: 'The smart home setup they did for us is amazing. Everything works seamlessly — lights, AC, security cameras, all automated.' },
-  { name: 'Mr. Victor E.', role: 'Hotel Manager, Asaba', review: 'IKEBEST\'s CCTV solution across all 3 floors of our hotel has been flawless for over a year. Great team, great support.' },
+  { name: 'Mrs. Blessing O.', role: 'Homeowner, Lagos', review: 'The smart home setup they did for us is amazing. Everything works seamlessly — lights, AC, security cameras, all automated.' },
+  { name: 'Mr. Victor E.', role: 'Hotel Manager, Kano', review: 'IKEBEST\'s CCTV solution across all 3 floors of our hotel has been flawless for over a year. Great team, great support.' },
 ]
 </script>

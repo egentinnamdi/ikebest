@@ -18,7 +18,7 @@
           Control Your Home<br />From Your Phone
         </h1>
         <p class="text-white/80 text-lg mb-8 leading-relaxed">
-          World-class smart home technology brought right to your home in Asaba, Delta State. Convenience, security, and comfort — all in one system.
+          World-class smart home technology brought right to your home. Convenience, security, and comfort — all in one system.
         </p>
         <div class="flex gap-4 flex-wrap">
           <a href="#solutions" class="bg-primary text-white px-8 py-3.5 rounded-xl font-semibold hover:bg-[#1E2545] transition-all">
@@ -131,7 +131,7 @@ const features = [
 const steps = [
   { title: 'Site Assessment', body: 'Our engineers visit your home, assess the space, and plan the ideal automation layout for your needs and budget.' },
   { title: 'Custom Installation', body: 'We install everything neatly with minimal disruption to your walls and existing decor.' },
-  { title: 'Training & Support', body: 'We show you how to use the app and provide ongoing support from our Asaba-based team.' },
+  { title: 'Training & Support', body: 'We show you how to use the app and provide ongoing support from our team.' },
 ]
 
 const packages = [

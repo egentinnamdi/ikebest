@@ -4,7 +4,7 @@
     <div class="absolute inset-0 z-0">
       <img
         src="https://lh3.googleusercontent.com/aida-public/AB6AXuBGVAgB0rxfW1jbdn3wN6MgCSIsdk0Rg7pVlCjQwiOjrG4nSwXiB6lNUm1uEkfedRfOpb_06UDz-z-b2QLy7TfesxX4FHJ-Vhbq6DqfDW4y-pMmL7bfwU_CDBxA1rDgtZj0rkUdIaIbx7hX1PHzikpJmkakXQjNH-X8_z4Z2ZwrKN5gKPZ6kTpIcPnfhzsZvPQbt-uLMv8C-M3RGBy75SkGsI0J6irOV3KDZmhlp3wMSsb0gF_3h7NKaeDBr7IH_u9G9LWo1_q1KvE"
-        alt="IKEBEST Group corporate office in Asaba"
+        alt="IKEBEST Group corporate office"
         class="w-full h-full object-cover object-center"
       />
       <div class="absolute inset-0 bg-[#161B30]/65"></div>
@@ -36,7 +36,7 @@
       </div>
       <img
         src="https://lh3.googleusercontent.com/aida-public/AB6AXuDZWdD7jA1T1gv6Rsfw7XvWcGDiWVfVW1sg9rtmL2uBV0WVJx7LLQoJdqcKF2-R9_bSspnatbRHBsQmWCDSQyJFbooeB7Sg_ZBU-cNCp-MHWLAVbpo2JGsU63Q9iouba_y9imnXDup5uBlut-AYB43U7a3oGvJIUAEAo51z0B4OzVLDpx1i5zg8wfyer96AnzEIVqc_WcyOf_86Bc4LJjKjVGPxEa80Imnt6w_L0LkOtq1yO1Vt3QMnMQY-2gfnngn3ny2DBaV6qLk"
-        alt="IKEBEST team working in Asaba"
+        alt="IKEBEST team working on a project"
         class="rounded-xl shadow-lg w-full aspect-[4/3] object-cover"
       />
     </div>
@@ -121,7 +121,7 @@
   <section class="bg-primary py-16">
     <div class="max-w-[800px] mx-auto px-6 text-center">
       <h2 class="text-3xl font-bold text-white mb-4" style="font-family: 'Montserrat', sans-serif;">Ready to Work With Us?</h2>
-      <p class="text-white/80 mb-8">Get in touch with our team in Asaba and let's discuss what IKEBEST can do for you.</p>
+      <p class="text-white/80 mb-8">Get in touch with our team and let's discuss what IKEBEST can do for you.</p>
       <div class="flex flex-wrap gap-4 justify-center">
         <a href="tel:+2348004532378" class="bg-white text-primary px-8 py-3.5 rounded-xl font-semibold hover:bg-gray-100 transition-all inline-flex items-center gap-2">
           <span class="material-symbols-outlined text-[20px]">call</span> Call Us Now
@@ -197,7 +197,7 @@ const divisions = [
   {
     icon: 'home_work',
     title: 'Real Estate',
-    body: 'Property development, sales, and estate management for residential and commercial clients in Asaba.',
+    body: 'Property development, sales, and estate management for residential and commercial clients.',
     img: 'https://lh3.googleusercontent.com/aida-public/AB6AXuDKxy35nklOqIW314MHs1N8XIT_SaE7D1jAwVqPxElkURqNzZ3oRvU7tbQh6H4LmMc2rQG2RZpNtl8Cebx9mTLobCyAh7OxiG5eQHz30q-VICnYAjfhEeun_A0EVgu6zla1tb7syRC31ICo9TClZgGg_8qhonkzKYJTqMcjXx_a2_zAC4kKg5CFQJ0Vgf2NZCxKD4viufM03KVTAABgRvWRTQObzNFLgTQJ6usujXWF8dj4Bz9hNWc1B7GkTdtszVODir_bGtphEGQ',
     to: '/real-estate',
   },

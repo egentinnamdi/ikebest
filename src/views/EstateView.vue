@@ -4,7 +4,7 @@
     <div class="absolute inset-0 z-0">
       <img
         src="https://lh3.googleusercontent.com/aida-public/AB6AXuDw-C775UX2Hc1-x0GSyuPOIprYgdPNpu15AKM28v-Wl6UIXDYFMaaOvj9iP0aO4-dwsi2df6SP2l6YZvhrOZnyHeFXvW7SCXwLCiUDNZMKC_CoqI6ZExsW7e6zvyH4PkJavv6pvVNHCqXpcR5gyB_2LpuXUlqNBnwEeuZnkFCHIi35Nfz7Ja76gLcyWn5RIqxhtgwzKRy6y5SIegGbf-jHHW9RGLfToFCNxBrdGIVE-2pJRw4ZeYlRzzurdrp-828MEMJJamJMlN8"
-        alt="Modern Nigerian duplex in Asaba"
+        alt="Modern Nigerian duplex in a lush setting"
         class="w-full h-full object-cover"
       />
       <div class="absolute inset-0 bg-gradient-to-r from-gray-900/75 to-transparent"></div>
@@ -15,7 +15,7 @@
           Premium Real Estate
         </span>
         <h1 class="text-[22px] sm:text-[36px] md:text-[56px] font-extrabold leading-[1.15] text-white mb-6" style="font-family: 'Montserrat', sans-serif;">
-          Quality Properties<br />in Asaba
+          Quality Properties<br />in Nigeria
         </h1>
         <p class="text-white/80 text-lg mb-8 leading-relaxed">
           Modern housing solutions designed for comfort and built for the future in the heart of Delta State.
@@ -89,7 +89,7 @@
 
 <script setup>
 const services = [
-  { icon: 'home_work', title: 'Property Development', body: 'We build premium residential projects from ground up in prime Asaba locations.', img: 'https://images.unsplash.com/photo-1582268611958-ebfd161ef9cf?w=800&q=80&auto=format&fit=crop' },
+  { icon: 'home_work', title: 'Property Development', body: 'We build premium residential projects from ground up in prime locations.', img: 'https://images.unsplash.com/photo-1582268611958-ebfd161ef9cf?w=800&q=80&auto=format&fit=crop' },
   { icon: 'sell', title: 'Property Sales', body: 'Buy or sell residential and commercial properties with our experienced agents.', img: 'https://images.unsplash.com/photo-1560518883-ce09059eeffa?w=800&q=80&auto=format&fit=crop' },
   { icon: 'landscape', title: 'Land Sales', body: 'Verified serviced plots of land in secure estates across Delta State.', img: 'https://images.unsplash.com/photo-1500382017468-9049fed747ef?w=800&q=80&auto=format&fit=crop' },
   { icon: 'manage_accounts', title: 'Estate Management', body: 'Professional management for landlords — from tenant screening to maintenance.', img: 'https://images.unsplash.com/photo-1560184897-ae75f418493e?w=800&q=80&auto=format&fit=crop' },
@@ -97,7 +97,7 @@ const services = [
 
 const trustPoints = [
   { icon: 'gavel', title: 'Clear Title Documentation', body: 'All our properties come with verified and clean title documents — C of O, deeds, and receipts.' },
-  { icon: 'location_on', title: 'Prime Asaba Locations', body: 'We develop and sell in established, growing neighbourhoods in and around Asaba.' },
+  { icon: 'location_on', title: 'Prime Locations', body: 'We develop and sell in established, growing neighbourhoods across Nigeria.' },
   { icon: 'construction', title: 'Quality Construction', body: 'Built with quality materials and to Nigerian building standards for durability.' },
   { icon: 'support_agent', title: 'Post-Sale Support', body: 'We remain available after the sale for documentation, transfers, and related needs.' },
 ]

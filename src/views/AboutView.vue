@@ -123,7 +123,7 @@
       <h2 class="text-3xl font-bold text-white mb-4" style="font-family: 'Montserrat', sans-serif;">Ready to Work With Us?</h2>
       <p class="text-white/80 mb-8">Get in touch with our team and let's discuss what IKEBEST can do for you.</p>
       <div class="flex flex-wrap gap-4 justify-center">
-        <a href="tel:+2348004532378" class="bg-white text-primary px-8 py-3.5 rounded-xl font-semibold hover:bg-gray-100 transition-all inline-flex items-center gap-2">
+        <a href="tel:+2348139522490" class="bg-white text-primary px-8 py-3.5 rounded-xl font-semibold hover:bg-gray-100 transition-all inline-flex items-center gap-2">
           <span class="material-symbols-outlined text-[20px]">call</span> Call Us Now
         </a>
         <RouterLink to="/solar-energy" class="border-2 border-white text-white px-8 py-3.5 rounded-xl font-semibold hover:bg-white/10 transition-all">

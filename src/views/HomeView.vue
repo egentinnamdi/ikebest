@@ -375,7 +375,7 @@
         Contact us today for a free consultation and let us bring your vision to life with power, security, and smart technology.
       </p>
       <div class="flex flex-wrap justify-center gap-3">
-        <a href="tel:+2348004532378" class="bg-white text-primary px-8 py-3 rounded-xl font-semibold hover:bg-gray-100 transition-all">
+        <a href="tel:+2348139522490" class="bg-white text-primary px-8 py-3 rounded-xl font-semibold hover:bg-gray-100 transition-all">
           Call Us Now
         </a>
         <RouterLink to="/about" class="border-2 border-white/50 text-white px-8 py-3 rounded-xl font-semibold hover:bg-white/10 transition-all">

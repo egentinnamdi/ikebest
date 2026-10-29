@@ -289,49 +289,61 @@
         <span>Submit Your Client Feedback</span>
       </RouterLink>
     </div>
-    <!-- Row 1 — scrolls left -->
-    <div class="overflow-hidden mb-4">
-      <div class="marquee-track flex gap-5">
-        <div
-          v-for="(t, i) in [...dynamicTestimonials, ...dynamicTestimonials]"
-          :key="`r1-${i}`"
-          class="bg-white rounded-2xl p-7 shadow-sm w-[300px] md:w-[340px] shrink-0 flex flex-col border border-gray-100"
-        >
-          <p class="text-gray-600 text-[14px] leading-relaxed grow mb-6">&ldquo;{{ t.review }}&rdquo;</p>
-          <div class="flex items-center gap-3">
-            <div class="w-10 h-10 rounded-full bg-[#161B30] flex items-center justify-center text-[#FAC030] font-bold text-sm shrink-0">{{ t.name.charAt(0) }}</div>
-            <div class="min-w-0">
-              <div class="font-bold text-[#161B30] text-sm truncate">{{ t.name }}</div>
-              <div class="text-gray-400 text-xs truncate">{{ t.role }}</div>
+    <!-- Dynamic Approved Testimonials -->
+    <div v-if="dynamicTestimonials.length > 0">
+      <!-- Row 1 — scrolls left -->
+      <div class="overflow-hidden mb-4">
+        <div class="marquee-track flex gap-5">
+          <div
+            v-for="(t, i) in [...dynamicTestimonials, ...dynamicTestimonials, ...dynamicTestimonials]"
+            :key="`r1-${i}`"
+            class="bg-white rounded-2xl p-7 shadow-sm w-[300px] md:w-[340px] shrink-0 flex flex-col border border-gray-100"
+          >
+            <p class="text-gray-600 text-[14px] leading-relaxed grow mb-6">&ldquo;{{ t.review }}&rdquo;</p>
+            <div class="flex items-center gap-3">
+              <div class="w-10 h-10 rounded-full bg-[#161B30] flex items-center justify-center text-[#FAC030] font-bold text-sm shrink-0">{{ t.name.charAt(0) }}</div>
+              <div class="min-w-0">
+                <div class="font-bold text-[#161B30] text-sm truncate">{{ t.name }}</div>
+                <div class="text-gray-400 text-xs truncate">{{ t.role }}</div>
+              </div>
+              <div class="ml-auto flex shrink-0">
+                <span v-for="n in 5" :key="n" class="material-symbols-outlined text-[#FAC030] text-[13px]" style="font-variation-settings:'FILL' 1;">star</span>
+              </div>
             </div>
-            <div class="ml-auto flex shrink-0">
-              <span v-for="n in 5" :key="n" class="material-symbols-outlined text-[#FAC030] text-[13px]" style="font-variation-settings:'FILL' 1;">star</span>
+          </div>
+        </div>
+      </div>
+      <!-- Row 2 — scrolls right -->
+      <div class="overflow-hidden">
+        <div class="marquee-track-reverse flex gap-5">
+          <div
+            v-for="(t, i) in [...dynamicTestimonials].reverse().concat([...dynamicTestimonials].reverse()).concat([...dynamicTestimonials].reverse())"
+            :key="`r2-${i}`"
+            class="bg-white rounded-2xl p-7 shadow-sm w-[300px] md:w-[340px] shrink-0 flex flex-col border border-gray-100"
+          >
+            <p class="text-gray-600 text-[14px] leading-relaxed grow mb-6">&ldquo;{{ t.review }}&rdquo;</p>
+            <div class="flex items-center gap-3">
+              <div class="w-10 h-10 rounded-full bg-[#FAC030] flex items-center justify-center text-[#161B30] font-bold text-sm shrink-0">{{ t.name.charAt(0) }}</div>
+              <div class="min-w-0">
+                <div class="font-bold text-[#161B30] text-sm truncate">{{ t.name }}</div>
+                <div class="text-gray-400 text-xs truncate">{{ t.role }}</div>
+              </div>
+              <div class="ml-auto flex shrink-0">
+                <span v-for="n in 5" :key="n" class="material-symbols-outlined text-[#FAC030] text-[13px]" style="font-variation-settings:'FILL' 1;">star</span>
+              </div>
             </div>
           </div>
         </div>
       </div>
     </div>
-    <!-- Row 2 — scrolls right -->
-    <div class="overflow-hidden">
-      <div class="marquee-track-reverse flex gap-5">
-        <div
-          v-for="(t, i) in [...dynamicTestimonials].reverse().concat([...dynamicTestimonials].reverse())"
-          :key="`r2-${i}`"
-          class="bg-white rounded-2xl p-7 shadow-sm w-[300px] md:w-[340px] shrink-0 flex flex-col border border-gray-100"
-        >
-          <p class="text-gray-600 text-[14px] leading-relaxed grow mb-6">&ldquo;{{ t.review }}&rdquo;</p>
-          <div class="flex items-center gap-3">
-            <div class="w-10 h-10 rounded-full bg-[#FAC030] flex items-center justify-center text-[#161B30] font-bold text-sm shrink-0">{{ t.name.charAt(0) }}</div>
-            <div class="min-w-0">
-              <div class="font-bold text-[#161B30] text-sm truncate">{{ t.name }}</div>
-              <div class="text-gray-400 text-xs truncate">{{ t.role }}</div>
-            </div>
-            <div class="ml-auto flex shrink-0">
-              <span v-for="n in 5" :key="n" class="material-symbols-outlined text-[#FAC030] text-[13px]" style="font-variation-settings:'FILL' 1;">star</span>
-            </div>
-          </div>
-        </div>
-      </div>
+
+    <!-- Empty state if no reviews approved yet -->
+    <div v-else class="max-w-md mx-auto text-center py-10 bg-white rounded-2xl border border-gray-100 p-6 shadow-sm">
+      <span class="material-symbols-outlined text-4xl text-gray-300 mb-2">reviews</span>
+      <p class="text-sm text-gray-500 font-medium">Customer testimonials are verified and published here by management.</p>
+      <RouterLink to="/feedback" class="mt-3 inline-block text-xs font-bold text-[#161B30] hover:underline">
+        Be the first to share your experience &rarr;
+      </RouterLink>
     </div>
   </section>
 
@@ -509,23 +521,13 @@ const homePricing = [
   },
 ]
 
-const testimonials = [
-  { name: 'Chief Benson O.', role: 'Business Owner, Abuja', review: 'IKEBEST installed my solar system two years ago. I haven\'t had a single day of blackout since then. Their service is truly exceptional.' },
-  { name: 'Mrs. Amaka E.', role: 'Retail Manager', review: 'Their security systems gave me peace of mind. I can monitor my warehouse from anywhere in the world. Highly recommended!' },
-  { name: 'Dr. Jude Williams', role: 'Property Investor', review: 'Finding a trustworthy real estate partner in Delta is hard, but IKEBEST made buying my land so smooth and transparent.' },
-  { name: 'Engr. Chidi N.', role: 'Factory Owner, Onitsha', review: 'We installed a 30kW solar system through IKEBEST. Our electricity cost dropped by 80% within the first month of use.' },
-  { name: 'Mrs. Blessing O.', role: 'Homeowner, Lagos', review: 'The smart home setup they did for us is amazing. Everything works seamlessly — lights, AC, security cameras, all automated.' },
-  { name: 'Mr. Victor E.', role: 'Hotel Manager, Kano', review: 'IKEBEST\'s CCTV solution across all 3 floors of our hotel has been flawless for over a year. Great team, great support.' },
-]
-
 import { getPublishedFeedbacks } from '../services/dataStore.js'
 
 const dynamicTestimonials = computed(() => {
-  const published = getPublishedFeedbacks().map(f => ({
+  return getPublishedFeedbacks().map(f => ({
     name: f.customerName,
     role: f.location + (f.category ? ` • ${f.category === 'solar' ? 'Solar Client' : 'Real Estate Client'}` : ''),
     review: f.review
   }))
-  return [...published, ...testimonials]
 })
 </script>

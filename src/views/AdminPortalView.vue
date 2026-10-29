@@ -25,13 +25,13 @@
                 Operations &amp; Admin Portal
               </h1>
               <span
-                class="px-2 py-0.5 rounded text-[10px] font-bold uppercase tracking-wider bg-[#FAC030] text-[#161B30]"
+                class="px-2.5 py-0.5 rounded text-[10px] font-bold uppercase tracking-wider bg-[#FAC030] text-[#161B30]"
               >
-                {{ store.auth.currentUser.role }}
+                Master Admin
               </span>
             </div>
             <p class="text-xs text-white/60">
-              IKEBEST Technologies CRM &amp; Engineering Management
+              IKEBEST Technologies CRM &amp; Operations Management
             </p>
           </div>
         </div>
@@ -59,38 +59,29 @@
           </div>
         </div>
 
-        <!-- Role Switcher & Onboarding Link -->
-        <div class="flex items-center gap-3">
+        <!-- Onboarding Link & Log Out Button -->
+        <div class="flex items-center gap-2.5">
           <!-- Copy Shareable Onboarding Link -->
           <button
             @click="copyOnboardingLink"
-            class="hidden md:inline-flex items-center gap-1.5 px-3.5 py-2 rounded-xl bg-white/10 hover:bg-white/20 text-[#FAC030] text-xs font-bold transition-all border border-white/10"
-            title="Copy link to give to customers"
+            class="inline-flex items-center gap-1.5 px-3.5 py-2 rounded-xl bg-white/10 hover:bg-white/20 text-[#FAC030] text-xs font-bold transition-all border border-white/10 cursor-pointer"
+            title="Copy unlisted link to give to paying customers"
           >
             <span class="material-symbols-outlined text-[16px]">link</span>
             <span>{{
               copiedOnboarding ? "Link Copied!" : "Copy Onboarding Link"
             }}</span>
           </button>
-          <!-- Role Simulation Switch -->
-          <div
-            class="flex items-center bg-[#1e2545] p-1 rounded-xl border border-white/10 text-xs"
+
+          <!-- Log Out Button -->
+          <button
+            @click="handleLogout"
+            class="inline-flex items-center gap-1.5 px-3.5 py-2 rounded-xl bg-red-500/20 hover:bg-red-500/30 text-red-300 text-xs font-bold transition-all border border-red-500/30 cursor-pointer"
+            title="Log out of admin session"
           >
-            <span class="text-gray-400 px-2 hidden lg:inline">Role:</span>
-            <button
-              v-for="r in ['admin', 'staff', 'engineer']"
-              :key="r"
-              @click="setAuthRole(r)"
-              class="px-2.5 py-1 rounded-lg font-bold capitalize transition-all"
-              :class="
-                store.auth.currentUser.role === r
-                  ? 'bg-[#FAC030] text-[#161B30]'
-                  : 'text-gray-300 hover:text-white'
-              "
-            >
-              {{ r }}
-            </button>
-          </div>
+            <span class="material-symbols-outlined text-[16px]">logout</span>
+            <span class="hidden sm:inline">Log Out</span>
+          </button>
         </div>
       </div>
 
@@ -446,9 +437,24 @@
             <span class="material-symbols-outlined text-4xl text-gray-300 mb-2"
               >person_off</span
             >
-            <p class="font-medium">
-              No customer records matching this search query.
+            <p v-if="customerFilterQuery" class="font-medium">
+              No customer records matching "{{ customerFilterQuery }}".
             </p>
+            <div v-else>
+              <p class="font-medium text-base text-gray-800">
+                No customer records in the database yet.
+              </p>
+              <p class="text-xs text-gray-400 mt-1 max-w-md mx-auto">
+                Customer files will appear here when clients submit their onboarding form via your shareable link, or when added manually below.
+              </p>
+              <button
+                @click="showAddCustomerModal = true"
+                class="mt-4 px-4 py-2 bg-[#161B30] text-[#FAC030] text-xs font-bold rounded-xl hover:bg-[#1e2545] inline-flex items-center gap-1.5 transition-all shadow-sm"
+              >
+                <span class="material-symbols-outlined text-[16px]">person_add</span>
+                <span>Add First Customer</span>
+              </button>
+            </div>
           </div>
         </div>
       </div>
@@ -637,6 +643,18 @@
             </div>
           </div>
         </div>
+
+        <!-- Empty Feedbacks State -->
+        <div
+          v-if="filteredFeedbacks.length === 0"
+          class="p-12 text-center text-gray-500 bg-white rounded-2xl border border-gray-200 shadow-sm"
+        >
+          <span class="material-symbols-outlined text-4xl text-gray-300 mb-2">rate_review</span>
+          <p class="font-medium text-base text-gray-800">No customer reviews in the database yet.</p>
+          <p class="text-xs text-gray-400 mt-1 max-w-md mx-auto">
+            Reviews submitted through the feedback page will appear here for admin review, printable formatting, and approval to publish on the public website.
+          </p>
+        </div>
       </div>
 
       <!-- ========================================================================= -->
@@ -764,7 +782,7 @@
           >
             Upcoming Celebrations (This Month)
           </h3>
-          <div class="overflow-x-auto">
+          <div v-if="upcomingCelebrants.length > 0" class="overflow-x-auto">
             <table class="w-full text-left text-xs sm:text-sm">
               <thead
                 class="bg-gray-50 border-b border-gray-200 text-gray-600 font-bold uppercase tracking-wider text-[11px]"
@@ -818,6 +836,15 @@
               </tbody>
             </table>
           </div>
+
+          <div
+            v-else
+            class="p-8 text-center text-gray-500 bg-gray-50 rounded-2xl"
+          >
+            <span class="material-symbols-outlined text-4xl text-gray-300 mb-2">event_available</span>
+            <p class="font-medium text-sm">No upcoming celebrations in the next 30 days.</p>
+            <p class="text-xs text-gray-400 mt-1">Upcoming birthdays and wedding anniversaries will automatically appear here.</p>
+          </div>
         </div>
 
         <!-- Dispatched Log -->
@@ -830,7 +857,7 @@
           >
             Celebration Message Delivery Log
           </h3>
-          <div class="space-y-3">
+          <div v-if="store.celebrationLogs.length > 0" class="space-y-3">
             <div
               v-for="log in store.celebrationLogs"
               :key="log.id"
@@ -869,6 +896,17 @@
                 </div>
               </div>
             </div>
+          </div>
+
+          <div
+            v-else
+            class="p-8 text-center text-gray-500 bg-gray-50 rounded-2xl"
+          >
+            <span class="material-symbols-outlined text-4xl text-gray-300 mb-2">inbox</span>
+            <p class="font-medium text-sm">No celebration messages logged yet.</p>
+            <p class="text-xs text-gray-400 mt-1">
+              Dispatches sent automatically or directly via WhatsApp will appear here with confirmation timestamps.
+            </p>
           </div>
         </div>
       </div>
@@ -1506,13 +1544,14 @@
 
 <script setup>
 import { ref, computed, reactive, onMounted } from "vue";
+import { useRouter } from "vue-router";
+import { supabase, adminLogout } from "../services/supabase.js";
 import {
   store,
   formatNaira,
   formatDate,
   isTodayMonthDay,
   isUpcomingDays,
-  setAuthRole,
   updateCustomer,
   createCustomer,
   addCustomerReport,
@@ -1522,6 +1561,8 @@ import {
   createWhatsAppMessageLink,
   logCelebrationSent,
 } from "../services/dataStore.js";
+
+const router = useRouter();
 
 const activeTab = ref("customers");
 const quickSearchQuery = ref("");
@@ -1625,9 +1666,9 @@ const filteredCustomers = computed(() => {
     if (customerFilterQuery.value) {
       const q = customerFilterQuery.value.toLowerCase();
       const match =
-        c.id.toLowerCase().includes(q) ||
-        c.fullName.toLowerCase().includes(q) ||
-        c.phone.includes(q) ||
+        (c.id && c.id.toLowerCase().includes(q)) ||
+        (c.fullName && c.fullName.toLowerCase().includes(q)) ||
+        (c.phone && c.phone.includes(q)) ||
         (c.package && c.package.toLowerCase().includes(q));
       if (!match) return false;
     }
@@ -1674,23 +1715,84 @@ function statusBadgeClass(status) {
   }
 }
 
-function handleQuickSearch() {
+async function handleQuickSearch() {
   if (!quickSearchQuery.value) return;
   const q = quickSearchQuery.value.trim().toLowerCase();
-  const found = store.customers.find(
+  
+  // 1. Search in local memory first
+  let found = store.customers.find(
     (c) =>
-      c.id.toLowerCase() === q ||
-      c.id.toLowerCase().includes(q) ||
-      c.fullName.toLowerCase().includes(q) ||
-      c.phone.includes(q),
+      (c.id && c.id.toLowerCase() === q) ||
+      (c.id && c.id.toLowerCase().includes(q)) ||
+      (c.fullName && c.fullName.toLowerCase().includes(q)) ||
+      (c.phone && c.phone.includes(q)),
   );
+
+  // 2. If not found in local memory, query Supabase database
+  if (!found) {
+    try {
+      const { data, error } = await supabase
+        .from('customers')
+        .select('*, customer_reports(*), customer_photos(*)')
+        .or(`id.ilike.%${q}%,phone.ilike.%${q}%,full_name.ilike.%${q}%`)
+        .limit(1);
+
+      if (!error && data && data.length > 0) {
+        const raw = data[0];
+        found = {
+          id: raw.id,
+          fullName: raw.full_name,
+          phone: raw.phone,
+          email: raw.email || '',
+          address: raw.address || '',
+          state: raw.state || 'Delta State',
+          dob: raw.dob || null,
+          weddingAnniversary: raw.wedding_anniversary || null,
+          package: raw.package_name || '',
+          packageCategory: raw.package_category || 'solar',
+          totalCost: Number(raw.total_cost) || 0,
+          amountPaid: Number(raw.amount_paid) || 0,
+          balanceOwing: Math.max(0, (Number(raw.total_cost) || 0) - (Number(raw.amount_paid) || 0)),
+          paymentStatus: raw.payment_status || 'pending',
+          installationStatus: raw.installation_status || 'Survey & Planning',
+          installedAt: raw.installed_at || null,
+          engineerName: raw.engineer_name || 'Unassigned',
+          reports: (raw.customer_reports || []).map(r => ({
+            id: r.id,
+            title: r.title,
+            content: r.content,
+            author: r.author,
+            authorRole: r.author_role,
+            date: r.created_at
+          })),
+          photos: {
+            customerPhotos: (raw.customer_photos || []).filter(p => p.category === 'customer').map(p => p.photo_url),
+            housePhotos: (raw.customer_photos || []).filter(p => p.category === 'house').map(p => p.photo_url),
+            setupPhotos: (raw.customer_photos || []).filter(p => p.category === 'setup').map(p => p.photo_url)
+          },
+          createdAt: raw.created_at
+        };
+        store.customers.unshift(found);
+      }
+    } catch (err) {
+      console.warn('Supabase customer quick search query notice:', err);
+    }
+  }
+
   if (found) {
     openCustomerDossier(found);
     quickSearchQuery.value = "";
   } else {
     alert(
-      `No customer found matching "${quickSearchQuery.value}". Please check the Customer ID.`,
+      `No customer found matching "${quickSearchQuery.value}". Please verify the Customer ID or phone number.`,
     );
+  }
+}
+
+async function handleLogout() {
+  if (confirm("Are you sure you want to log out of the Operations Portal?")) {
+    await adminLogout();
+    router.push("/admin/login");
   }
 }
 

@@ -1,259 +1,28 @@
 import { reactive } from 'vue'
+import { supabase } from './supabase.js'
 
-const STORAGE_KEY = 'ikebest_crm_data_v1'
+const STORAGE_KEY = 'ikebest_crm_data_v3'
 
-// Initial seed data if nothing is saved in localStorage
+// Clean up legacy mock caches if present
+if (typeof window !== 'undefined') {
+  try {
+    localStorage.removeItem('ikebest_crm_data_v1')
+    localStorage.removeItem('ikebest_crm_data_v2')
+  } catch (e) {
+    // ignore
+  }
+}
+
+// Clean initial state: 100% empty until records are loaded from Supabase or added by admin
 const defaultInitialData = {
-  feedbacks: [
-    {
-      id: 'FB-001',
-      category: 'solar',
-      customerName: 'Chief Emmanuel Okon',
-      rating: 5,
-      package: '10kVA Lithium Hybrid Solar System',
-      location: 'GRA, Asaba, Delta State',
-      title: 'Zero blackouts since installation!',
-      review: 'IKEBEST installed our 10kVA system 6 months ago. Our home and office run smoothly 24/7 without turning on our diesel generator once. Top notch engineering and after-sales support!',
-      isPublished: true,
-      createdAt: '2026-09-15T10:30:00Z',
-    },
-    {
-      id: 'FB-002',
-      category: 'solar',
-      customerName: 'Dr. (Mrs) Ngozi Umeh',
-      rating: 5,
-      package: '5kVA Smart Inverter Package',
-      location: 'Okpanam Road, Asaba',
-      title: 'Prompt delivery and clean wiring',
-      review: 'The engineers were very professional. The cabling and battery rack setup in my utility room looks neat and tidy. The mobile monitoring app is also very convenient.',
-      isPublished: true,
-      createdAt: '2026-10-02T14:15:00Z',
-    },
-    {
-      id: 'FB-003',
-      category: 'estate',
-      customerName: 'Barrister Kenneth Obi',
-      rating: 5,
-      package: '4-Bedroom Fully Detached Duplex',
-      location: 'IKEBEST Prime Court, Asaba',
-      title: 'Solid building structure and genuine title documents',
-      review: 'Purchasing property in Delta State can be risky with title issues, but IKEBEST proved to be completely genuine. Survey, C of O, and handover were fast and seamless.',
-      isPublished: true,
-      createdAt: '2026-08-20T09:00:00Z',
-    },
-    {
-      id: 'FB-004',
-      category: 'estate',
-      customerName: 'Mr. & Mrs. Adebayo Davies',
-      rating: 4,
-      package: '2 Commercial Plots of Land',
-      location: 'Ibusa Express Corridor',
-      title: 'Great investment location',
-      review: 'Document verification was smooth and perimeter fencing was completed promptly by their team. Very happy with the appreciation rate so far.',
-      isPublished: false, // Pending admin review
-      createdAt: '2026-10-21T11:45:00Z',
-    },
-    {
-      id: 'FB-005',
-      category: 'solar',
-      customerName: 'Engr. Victor Alabi',
-      rating: 5,
-      package: '3.5kVA Solar Power Bundle',
-      location: 'Warri, Delta State',
-      title: 'Reliable power for my home office',
-      review: 'The system has been powering my desktop workstations and refrigerators effortlessly. The staff were very courteous and guided me on energy management.',
-      isPublished: false,
-      createdAt: '2026-10-25T16:20:00Z',
-    }
-  ],
-  customers: [
-    {
-      id: 'IKB-2026-001',
-      fullName: 'Chief Emmanuel Okon',
-      phone: '08033221144',
-      email: 'emmanuel.okon@example.com',
-      address: 'Plot 14, Commissioners Quarters, GRA, Asaba',
-      state: 'Delta State',
-      dob: '1978-10-28', // Set to today's date for live celebration testing!
-      weddingAnniversary: '2008-11-14',
-      package: '10kVA Lithium Hybrid Solar System (16 Panels, 15kWh Battery)',
-      packageCategory: 'solar',
-      totalCost: 8500000,
-      amountPaid: 8500000,
-      balanceOwing: 0,
-      paymentStatus: 'paid',
-      installationStatus: 'Tested & Verified',
-      installedAt: '2026-09-14T17:00:00Z',
-      engineerName: 'Engr. Chukwudi (Lead Solar Engineer)',
-      reports: [
-        {
-          id: 'REP-001',
-          author: 'Engr. Chukwudi',
-          authorRole: 'Engineer',
-          title: 'Roof Survey & Shadow Analysis',
-          content: 'South-facing galvanized roof inspected. Optimal 15-degree panel tilt confirmed with 0% shading from trees.',
-          date: '2026-09-10T11:00:00Z'
-        },
-        {
-          id: 'REP-002',
-          author: 'Engr. Chukwudi',
-          authorRole: 'Engineer',
-          title: 'Installation Complete & Load Testing',
-          content: 'Mounted 16x 550W Tier-1 mono solar panels. Inverter synchronized with PHCN grid and generator bypass. Ran 2 AC units and borehole pump under full load without voltage drop.',
-          date: '2026-09-14T16:30:00Z'
-        }
-      ],
-      photos: {
-        customerPhotos: [
-          'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&q=80&auto=format&fit=crop'
-        ],
-        housePhotos: [
-          'https://lh3.googleusercontent.com/aida-public/AB6AXuDKuaXg5bWiPM2y4pJ9RyGdgdujOustxP_T_TX-MoH-lqybr0hubXM3mZ8yDuZM46kShmc1jOqYGzaFaALLm6fG1eEptXEpoRjRXywGiAkRMR47pLhbjdebRZ99RZQXA5R_Zo2vLIv3TiXmICEGM2T8ADr-26Xk6ia4kaUAF92j2lZttQagxy6j6yM6WdKsl6gCWm2k-teO8rELHjRPpF99M-Z2YvMKsCKRpX0BjXPsYIpMTc4d6_m3TrC4w0u-wfN2g-k4UEkgpdk'
-        ],
-        setupPhotos: [
-          'https://images.unsplash.com/photo-1719848576338-9516ba7ccd8b?w=800&q=80&auto=format&fit=crop'
-        ]
-      },
-      createdAt: '2026-09-08T10:00:00Z'
-    },
-    {
-      id: 'IKB-2026-002',
-      fullName: 'Hon. Festus Ijewere',
-      phone: '08123456789',
-      email: 'festus.ijewere@gmail.com',
-      address: '22 Summit Road, Asaba',
-      state: 'Delta State',
-      dob: '1982-05-12',
-      weddingAnniversary: '2012-10-28', // Set to today's date for live celebration testing!
-      package: '5kVA Solar Inverter + 10kWh Tubular Battery Package',
-      packageCategory: 'solar',
-      totalCost: 4800000,
-      amountPaid: 3200000,
-      balanceOwing: 1600000,
-      paymentStatus: 'partial',
-      installationStatus: 'Installation in Progress',
-      installedAt: null,
-      engineerName: 'Engr. David O.',
-      reports: [
-        {
-          id: 'REP-003',
-          author: 'Engr. David O.',
-          authorRole: 'Engineer',
-          title: 'Roof Rail Mounting Completed',
-          content: 'Installed heavy-duty aluminum mounting rails on client rooftop. Running 6mm DC cable down to inverter station.',
-          date: '2026-10-26T15:00:00Z'
-        },
-        {
-          id: 'REP-004',
-          author: 'Admin Office',
-          authorRole: 'Staff',
-          title: 'Payment Reminder & Milestone',
-          content: 'Deposit of ₦3.2m confirmed. Balance of ₦1.6m is due upon final commissioning and handover next week.',
-          date: '2026-10-27T09:30:00Z'
-        }
-      ],
-      photos: {
-        customerPhotos: [
-          'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=400&q=80&auto=format&fit=crop'
-        ],
-        housePhotos: [
-          'https://lh3.googleusercontent.com/aida-public/AB6AXuDw-C775UX2Hc1-x0GSyuPOIprYgdPNpu15AKM28v-Wl6UIXDYFMaaOvj9iP0aO4-dwsi2df6SP2l6YZvhrOZnyHeFXvW7SCXwLCiUDNZMKC_CoqI6ZExsW7e6zvyH4PkJavv6pvVNHCqXpcR5gyB_2LpuXUlqNBnwEeuZnkFCHIi35Nfz7Ja76gLcyWn5RIqxhtgwzKRy6y5SIegGbf-jHHW9RGLfToFCNxBrdGIVE-2pJRw4ZeYlRzzurdrp-828MEMJJamJMlN8'
-        ],
-        setupPhotos: []
-      },
-      createdAt: '2026-10-20T12:00:00Z'
-    },
-    {
-      id: 'IKB-2026-003',
-      fullName: 'Madam Beatrice Nwaeze',
-      phone: '08099887766',
-      email: 'beatrice.nwaeze@yahoo.com',
-      address: 'Plot 7, IKEBEST Palm Gardens Estate, Okpanam',
-      state: 'Delta State',
-      dob: '1970-12-04',
-      weddingAnniversary: '1995-04-18',
-      package: 'Executive 3-Bedroom Detached Bungalow (Off-Plan)',
-      packageCategory: 'estate',
-      totalCost: 35000000,
-      amountPaid: 20000000,
-      balanceOwing: 15000000,
-      paymentStatus: 'partial',
-      installationStatus: 'Installation in Progress',
-      installedAt: null,
-      engineerName: 'Arc. Sunday (Site Supervisor)',
-      reports: [
-        {
-          id: 'REP-005',
-          author: 'Arc. Sunday',
-          authorRole: 'Engineer',
-          title: 'Roofing & Plastering Stage Reached',
-          content: 'Carcass completed. German floor and block work fully cured. Stone-coated roofing sheets delivered and currently being installed.',
-          date: '2026-10-22T14:00:00Z'
-        }
-      ],
-      photos: {
-        customerPhotos: [
-          'https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=400&q=80&auto=format&fit=crop'
-        ],
-        housePhotos: [
-          'https://lh3.googleusercontent.com/aida-public/AB6AXuDw-C775UX2Hc1-x0GSyuPOIprYgdPNpu15AKM28v-Wl6UIXDYFMaaOvj9iP0aO4-dwsi2df6SP2l6YZvhrOZnyHeFXvW7SCXwLCiUDNZMKC_CoqI6ZExsW7e6zvyH4PkJavv6pvVNHCqXpcR5gyB_2LpuXUlqNBnwEeuZnkFCHIi35Nfz7Ja76gLcyWn5RIqxhtgwzKRy6y5SIegGbf-jHHW9RGLfToFCNxBrdGIVE-2pJRw4ZeYlRzzurdrp-828MEMJJamJMlN8'
-        ],
-        setupPhotos: []
-      },
-      createdAt: '2026-07-15T09:00:00Z'
-    },
-    {
-      id: 'IKB-2026-004',
-      fullName: 'Alhaji Musa Danjuma',
-      phone: '08187766554',
-      email: 'musa.danjuma@gmail.com',
-      address: 'Km 5, Asaba-Benin Expressway, Delta State',
-      state: 'Delta State',
-      dob: '1985-03-20',
-      weddingAnniversary: null,
-      package: 'Commercial 16-Channel 4K CCTV + Perimeter Alarm System',
-      packageCategory: 'cctv',
-      totalCost: 3200000,
-      amountPaid: 3200000,
-      balanceOwing: 0,
-      paymentStatus: 'paid',
-      installationStatus: 'Tested & Verified',
-      installedAt: '2026-10-18T18:00:00Z',
-      engineerName: 'Engr. Emeka (Security Systems)',
-      reports: [
-        {
-          id: 'REP-006',
-          author: 'Engr. Emeka',
-          authorRole: 'Engineer',
-          title: 'CCTV Online Handover',
-          content: 'All 16 cameras operational. NVR linked to mobile viewing on 4 executive smartphones. Night color vision tested.',
-          date: '2026-10-18T17:45:00Z'
-        }
-      ],
-      photos: {
-        customerPhotos: [],
-        housePhotos: [],
-        setupPhotos: []
-      },
-      createdAt: '2026-10-10T11:00:00Z'
-    }
-  ],
-  celebrationLogs: [
-    {
-      id: 'LOG-001',
-      customerId: 'IKB-2026-001',
-      customerName: 'Chief Emmanuel Okon',
-      type: 'birthday',
-      channel: 'WhatsApp',
-      timestamp: '2026-10-28T08:00:00Z',
-      status: 'Sent Automatically'
-    }
-  ],
+  feedbacks: [],
+  customers: [],
+  celebrationLogs: [],
   auth: {
     currentUser: {
       name: 'Onyeze ICT Admin',
       role: 'admin', // 'admin' | 'staff' | 'engineer'
-      email: 'ikebest316@gmail.com'
+      email: 'admin@ikebest.com'
     }
   }
 }
@@ -294,6 +63,162 @@ export function persistStore() {
     console.error('Failed to persist IKEBEST data', err)
   }
 }
+
+// Background synchronization with Supabase
+export async function syncWithSupabase() {
+  try {
+    // 1. Fetch feedbacks from Supabase
+    const { data: dbFeedbacks, error: fbErr } = await supabase
+      .from('feedbacks')
+      .select('*')
+      .order('created_at', { ascending: false })
+
+    if (!fbErr && Array.isArray(dbFeedbacks)) {
+      store.feedbacks = dbFeedbacks.map(f => ({
+        id: f.id,
+        category: f.category,
+        customerName: f.customer_name,
+        rating: f.rating,
+        package: f.package || '',
+        location: f.location || '',
+        title: f.title || '',
+        review: f.review || '',
+        isPublished: Boolean(f.is_published),
+        createdAt: f.created_at
+      }))
+      persistStore()
+    }
+
+    // 2. Fetch customers from Supabase
+    const { data: dbCustomers, error: custErr } = await supabase
+      .from('customers')
+      .select('*, customer_reports(*), customer_photos(*)')
+      .order('created_at', { ascending: false })
+
+    if (!custErr && Array.isArray(dbCustomers)) {
+      store.customers = dbCustomers.map(c => ({
+        id: c.id,
+        fullName: c.full_name,
+        phone: c.phone,
+        email: c.email || '',
+        address: c.address || '',
+        state: c.state || 'Delta State',
+        dob: c.dob || null,
+        weddingAnniversary: c.wedding_anniversary || null,
+        package: c.package_name || '',
+        packageCategory: c.package_category || 'solar',
+        totalCost: Number(c.total_cost) || 0,
+        amountPaid: Number(c.amount_paid) || 0,
+        balanceOwing: Math.max(0, (Number(c.total_cost) || 0) - (Number(c.amount_paid) || 0)),
+        paymentStatus: c.payment_status || 'pending',
+        installationStatus: c.installation_status || 'Survey & Planning',
+        installedAt: c.installed_at || null,
+        engineerName: c.engineer_name || 'Unassigned',
+        reports: (c.customer_reports || []).map(r => ({
+          id: r.id,
+          title: r.title,
+          content: r.content,
+          author: r.author,
+          authorRole: r.author_role,
+          date: r.created_at
+        })),
+        photos: {
+          customerPhotos: (c.customer_photos || []).filter(p => p.category === 'customer').map(p => p.photo_url),
+          housePhotos: (c.customer_photos || []).filter(p => p.category === 'house').map(p => p.photo_url),
+          setupPhotos: (c.customer_photos || []).filter(p => p.category === 'setup').map(p => p.photo_url)
+        },
+        createdAt: c.created_at
+      }))
+      persistStore()
+    }
+  } catch (err) {
+    console.warn('Supabase sync notice:', err)
+  }
+
+  // 3. Set up Realtime listener for feedbacks
+  try {
+    supabase
+      .channel('feedbacks-realtime')
+      .on('postgres_changes', { event: '*', schema: 'public', table: 'feedbacks' }, async () => {
+        const { data } = await supabase.from('feedbacks').select('*').order('created_at', { ascending: false })
+        if (data && Array.isArray(data)) {
+          store.feedbacks = data.map(f => ({
+            id: f.id,
+            category: f.category,
+            customerName: f.customer_name,
+            rating: f.rating,
+            package: f.package || '',
+            location: f.location || '',
+            title: f.title || '',
+            review: f.review || '',
+            isPublished: Boolean(f.is_published),
+            createdAt: f.created_at
+          }))
+          persistStore()
+        }
+      })
+      .subscribe()
+  } catch (err) {
+    console.warn('Realtime subscription notice for feedbacks:', err)
+  }
+
+  // 4. Set up Realtime listener for customers
+  try {
+    supabase
+      .channel('customers-realtime')
+      .on('postgres_changes', { event: '*', schema: 'public', table: 'customers' }, async () => {
+        const { data: dbCustomers } = await supabase
+          .from('customers')
+          .select('*, customer_reports(*), customer_photos(*)')
+          .order('created_at', { ascending: false })
+        if (dbCustomers && Array.isArray(dbCustomers)) {
+          store.customers = dbCustomers.map(c => ({
+            id: c.id,
+            fullName: c.full_name,
+            phone: c.phone,
+            email: c.email || '',
+            address: c.address || '',
+            state: c.state || 'Delta State',
+            dob: c.dob || null,
+            weddingAnniversary: c.wedding_anniversary || null,
+            package: c.package_name || '',
+            packageCategory: c.package_category || 'solar',
+            totalCost: Number(c.total_cost) || 0,
+            amountPaid: Number(c.amount_paid) || 0,
+            balanceOwing: Math.max(0, (Number(c.total_cost) || 0) - (Number(c.amount_paid) || 0)),
+            paymentStatus: c.payment_status || 'pending',
+            installationStatus: c.installation_status || 'Survey & Planning',
+            installedAt: c.installed_at || null,
+            engineerName: c.engineer_name || 'Unassigned',
+            reports: (c.customer_reports || []).map(r => ({
+              id: r.id,
+              title: r.title,
+              content: r.content,
+              author: r.author,
+              authorRole: r.author_role,
+              date: r.created_at
+            })),
+            photos: {
+              customerPhotos: (c.customer_photos || []).filter(p => p.category === 'customer').map(p => p.photo_url),
+              housePhotos: (c.customer_photos || []).filter(p => p.category === 'house').map(p => p.photo_url),
+              setupPhotos: (c.customer_photos || []).filter(p => p.category === 'setup').map(p => p.photo_url)
+            },
+            createdAt: c.created_at
+          }))
+          persistStore()
+        }
+      })
+      .subscribe()
+  } catch (err) {
+    console.warn('Realtime subscription notice for customers:', err)
+  }
+}
+
+// Automatically initiate sync in the background
+if (typeof window !== 'undefined') {
+  syncWithSupabase()
+}
+
 
 // Helper: Format Naira currency
 export function formatNaira(amount) {
@@ -359,11 +284,21 @@ export function isUpcomingDays(dateStr, days = 7) {
   return diffDays > 0 && diffDays <= days
 }
 
-// Generate Next Customer ID (e.g., IKB-2026-005)
+// Generate Next Customer ID (e.g., IKB-2026-001)
 export function generateNextCustomerId() {
   const year = new Date().getFullYear()
-  const currentCount = store.customers.length + 1
-  const sequence = String(currentCount).padStart(3, '0')
+  let maxNum = 0
+  if (store.customers && store.customers.length > 0) {
+    for (const c of store.customers) {
+      if (c && c.id && c.id.startsWith(`IKB-${year}-`)) {
+        const numPart = parseInt(c.id.replace(`IKB-${year}-`, ''), 10)
+        if (!isNaN(numPart) && numPart > maxNum) {
+          maxNum = numPart
+        }
+      }
+    }
+  }
+  const sequence = String(maxNum + 1).padStart(3, '0')
   return `IKB-${year}-${sequence}`
 }
 
@@ -372,16 +307,16 @@ export function generateNextCustomerId() {
 export function getCustomerById(id) {
   if (!id) return null
   const cleaned = id.trim().toLowerCase()
-  return store.customers.find(c => c.id.toLowerCase() === cleaned) || null
+  return store.customers.find(c => c && c.id && c.id.toLowerCase() === cleaned) || null
 }
 
 export function searchCustomers(query) {
   if (!query) return store.customers
   const q = query.trim().toLowerCase()
   return store.customers.filter(c =>
-    c.id.toLowerCase().includes(q) ||
-    c.fullName.toLowerCase().includes(q) ||
-    c.phone.includes(q) ||
+    (c.id && c.id.toLowerCase().includes(q)) ||
+    (c.fullName && c.fullName.toLowerCase().includes(q)) ||
+    (c.phone && c.phone.includes(q)) ||
     (c.package && c.package.toLowerCase().includes(q))
   )
 }
@@ -428,6 +363,31 @@ export function createCustomer(data) {
 
   store.customers.unshift(newCustomer)
   persistStore()
+
+  // Background sync to Supabase
+  try {
+    supabase.from('customers').insert([{
+      id: newCustomer.id,
+      full_name: newCustomer.fullName,
+      phone: newCustomer.phone,
+      email: newCustomer.email,
+      address: newCustomer.address,
+      state: newCustomer.state,
+      dob: newCustomer.dob,
+      wedding_anniversary: newCustomer.weddingAnniversary,
+      package_name: newCustomer.package,
+      package_category: newCustomer.packageCategory,
+      total_cost: newCustomer.totalCost,
+      amount_paid: newCustomer.amountPaid,
+      installation_status: newCustomer.installationStatus,
+      engineer_name: newCustomer.engineerName
+    }]).then(({ error }) => {
+      if (error) console.warn('Supabase customer insert notice:', error)
+    })
+  } catch (err) {
+    console.warn('Customer Supabase dispatch notice:', err)
+  }
+
   return newCustomer
 }
 
@@ -460,6 +420,23 @@ export function updateCustomer(id, updates) {
 
   store.customers[index] = { ...customer, ...updates }
   persistStore()
+
+  // Background sync to Supabase
+  try {
+    const dbUpdates = {}
+    if (updates.totalCost !== undefined) dbUpdates.total_cost = updates.totalCost
+    if (updates.amountPaid !== undefined) dbUpdates.amount_paid = updates.amountPaid
+    if (updates.installationStatus !== undefined) dbUpdates.installation_status = updates.installationStatus
+    if (updates.installedAt !== undefined) dbUpdates.installed_at = updates.installedAt
+    if (updates.engineerName !== undefined) dbUpdates.engineer_name = updates.engineerName
+
+    supabase.from('customers').update(dbUpdates).eq('id', id).then(({ error }) => {
+      if (error) console.warn('Supabase customer update notice:', error)
+    })
+  } catch (err) {
+    console.warn('Customer update Supabase dispatch notice:', err)
+  }
+
   return store.customers[index]
 }
 
@@ -480,6 +457,21 @@ export function addCustomerReport(customerId, reportData) {
 
   customer.reports.unshift(newReport)
   persistStore()
+
+  try {
+    supabase.from('customer_reports').insert([{
+      customer_id: customerId,
+      title: newReport.title,
+      content: newReport.content,
+      author: newReport.author,
+      author_role: newReport.authorRole
+    }]).then(({ error }) => {
+      if (error) console.warn('Supabase report insert notice:', error)
+    })
+  } catch (err) {
+    console.warn('Report Supabase dispatch notice:', err)
+  }
+
   return newReport
 }
 
@@ -499,6 +491,19 @@ export function addCustomerPhoto(customerId, category, photoUrl) {
     customer.photos.setupPhotos.push(photoUrl)
   }
   persistStore()
+
+  try {
+    supabase.from('customer_photos').insert([{
+      customer_id: customerId,
+      category,
+      photo_url: photoUrl
+    }]).then(({ error }) => {
+      if (error) console.warn('Supabase photo insert notice:', error)
+    })
+  } catch (err) {
+    console.warn('Photo Supabase dispatch notice:', err)
+  }
+
   return true
 }
 
@@ -520,6 +525,24 @@ export function submitFeedback(feedbackData) {
 
   store.feedbacks.unshift(newFeedback)
   persistStore()
+
+  try {
+    supabase.from('feedbacks').insert([{
+      category: newFeedback.category,
+      customer_name: newFeedback.customerName,
+      rating: newFeedback.rating,
+      package: newFeedback.package,
+      location: newFeedback.location,
+      title: newFeedback.title,
+      review: newFeedback.review,
+      is_published: false
+    }]).then(({ error }) => {
+      if (error) console.warn('Supabase feedback insert notice:', error)
+    })
+  } catch (err) {
+    console.warn('Feedback Supabase dispatch notice:', err)
+  }
+
   return newFeedback
 }
 
@@ -528,6 +551,18 @@ export function toggleFeedbackPublish(feedbackId) {
   if (!fb) return null
   fb.isPublished = !fb.isPublished
   persistStore()
+
+  try {
+    supabase.from('feedbacks')
+      .update({ is_published: fb.isPublished })
+      .eq('id', feedbackId)
+      .then(({ error }) => {
+        if (error) console.warn('Supabase toggle publish notice:', error)
+      })
+  } catch (err) {
+    console.warn('Publish Supabase dispatch notice:', err)
+  }
+
   return fb
 }
 
@@ -536,6 +571,18 @@ export function deleteFeedback(feedbackId) {
   if (index !== -1) {
     store.feedbacks.splice(index, 1)
     persistStore()
+
+    try {
+      supabase.from('feedbacks')
+        .delete()
+        .eq('id', feedbackId)
+        .then(({ error }) => {
+          if (error) console.warn('Supabase delete feedback notice:', error)
+        })
+    } catch (err) {
+      console.warn('Delete feedback Supabase dispatch notice:', err)
+    }
+
     return true
   }
   return false

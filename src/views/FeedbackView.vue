@@ -169,33 +169,17 @@
               ></textarea>
             </div>
 
-            <!-- Privacy Note -->
-            <div class="bg-amber-50 border border-amber-200 rounded-xl p-4 flex gap-3 items-start">
-              <span class="material-symbols-outlined text-amber-600 text-xl mt-0.5 shrink-0">lock</span>
-              <p class="text-xs text-amber-800 leading-relaxed">
-                <strong>Admin Review Notice:</strong> Feedbacks are private by default and visible only to verified IKEBEST executives. Positive feedback may be curated by our administrator for publication on the public website.
-              </p>
-            </div>
-
             <!-- Submit Button -->
             <button
               type="submit"
               :disabled="loading"
-              class="w-full py-4 rounded-xl bg-[#FAC030] hover:bg-yellow-300 text-[#161B30] font-bold text-base transition-all shadow-md active:scale-[0.99] flex items-center justify-center gap-2 cursor-pointer"
+              class="w-full py-4 rounded-xl bg-[#FAC030] hover:bg-yellow-300 text-[#161B30] font-bold text-base transition-all shadow-md active:scale-[0.99] flex items-center justify-center gap-2 cursor-pointer mt-2"
             >
               <span v-if="loading" class="material-symbols-outlined animate-spin text-xl">progress_activity</span>
               <span v-else class="material-symbols-outlined text-xl">send</span>
               <span>{{ loading ? 'Submitting Review...' : 'Submit Feedback to Management' }}</span>
             </button>
           </form>
-        </div>
-
-        <!-- Link to Customer Onboarding for new buyers -->
-        <div class="mt-8 text-center text-sm text-gray-500">
-          Made a new payment or need to register your installation details? 
-          <RouterLink to="/customer-onboarding" class="text-[#161B30] font-bold hover:underline ml-1">
-            Fill New Customer Form &rarr;
-          </RouterLink>
         </div>
 
       </div>

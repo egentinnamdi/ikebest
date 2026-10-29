@@ -17,6 +17,7 @@ if (typeof window !== 'undefined') {
 const defaultInitialData = {
   feedbacks: [],
   customers: [],
+  engineers: [],
   celebrationLogs: [],
   auth: {
     currentUser: {
@@ -36,6 +37,7 @@ function loadStoredData() {
       return {
         ...defaultInitialData,
         ...parsed,
+        engineers: Array.isArray(parsed.engineers) ? parsed.engineers : [],
         auth: {
           ...defaultInitialData.auth,
           ...(parsed.auth || {})
@@ -56,6 +58,7 @@ export function persistStore() {
     localStorage.setItem(STORAGE_KEY, JSON.stringify({
       feedbacks: store.feedbacks,
       customers: store.customers,
+      engineers: store.engineers,
       celebrationLogs: store.celebrationLogs,
       auth: store.auth
     }))
@@ -114,6 +117,7 @@ export async function syncWithSupabase() {
         installationStatus: c.installation_status || 'Survey & Planning',
         installedAt: c.installed_at || null,
         engineerName: c.engineer_name || 'Unassigned',
+        assignedEngineerId: c.assigned_engineer_id || null,
         reports: (c.customer_reports || []).map(r => ({
           id: r.id,
           title: r.title,
@@ -131,11 +135,55 @@ export async function syncWithSupabase() {
       }))
       persistStore()
     }
+
+    // 3. Fetch engineers from Supabase
+    try {
+      const { data: dbEngineers, error: engErr } = await supabase
+        .from('engineers')
+        .select('*')
+        .order('created_at', { ascending: false })
+
+      if (!engErr && Array.isArray(dbEngineers)) {
+        store.engineers = dbEngineers.map(e => ({
+          id: e.id,
+          fullName: e.full_name,
+          nickname: e.nickname || '',
+          nin: e.nin,
+          bvn: e.bvn,
+          phone: e.phone,
+          altPhone: e.alt_phone || '',
+          email: e.email,
+          dob: e.dob,
+          gender: e.gender,
+          stateOfOrigin: e.state_of_origin,
+          lgaOfOrigin: e.lga_of_origin,
+          homeTown: e.home_town,
+          ancestralAddress: e.ancestral_address,
+          residentialAddress: e.residential_address,
+          landmark: e.landmark,
+          landlordName: e.landlord_name,
+          landlordPhone: e.landlord_phone,
+          passportPhotoUrl: e.passport_photo_url,
+          idCardUrl: e.id_card_url,
+          proofOfAddressUrl: e.proof_of_address_url,
+          nextOfKin: e.next_of_kin || {},
+          guarantor1: e.guarantor_1 || {},
+          guarantor2: e.guarantor_2 || {},
+          bankDetails: e.bank_details || {},
+          tempPassword: e.temp_password || '',
+          status: e.status || 'active',
+          createdAt: e.created_at
+        }))
+        persistStore()
+      }
+    } catch (e) {
+      console.warn('Engineers fetch notice:', e)
+    }
   } catch (err) {
     console.warn('Supabase sync notice:', err)
   }
 
-  // 3. Set up Realtime listener for feedbacks
+  // 4. Set up Realtime listener for feedbacks
   try {
     supabase
       .channel('feedbacks-realtime')
@@ -162,7 +210,7 @@ export async function syncWithSupabase() {
     console.warn('Realtime subscription notice for feedbacks:', err)
   }
 
-  // 4. Set up Realtime listener for customers
+  // 5. Set up Realtime listener for customers
   try {
     supabase
       .channel('customers-realtime')
@@ -190,6 +238,7 @@ export async function syncWithSupabase() {
             installationStatus: c.installation_status || 'Survey & Planning',
             installedAt: c.installed_at || null,
             engineerName: c.engineer_name || 'Unassigned',
+            assignedEngineerId: c.assigned_engineer_id || null,
             reports: (c.customer_reports || []).map(r => ({
               id: r.id,
               title: r.title,
@@ -211,6 +260,54 @@ export async function syncWithSupabase() {
       .subscribe()
   } catch (err) {
     console.warn('Realtime subscription notice for customers:', err)
+  }
+
+  // 6. Set up Realtime listener for engineers
+  try {
+    supabase
+      .channel('engineers-realtime')
+      .on('postgres_changes', { event: '*', schema: 'public', table: 'engineers' }, async () => {
+        const { data: dbEngineers } = await supabase
+          .from('engineers')
+          .select('*')
+          .order('created_at', { ascending: false })
+        if (dbEngineers && Array.isArray(dbEngineers)) {
+          store.engineers = dbEngineers.map(e => ({
+            id: e.id,
+            fullName: e.full_name,
+            nickname: e.nickname || '',
+            nin: e.nin,
+            bvn: e.bvn,
+            phone: e.phone,
+            altPhone: e.alt_phone || '',
+            email: e.email,
+            dob: e.dob,
+            gender: e.gender,
+            stateOfOrigin: e.state_of_origin,
+            lgaOfOrigin: e.lga_of_origin,
+            homeTown: e.home_town,
+            ancestralAddress: e.ancestral_address,
+            residentialAddress: e.residential_address,
+            landmark: e.landmark,
+            landlordName: e.landlord_name,
+            landlordPhone: e.landlord_phone,
+            passportPhotoUrl: e.passport_photo_url,
+            idCardUrl: e.id_card_url,
+            proofOfAddressUrl: e.proof_of_address_url,
+            nextOfKin: e.next_of_kin || {},
+            guarantor1: e.guarantor_1 || {},
+            guarantor2: e.guarantor_2 || {},
+            bankDetails: e.bank_details || {},
+            tempPassword: e.temp_password || '',
+            status: e.status || 'active',
+            createdAt: e.created_at
+          }))
+          persistStore()
+        }
+      })
+      .subscribe()
+  } catch (err) {
+    console.warn('Realtime subscription notice for engineers:', err)
   }
 }
 
@@ -351,6 +448,7 @@ export function createCustomer(data) {
     paymentStatus,
     installationStatus: data.installationStatus || 'Survey & Planning',
     installedAt: data.installationStatus === 'Installation Completed' ? new Date().toISOString() : null,
+    assignedEngineerId: data.assignedEngineerId || null,
     engineerName: data.engineerName || 'Unassigned',
     reports: data.reports || [],
     photos: data.photos || {
@@ -380,7 +478,8 @@ export function createCustomer(data) {
       total_cost: newCustomer.totalCost,
       amount_paid: newCustomer.amountPaid,
       installation_status: newCustomer.installationStatus,
-      engineer_name: newCustomer.engineerName
+      engineer_name: newCustomer.engineerName,
+      assigned_engineer_id: newCustomer.assignedEngineerId
     }]).then(({ error }) => {
       if (error) console.warn('Supabase customer insert notice:', error)
     })
@@ -429,6 +528,7 @@ export function updateCustomer(id, updates) {
     if (updates.installationStatus !== undefined) dbUpdates.installation_status = updates.installationStatus
     if (updates.installedAt !== undefined) dbUpdates.installed_at = updates.installedAt
     if (updates.engineerName !== undefined) dbUpdates.engineer_name = updates.engineerName
+    if (updates.assignedEngineerId !== undefined) dbUpdates.assigned_engineer_id = updates.assignedEngineerId
 
     supabase.from('customers').update(dbUpdates).eq('id', id).then(({ error }) => {
       if (error) console.warn('Supabase customer update notice:', error)
@@ -668,3 +768,264 @@ export function setAuthRole(role) {
     persistStore()
   }
 }
+
+// --- Engineer KYC & Management Actions ---
+
+export function generateNextEngineerId() {
+  const year = new Date().getFullYear()
+  let maxNum = 0
+  if (store.engineers && store.engineers.length > 0) {
+    for (const e of store.engineers) {
+      if (e && e.id && e.id.startsWith(`ENG-${year}-`)) {
+        const numPart = parseInt(e.id.replace(`ENG-${year}-`, ''), 10)
+        if (!isNaN(numPart) && numPart > maxNum) {
+          maxNum = numPart
+        }
+      }
+    }
+  }
+  const sequence = String(maxNum + 1).padStart(3, '0')
+  return `ENG-${year}-${sequence}`
+}
+
+export function generateTempPassword() {
+  const chars = 'ABCDEFGHJKLMNPQRSTUVWXYZ23456789'
+  let code = ''
+  for (let i = 0; i < 4; i++) {
+    code += chars.charAt(Math.floor(Math.random() * chars.length))
+  }
+  return `IKB-ENG-${code}`
+}
+
+export function registerEngineer(data) {
+  const newId = data.id || generateNextEngineerId()
+  const tempPassword = data.tempPassword || generateTempPassword()
+
+  const newEngineer = {
+    id: newId,
+    fullName: data.fullName || 'Unnamed Engineer',
+    nickname: data.nickname || '',
+    nin: data.nin || '',
+    bvn: data.bvn || '',
+    phone: data.phone || '',
+    altPhone: data.altPhone || '',
+    email: data.email || '',
+    dob: data.dob || '',
+    gender: data.gender || 'Male',
+    stateOfOrigin: data.stateOfOrigin || 'Delta State',
+    lgaOfOrigin: data.lgaOfOrigin || '',
+    homeTown: data.homeTown || '',
+    ancestralAddress: data.ancestralAddress || '',
+    residentialAddress: data.residentialAddress || '',
+    landmark: data.landmark || '',
+    landlordName: data.landlordName || '',
+    landlordPhone: data.landlordPhone || '',
+    passportPhotoUrl: data.passportPhotoUrl || '',
+    idCardUrl: data.idCardUrl || '',
+    proofOfAddressUrl: data.proofOfAddressUrl || '',
+    nextOfKin: data.nextOfKin || {},
+    guarantor1: data.guarantor1 || {},
+    guarantor2: data.guarantor2 || {},
+    bankDetails: data.bankDetails || {},
+    tempPassword,
+    status: data.status || 'pending',
+    createdAt: new Date().toISOString()
+  }
+
+  store.engineers.unshift(newEngineer)
+  persistStore()
+
+  // Background sync to Supabase
+  try {
+    supabase.from('engineers').insert([{
+      id: newEngineer.id,
+      full_name: newEngineer.fullName,
+      nickname: newEngineer.nickname,
+      nin: newEngineer.nin,
+      bvn: newEngineer.bvn,
+      phone: newEngineer.phone,
+      alt_phone: newEngineer.altPhone,
+      email: newEngineer.email,
+      dob: newEngineer.dob,
+      gender: newEngineer.gender,
+      state_of_origin: newEngineer.stateOfOrigin,
+      lga_of_origin: newEngineer.lgaOfOrigin,
+      home_town: newEngineer.homeTown,
+      ancestral_address: newEngineer.ancestralAddress,
+      residential_address: newEngineer.residentialAddress,
+      landmark: newEngineer.landmark,
+      landlord_name: newEngineer.landlordName,
+      landlord_phone: newEngineer.landlordPhone,
+      passport_photo_url: newEngineer.passportPhotoUrl,
+      id_card_url: newEngineer.idCardUrl,
+      proof_of_address_url: newEngineer.proofOfAddressUrl,
+      next_of_kin: newEngineer.nextOfKin,
+      guarantor_1: newEngineer.guarantor1,
+      guarantor_2: newEngineer.guarantor2,
+      bank_details: newEngineer.bankDetails,
+      temp_password: newEngineer.tempPassword,
+      status: newEngineer.status
+    }]).then(({ error }) => {
+      if (error) console.warn('Supabase engineer insert notice:', error)
+    })
+  } catch (err) {
+    console.warn('Engineer Supabase dispatch notice:', err)
+  }
+
+  return newEngineer
+}
+
+export function assignCustomerToEngineer(customerId, engineerId) {
+  const customer = store.customers.find(c => c.id === customerId)
+  if (!customer) return false
+
+  let engineerName = 'Unassigned'
+  if (engineerId) {
+    const engineer = store.engineers.find(e => e.id === engineerId)
+    if (engineer) {
+      engineerName = engineer.fullName
+    }
+  }
+
+  updateCustomer(customerId, {
+    assignedEngineerId: engineerId || null,
+    engineerName
+  })
+
+  // Append report audit
+  addCustomerReport(customerId, {
+    title: engineerId ? `Assigned Lead Engineer: ${engineerName}` : 'Engineer Assignment Removed',
+    content: engineerId 
+      ? `Project assigned to ${engineerName} (${engineerId}) by Admin Office on ${formatDate(new Date().toISOString())}.` 
+      : 'Project returned to unassigned pool.',
+    author: store.auth.currentUser.name || 'Admin Office',
+    authorRole: 'admin'
+  })
+
+  return true
+}
+
+export function getEngineerAssignedCustomers(engineerId, engineerName) {
+  if (!engineerId && !engineerName) return []
+  return store.customers.filter(c => 
+    (engineerId && c.assignedEngineerId === engineerId) ||
+    (engineerName && c.engineerName && c.engineerName.toLowerCase().includes(engineerName.toLowerCase()))
+  )
+}
+
+export function getEngineerById(id) {
+  if (!id) return null
+  return store.engineers.find(e => e.id.toLowerCase() === id.trim().toLowerCase()) || null
+}
+
+export function updateEngineerStatus(engineerId, status) {
+  const engineer = store.engineers.find(e => e.id === engineerId)
+  if (!engineer) return false
+  engineer.status = status
+  persistStore()
+
+  try {
+    supabase.from('engineers').update({ status }).eq('id', engineerId).then(({ error }) => {
+      if (error) console.warn('Supabase engineer status update notice:', error)
+    })
+  } catch (err) {
+    console.warn('Engineer status update notice:', err)
+  }
+  return true
+}
+
+export function approveEngineer(engineerId) {
+  return updateEngineerStatus(engineerId, 'active')
+}
+
+// Generate pre-filled Mailto link with official approval notification and credentials
+export function createEngineerApprovalEmailLink(engineer) {
+  if (!engineer || !engineer.email) return '#'
+  const portalUrl = typeof window !== 'undefined' ? `${window.location.origin}/admin/login` : 'https://ikebest.com/admin/login'
+  const password = engineer.tempPassword || engineer.temp_password || 'Contact Admin'
+  
+  const subject = `IKEBEST Field Operations Clearance Approved - Login Credentials Inside (Badge: ${engineer.id})`
+  const body = `Dear ${engineer.fullName},
+
+Congratulations! We are pleased to inform you that your 3-page KYC background verification and anti-theft security vetting with IKEBEST Group have been officially APPROVED.
+
+You are now cleared for field installation assignments (Solar Energy, CCTV Security, Smart Home).
+
+Here are your official field operations portal login credentials:
+---------------------------------------------------------
+Operations Portal URL: ${portalUrl}
+Clearance Badge ID: ${engineer.id}
+Assigned Password: ${password}
+Registered Email: ${engineer.email}
+---------------------------------------------------------
+
+HOW TO ACCESS YOUR ASSIGNED WORK ORDERS:
+1. Visit the portal login URL: ${portalUrl}
+2. Sign in using your Clearance Badge ID (${engineer.id}) or Email, along with your assigned password above.
+3. Once logged in, you will strictly see installations and project work orders dispatched directly to you by the Master Admin.
+4. Reminder: All solar panels, inverters, lithium batteries, and company tools assigned to you remain the legal property of IKEBEST Group under sworn criminal indemnity.
+
+Welcome to the IKEBEST engineering team!
+
+Warm regards,
+Security & Operations Management
+IKEBEST Group of Companies
+Solar House, behind NTA, Okpanam Road, Asaba, Delta State
+📞 08139522490 | ✉️ Ikebest316@gmail.com`
+
+  return `mailto:${encodeURIComponent(engineer.email)}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`
+}
+
+// Generate pre-filled Mailto link to query an engineer if there is an issue with their submitted details
+export function createEngineerInquiryEmailLink(engineer, issueReason = '') {
+  if (!engineer || !engineer.email) return '#'
+  const subject = `Action Required: Verification Issue with your IKEBEST Engineer KYC (Badge: ${engineer.id})`
+  const body = `Dear ${engineer.fullName},
+
+During our security and background verification of your IKEBEST Field Engineer KYC submission (Clearance Badge: ${engineer.id}), our compliance team identified an issue with the details you provided:
+
+ISSUE DETAILS:
+${issueReason || '[Please specify the issue: e.g. Landlord phone unreachable, NIN/BVN mismatch, blurred ID document, unconfirmed guarantor]'}
+
+REQUIRED ACTION:
+Please reply directly to this email or call our Vetting & Compliance Desk on 08139522490 within 48 hours to update your details and complete your security clearance.
+
+Failure to resolve this will result in application cancellation.
+
+Warm regards,
+Vetting & Compliance Unit
+IKEBEST Group of Companies
+Asaba, Delta State
+📞 08139522490`
+
+  return `mailto:${encodeURIComponent(engineer.email)}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`
+}
+
+// WhatsApp Approval Link helper
+export function createEngineerWhatsAppApprovalLink(engineer) {
+  if (!engineer || !engineer.phone) return '#'
+  let cleanPhone = engineer.phone.replace(/[^0-9]/g, '')
+  if (cleanPhone.startsWith('0')) cleanPhone = '234' + cleanPhone.slice(1)
+  else if (!cleanPhone.startsWith('234')) cleanPhone = '234' + cleanPhone
+
+  const portalUrl = typeof window !== 'undefined' ? `${window.location.origin}/admin/login` : 'https://ikebest.com/admin/login'
+  const password = engineer.tempPassword || engineer.temp_password || 'Contact Admin'
+
+  const text = `Hello ${engineer.fullName},\n\nCongratulations! Your IKEBEST Field Engineer clearance has been APPROVED.\n\nYour Login Credentials:\nPortal: ${portalUrl}\nBadge ID: ${engineer.id}\nPassword: ${password}\n\nPlease log in to review any assigned field installations.\n\nIKEBEST Group Management\n📞 08139522490`
+
+  return `https://wa.me/${cleanPhone}?text=${encodeURIComponent(text)}`
+}
+
+// WhatsApp Inquiry Link helper
+export function createEngineerWhatsAppInquiryLink(engineer, issueReason = '') {
+  if (!engineer || !engineer.phone) return '#'
+  let cleanPhone = engineer.phone.replace(/[^0-9]/g, '')
+  if (cleanPhone.startsWith('0')) cleanPhone = '234' + cleanPhone.slice(1)
+  else if (!cleanPhone.startsWith('234')) cleanPhone = '234' + cleanPhone
+
+  const text = `Hello ${engineer.fullName},\n\nThis is the Vetting Desk from IKEBEST Group regarding your KYC profiling (Badge: ${engineer.id}).\n\nIssue with your submission:\n${issueReason || 'We noticed an issue with your submitted details (e.g. unreachable landlord or guarantor).'}\n\nPlease reply or call us on 08139522490 to resolve this.`
+
+  return `https://wa.me/${cleanPhone}?text=${encodeURIComponent(text)}`
+}
+
+

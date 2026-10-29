@@ -29,10 +29,10 @@
           <span>Restricted Portal</span>
         </div>
         <h1 class="text-2xl font-extrabold text-white" style="font-family: 'Montserrat', sans-serif;">
-          Admin Sign In
+          Operations Portal Sign In
         </h1>
         <p class="text-xs sm:text-sm text-gray-400 mt-1">
-          Authorized executive and operations personnel only.
+          Authorized Master Admin &amp; Field Engineers only.
         </p>
       </div>
 
@@ -45,27 +45,27 @@
       <!-- Login Form -->
       <form @submit.prevent="handleLogin" class="space-y-5">
         
-        <!-- Admin Email / Username -->
+        <!-- Email / Engineer ID -->
         <div>
           <label class="block text-xs font-bold text-gray-300 uppercase tracking-wider mb-2">
-            Admin Email / Username
+            Email Address or Engineer ID
           </label>
           <div class="relative">
-            <span class="material-symbols-outlined absolute left-3.5 top-3 text-gray-400 text-lg">admin_panel_settings</span>
+            <span class="material-symbols-outlined absolute left-3.5 top-3 text-gray-400 text-lg">badge</span>
             <input
               v-model="email"
               type="text"
               required
-              placeholder="admin@ikebest.com"
+              placeholder="e.g. admin@ikebest.com or ENG-2026-001"
               class="w-full bg-[#0d1120] text-white placeholder-gray-500 pl-11 pr-4 py-3 rounded-xl border border-white/15 focus:border-[#FAC030] focus:ring-1 focus:ring-[#FAC030] outline-none text-sm transition-all"
             />
           </div>
         </div>
 
-        <!-- Admin Password -->
+        <!-- Password -->
         <div>
           <label class="block text-xs font-bold text-gray-300 uppercase tracking-wider mb-2">
-            Master Password
+            Password
           </label>
           <div class="relative">
             <span class="material-symbols-outlined absolute left-3.5 top-3 text-gray-400 text-lg">key</span>

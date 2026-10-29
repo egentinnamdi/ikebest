@@ -275,18 +275,25 @@
   <!-- Testimonials -->
   <section class="bg-[#f0f7f0] py-24 overflow-hidden">
     <div class="max-w-[900px] mx-auto px-8 mb-14 text-center">
-      <div class="inline-flex items-center gap-2 border border-[#161B30]/15 text-[#161B30] text-xs font-bold uppercase tracking-[0.18em] px-5 py-2 rounded-full mb-6">
+      <div class="inline-flex items-center gap-2 border border-[#161B30]/15 text-[#161B30] text-xs font-bold uppercase tracking-[0.18em] px-5 py-2 rounded-full mb-4">
         What Our Clients Say
       </div>
-      <h2 class="text-[32px] md:text-[46px] font-extrabold text-[#161B30] leading-tight" style="font-family: 'Montserrat', sans-serif;" v-animate>
+      <h2 class="text-[32px] md:text-[46px] font-extrabold text-[#161B30] leading-tight mb-4" style="font-family: 'Montserrat', sans-serif;" v-animate>
         Real Power. Real Results.
       </h2>
+      <RouterLink
+        to="/feedback"
+        class="inline-flex items-center gap-1.5 px-4 py-2 rounded-xl bg-[#FAC030] text-[#161B30] font-bold text-xs hover:bg-yellow-300 transition-all shadow-sm"
+      >
+        <span class="material-symbols-outlined text-[16px]">rate_review</span>
+        <span>Submit Your Client Feedback</span>
+      </RouterLink>
     </div>
     <!-- Row 1 — scrolls left -->
     <div class="overflow-hidden mb-4">
       <div class="marquee-track flex gap-5">
         <div
-          v-for="(t, i) in [...testimonials, ...testimonials]"
+          v-for="(t, i) in [...dynamicTestimonials, ...dynamicTestimonials]"
           :key="`r1-${i}`"
           class="bg-white rounded-2xl p-7 shadow-sm w-[300px] md:w-[340px] shrink-0 flex flex-col border border-gray-100"
         >
@@ -308,7 +315,7 @@
     <div class="overflow-hidden">
       <div class="marquee-track-reverse flex gap-5">
         <div
-          v-for="(t, i) in [...testimonials].reverse().concat([...testimonials].reverse())"
+          v-for="(t, i) in [...dynamicTestimonials].reverse().concat([...dynamicTestimonials].reverse())"
           :key="`r2-${i}`"
           class="bg-white rounded-2xl p-7 shadow-sm w-[300px] md:w-[340px] shrink-0 flex flex-col border border-gray-100"
         >
@@ -510,4 +517,15 @@ const testimonials = [
   { name: 'Mrs. Blessing O.', role: 'Homeowner, Lagos', review: 'The smart home setup they did for us is amazing. Everything works seamlessly — lights, AC, security cameras, all automated.' },
   { name: 'Mr. Victor E.', role: 'Hotel Manager, Kano', review: 'IKEBEST\'s CCTV solution across all 3 floors of our hotel has been flawless for over a year. Great team, great support.' },
 ]
+
+import { getPublishedFeedbacks } from '../services/dataStore.js'
+
+const dynamicTestimonials = computed(() => {
+  const published = getPublishedFeedbacks().map(f => ({
+    name: f.customerName,
+    role: f.location + (f.category ? ` • ${f.category === 'solar' ? 'Solar Client' : 'Real Estate Client'}` : ''),
+    review: f.review
+  }))
+  return [...published, ...testimonials]
+})
 </script>

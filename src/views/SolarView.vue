@@ -147,9 +147,68 @@
     </div>
   </section>
 
+  <!-- Client Testimonials & Feedback Section (Curated by Admin) -->
+  <section class="py-20 bg-[#f8f9fb]">
+    <div class="max-w-[1200px] mx-auto px-6">
+      <div class="flex flex-wrap items-end justify-between gap-4 mb-12">
+        <div>
+          <p class="text-xs font-semibold uppercase tracking-widest text-[#161B30] mb-2">Verified Solar Client Reviews</p>
+          <h2 class="text-3xl sm:text-4xl font-bold text-gray-900" style="font-family: 'Montserrat', sans-serif;">
+            What Our Solar Clients Say
+          </h2>
+        </div>
+        <RouterLink
+          to="/feedback"
+          class="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-[#FAC030] text-[#161B30] font-bold text-xs sm:text-sm hover:bg-yellow-300 transition-all shadow-sm"
+        >
+          <span class="material-symbols-outlined text-[18px]">rate_review</span>
+          <span>Submit Your Solar Feedback</span>
+        </RouterLink>
+      </div>
+
+      <div v-if="solarReviews.length > 0" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div
+          v-for="rev in solarReviews"
+          :key="rev.id"
+          class="bg-white p-7 rounded-2xl shadow-sm border border-gray-100 flex flex-col justify-between"
+        >
+          <div>
+            <div class="flex items-center justify-between mb-3">
+              <div class="flex text-amber-400 text-sm">
+                <span v-for="s in 5" :key="s">{{ s <= rev.rating ? '★' : '☆' }}</span>
+              </div>
+              <span class="text-[11px] text-gray-400">{{ formatDate(rev.createdAt) }}</span>
+            </div>
+            <h4 v-if="rev.title" class="font-bold text-gray-900 text-base mb-2">"{{ rev.title }}"</h4>
+            <p class="text-gray-600 text-sm leading-relaxed mb-4">"{{ rev.review }}"</p>
+          </div>
+          <div class="pt-4 border-t border-gray-100 flex items-center justify-between">
+            <div>
+              <div class="font-bold text-gray-900 text-sm">{{ rev.customerName }}</div>
+              <div class="text-xs text-gray-500">{{ rev.location }}</div>
+            </div>
+            <span class="px-2 py-0.5 rounded bg-emerald-100 text-emerald-800 text-[10px] font-bold">Verified Client</span>
+          </div>
+        </div>
+      </div>
+
+      <div v-else class="text-center py-12 bg-white rounded-2xl border border-gray-100 p-8">
+        <p class="text-gray-500 text-sm mb-4">No reviews have been published for Solar Energy yet.</p>
+        <RouterLink to="/feedback" class="text-[#161B30] font-bold underline text-sm">
+          Be the first to leave a solar review
+        </RouterLink>
+      </div>
+    </div>
+  </section>
+
 </template>
 
 <script setup>
+import { computed } from 'vue'
+import { getPublishedFeedbacks, formatDate } from '../services/dataStore.js'
+
+const solarReviews = computed(() => getPublishedFeedbacks('solar'))
+
 const whyReasons = [
   { icon: 'flash_off', title: 'End NEPA Unreliability', body: 'Stop worrying about sudden blackouts. Our systems switch over instantly, keeping your life running.' },
   { icon: 'payments', title: 'Massive Long-term Savings', body: 'Eliminate monthly electricity bills and the high cost of diesel or petrol for generators.' },

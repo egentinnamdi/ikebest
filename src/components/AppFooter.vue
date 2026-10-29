@@ -28,10 +28,10 @@
         <h4 class="text-[#FAC030] font-bold text-xs uppercase tracking-[0.18em] mb-6">Quick Links</h4>
         <ul class="space-y-4">
           <li><RouterLink to="/about" class="text-gray-300 text-[15px] hover:text-[#FAC030] transition-colors">About IKEBEST</RouterLink></li>
-          <li><RouterLink to="/about" class="text-gray-300 text-[15px] hover:text-[#FAC030] transition-colors">Our History</RouterLink></li>
-          <li><RouterLink to="/solar-energy" class="text-gray-300 text-[15px] hover:text-[#FAC030] transition-colors">Our Team</RouterLink></li>
-          <li><RouterLink to="/solar-energy" class="text-gray-300 text-[15px] hover:text-[#FAC030] transition-colors">Get a Quote</RouterLink></li>
-          <li><RouterLink to="/cctv-security" class="text-gray-300 text-[15px] hover:text-[#FAC030] transition-colors">Our Pricing</RouterLink></li>
+          <li><RouterLink to="/feedback" class="text-gray-300 text-[15px] hover:text-[#FAC030] transition-colors">Client Feedback</RouterLink></li>
+          <li><RouterLink to="/customer-onboarding" class="text-gray-300 text-[15px] hover:text-[#FAC030] transition-colors">Customer Onboarding</RouterLink></li>
+          <li><RouterLink to="/solar-energy" class="text-gray-300 text-[15px] hover:text-[#FAC030] transition-colors">Our Team &amp; Services</RouterLink></li>
+          <li><RouterLink to="/admin" class="text-amber-300 text-[15px] hover:text-[#FAC030] transition-colors flex items-center gap-1.5"><span class="material-symbols-outlined text-sm">lock</span> Staff &amp; Admin Portal</RouterLink></li>
         </ul>
       </div>
 

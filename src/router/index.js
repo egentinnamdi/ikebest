@@ -8,6 +8,10 @@ const routes = [
   { path: '/real-estate', name: 'estate', component: () => import('../views/EstateView.vue') },
   { path: '/smart-home', name: 'smart-home', component: () => import('../views/SmartHomeView.vue') },
   { path: '/about', name: 'about', component: () => import('../views/AboutView.vue') },
+  { path: '/feedback', name: 'feedback', component: () => import('../views/FeedbackView.vue') },
+  { path: '/customer-onboarding', name: 'customer-onboarding', component: () => import('../views/CustomerOnboardView.vue') },
+  { path: '/admin', name: 'admin', component: () => import('../views/AdminPortalView.vue') },
+  { path: '/portal', name: 'portal', component: () => import('../views/AdminPortalView.vue') },
 ]
 
 const router = createRouter({

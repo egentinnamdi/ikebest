@@ -24,11 +24,20 @@
         </RouterLink>
       </nav>
 
-      <!-- CTA + Hamburger -->
-      <div class="flex items-center gap-3">
+      <!-- CTA + Staff Portal + Hamburger -->
+      <div class="flex items-center gap-2.5">
+        <RouterLink
+          to="/admin"
+          class="hidden lg:inline-flex items-center gap-1 px-3 py-2 rounded-xl bg-gray-100 hover:bg-gray-200 text-[#161B30] text-xs font-bold transition-all border border-gray-200"
+          title="Staff and Admin Portal"
+        >
+          <span class="material-symbols-outlined text-[16px]">admin_panel_settings</span>
+          <span>Staff Portal</span>
+        </RouterLink>
+
         <RouterLink
           to="/about"
-          class="hidden md:inline-flex px-7 py-3 rounded-xl bg-[#FAC030] text-[#161B30] font-bold text-[15px] hover:bg-yellow-300 transition-all active:scale-95 shadow-sm"
+          class="hidden md:inline-flex px-6 py-2.5 rounded-xl bg-[#FAC030] text-[#161B30] font-bold text-sm hover:bg-yellow-300 transition-all active:scale-95 shadow-sm"
         >
           Get a Quote
         </RouterLink>
@@ -54,6 +63,13 @@
         {{ link.label }}
       </RouterLink>
       <RouterLink
+        to="/admin"
+        class="block font-bold py-2.5 text-base text-[#161B30] bg-[#FAC030]/20 rounded-xl px-3 border border-[#FAC030]/30"
+        @click="mobileOpen = false"
+      >
+        🔐 Staff &amp; Admin Portal
+      </RouterLink>
+      <RouterLink
         to="/about"
         class="block text-center px-6 py-3 rounded-xl bg-[#FAC030] text-[#161B30] font-bold text-[15px] mt-2"
         @click="mobileOpen = false"
@@ -76,6 +92,7 @@ const navLinks = [
   { to: '/cctv-security', label: 'CCTV & Security' },
   { to: '/real-estate', label: 'Real Estate' },
   { to: '/smart-home', label: 'Smart Home' },
+  { to: '/feedback', label: 'Feedback' },
 ]
 </script>
 

@@ -1154,7 +1154,7 @@
                 Field Installation Engineers Directory
               </h2>
               <p class="text-xs sm:text-sm text-gray-300 mt-1.5 leading-relaxed">
-                All technical installers undergo exhaustive 3-page profiling (NIN, BVN, Landlord contact, Ancestral compound address, and 2 legally liable guarantors) before handling high-value company solar/CCTV equipment. Generate official Police/EFCC tracking dossiers in one click if any personnel absconds.
+                All technical installers undergo exhaustive 3-page profiling (NIN, Landlord contact, Ancestral compound address, and 2 legally liable guarantors) before handling high-value company solar/CCTV equipment. Generate official Police/EFCC tracking dossiers in one click if any personnel absconds.
               </p>
             </div>
 
@@ -1293,7 +1293,7 @@
                   <th class="py-3.5 px-4">Engineer / ID</th>
                   <th class="py-3.5 px-4">Contact</th>
                   <th class="py-3.5 px-4">Origin &amp; Residence</th>
-                  <th class="py-3.5 px-4">Identity (NIN/BVN)</th>
+                  <th class="py-3.5 px-4">National ID (NIN)</th>
                   <th class="py-3.5 px-4">Landlord &amp; Guarantors</th>
                   <th class="py-3.5 px-4 text-center">Assigned Jobs</th>
                   <th class="py-3.5 px-4 text-center">Status</th>
@@ -1368,7 +1368,7 @@
                     </div>
                   </td>
 
-                  <!-- Identity (NIN/BVN) -->
+                  <!-- Identity (NIN) -->
                   <td class="py-4 px-4">
                     <div class="flex items-center gap-1.5">
                       <span class="text-gray-500 font-mono text-[11px]">NIN:</span>
@@ -1390,18 +1390,6 @@
                           {{ showDossierNIN[eng.id] ? "visibility_off" : "visibility" }}
                         </span>
                       </button>
-                    </div>
-                    <div class="flex items-center gap-1.5 text-[11px] text-gray-500 mt-0.5">
-                      <span class="font-mono">BVN:</span>
-                      <span class="font-mono">
-                        {{
-                          showDossierNIN[eng.id]
-                            ? eng.bvn
-                            : eng.bvn
-                            ? "••••••••" + eng.bvn.slice(-3)
-                            : "Missing"
-                        }}
-                      </span>
                     </div>
                   </td>
 
@@ -3224,7 +3212,6 @@ function printPoliceDossier(eng) {
               <tr><th>Full Legal Name</th><td><strong>${eng.fullName}</strong> ${eng.nickname ? `(Alias: "${eng.nickname}")` : ''}</td></tr>
               <tr><th>Clearance / Badge ID</th><td><strong style="color:#b91c1c; font-size:14px;">${eng.id}</strong></td></tr>
               <tr><th>National Identity No. (NIN)</th><td><strong style="font-family:monospace; font-size:13px; color:#1e40af;">${eng.nin || 'UNRECORDED'}</strong></td></tr>
-              <tr><th>Bank Verification No. (BVN)</th><td><strong style="font-family:monospace; font-size:13px; color:#1e40af;">${eng.bvn || 'UNRECORDED'}</strong></td></tr>
               <tr><th>Phone & WhatsApp</th><td>${eng.phone} ${eng.altPhone ? ` / ${eng.altPhone}` : ''}</td></tr>
               <tr><th>Email Address</th><td>${eng.email || 'N/A'}</td></tr>
               <tr><th>Date of Birth & Gender</th><td>${formatDate(eng.dob)} (${eng.gender || 'Male'})</td></tr>

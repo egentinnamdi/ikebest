@@ -985,7 +985,7 @@ export function createEngineerInquiryEmailLink(engineer, issueReason = '') {
 During our security and background verification of your IKEBEST Field Engineer KYC submission (Clearance Badge: ${engineer.id}), our compliance team identified an issue with the details you provided:
 
 ISSUE DETAILS:
-${issueReason || '[Please specify the issue: e.g. Landlord phone unreachable, NIN/BVN mismatch, blurred ID document, unconfirmed guarantor]'}
+${issueReason || '[Please specify the issue: e.g. Landlord phone unreachable, NIN mismatch, blurred ID document, unconfirmed guarantor]'}
 
 REQUIRED ACTION:
 Please reply directly to this email or call our Vetting & Compliance Desk on 08139522490 within 48 hours to update your details and complete your security clearance.

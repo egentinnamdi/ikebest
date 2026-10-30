@@ -67,7 +67,7 @@
               <div>
                 <div class="font-bold text-white">Result Notification via Email (2 - 3 Business Days)</div>
                 <div class="text-gray-300 text-xs mt-0.5 leading-relaxed">
-                  Your identity (NIN/BVN), physical residence, landlord contact, and both legal guarantors are currently undergoing mandatory security background checks. You will be informed of the vetting result within <strong>2 to 3 business days</strong> via your registered email (<span class="font-mono text-[#FAC030]">{{ registeredEngineer.email }}</span>).
+                  Your identity (NIN), physical residence, landlord contact, and both legal guarantors are currently undergoing mandatory security background checks. You will be informed of the vetting result within <strong>2 to 3 business days</strong> via your registered email (<span class="font-mono text-[#FAC030]">{{ registeredEngineer.email }}</span>).
                 </div>
               </div>
             </div>
@@ -120,7 +120,7 @@
             Field Engineer Security Clearance
           </h1>
           <p class="text-xs sm:text-sm text-gray-600 mt-1">
-            Complete all fields across the 3 steps below. Every piece of information will be verified against national databases (NIN/BVN) before equipment allocation.
+            Complete all fields across the 3 steps below. Every piece of information will be verified against national identity databases (NIN) before equipment allocation.
           </p>
         </div>
 
@@ -162,10 +162,10 @@
           <div class="bg-gray-50 p-4 rounded-2xl border border-gray-200">
             <h3 class="text-sm font-extrabold text-[#161B30] flex items-center gap-2 mb-1">
               <span class="material-symbols-outlined text-[#FAC030] text-lg">badge</span>
-              <span>Personal Legal Information (Must Match BVN/NIN)</span>
+              <span>Personal Legal Information (Must Match NIMC / NIN Records)</span>
             </h3>
             <p class="text-xs text-gray-500">
-              Provide exact details as registered with the National Identity Management Commission (NIMC) and Central Bank of Nigeria.
+              Provide exact legal details as registered with the National Identity Management Commission (NIMC).
             </p>
           </div>
 
@@ -203,19 +203,6 @@
                 type="text"
                 maxlength="11"
                 placeholder="e.g. 12345678901"
-                class="w-full px-3.5 py-2.5 rounded-xl border border-gray-300 focus:border-[#FAC030] focus:ring-1 focus:ring-[#FAC030] outline-none text-sm font-mono text-gray-800"
-              />
-            </div>
-
-            <div>
-              <label class="block text-xs font-bold text-gray-700 uppercase tracking-wider mb-1.5">
-                Bank Verification Number (BVN) * (11 Digits)
-              </label>
-              <input
-                v-model="form.bvn"
-                type="text"
-                maxlength="11"
-                placeholder="e.g. 22233344455"
                 class="w-full px-3.5 py-2.5 rounded-xl border border-gray-300 focus:border-[#FAC030] focus:ring-1 focus:ring-[#FAC030] outline-none text-sm font-mono text-gray-800"
               />
             </div>
@@ -568,7 +555,7 @@
               />
               <label for="affidavitCheck" class="text-xs text-gray-800 leading-relaxed cursor-pointer select-none">
                 <strong>SWORN LEGAL DECLARATION &amp; CRIMINAL INDEMNITY:</strong>
-                I solemnly swear that all personal, residential, biometric, and guarantor details provided are 100% genuine and verified. I explicitly authorize IKEBEST Group to verify my NIN, BVN, and background with state security agencies. In the event of theft, diversion, or unauthorized removal of any company equipment (inverters, batteries, solar panels, CCTV cameras, or cables) entrusted to me, I consent to immediate criminal prosecution and the transmission of my biometric dossier to the Nigeria Police Force and law enforcement authorities.
+                I solemnly swear that all personal, residential, biometric, and guarantor details provided are 100% genuine and verified. I explicitly authorize IKEBEST Group to verify my NIN and background with state security agencies. In the event of theft, diversion, or unauthorized removal of any company equipment (inverters, batteries, solar panels, CCTV cameras, or cables) entrusted to me, I consent to immediate criminal prosecution and the transmission of my biometric dossier to the Nigeria Police Force and law enforcement authorities.
               </label>
             </div>
           </div>
@@ -637,7 +624,6 @@ const form = reactive({
   fullName: '',
   nickname: '',
   nin: '',
-  bvn: '',
   dob: '',
   gender: 'Male',
   phone: '',
@@ -691,9 +677,6 @@ function validateStep1() {
   if (!form.nickname.trim()) return 'Known Nickname/Alias is mandatory (or enter "None").'
   if (!form.nin.trim() || form.nin.trim().length !== 11 || !/^\d{11}$/.test(form.nin.trim())) {
     return 'A valid 11-digit National Identity Number (NIN) is mandatory.'
-  }
-  if (!form.bvn.trim() || form.bvn.trim().length !== 11 || !/^\d{11}$/.test(form.bvn.trim())) {
-    return 'A valid 11-digit Bank Verification Number (BVN) is mandatory.'
   }
   if (!form.dob) return 'Date of Birth is mandatory.'
   if (!form.phone.trim()) return 'Primary WhatsApp phone number is mandatory.'
